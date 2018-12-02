@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		310F0EB121B47BE80030D5A7 /* DirtySnkrsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310F0EB021B47BE80030D5A7 /* DirtySnkrsTableViewController.swift */; };
+		310F0EB321B47C0C0030D5A7 /* DirtySnkrViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310F0EB221B47C0C0030D5A7 /* DirtySnkrViewCell.swift */; };
 		31242EC221AB0D4000F5230E /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31242EC121AB0D4000F5230E /* ModalViewController.swift */; };
 		316ACF6A21A0C6A0001C5C57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316ACF6921A0C6A0001C5C57 /* AppDelegate.swift */; };
 		316ACF6F21A0C6A0001C5C57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 316ACF6D21A0C6A0001C5C57 /* Main.storyboard */; };
@@ -43,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		310F0EB021B47BE80030D5A7 /* DirtySnkrsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirtySnkrsTableViewController.swift; sourceTree = "<group>"; };
+		310F0EB221B47C0C0030D5A7 /* DirtySnkrViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirtySnkrViewCell.swift; sourceTree = "<group>"; };
 		31242EC121AB0D4000F5230E /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		316ACF6621A0C6A0001C5C57 /* snkr-pckr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "snkr-pckr.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		316ACF6921A0C6A0001C5C57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 		316ACF6821A0C6A0001C5C57 /* snkr-pckr */ = {
 			isa = PBXGroup;
 			children = (
+				31AEB5F321B363200062015A /* services */,
 				316ACFAD21A1BF2C001C5C57 /* models */,
 				316ACFA621A1B38E001C5C57 /* labels */,
 				316ACFA321A0E1F0001C5C57 /* cells */,
@@ -154,6 +159,7 @@
 				316ACF9821A0C966001C5C57 /* SnkrsTableViewController.swift */,
 				316ACF9A21A0CD1B001C5C57 /* NewSnkrViewController.swift */,
 				31242EC121AB0D4000F5230E /* ModalViewController.swift */,
+				310F0EB021B47BE80030D5A7 /* DirtySnkrsTableViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -171,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				316ACFA421A0E21E001C5C57 /* SneakerViewCell.swift */,
+				310F0EB221B47C0C0030D5A7 /* DirtySnkrViewCell.swift */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -190,6 +197,13 @@
 				316ACFAE21A1BF39001C5C57 /* Snkr.swift */,
 			);
 			path = models;
+			sourceTree = "<group>";
+		};
+		31AEB5F321B363200062015A /* services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,8 +343,10 @@
 				31242EC221AB0D4000F5230E /* ModalViewController.swift in Sources */,
 				316ACFAF21A1BF39001C5C57 /* Snkr.swift in Sources */,
 				316ACFD521A1D40F001C5C57 /* snkr-pckr.xcdatamodeld in Sources */,
+				310F0EB121B47BE80030D5A7 /* DirtySnkrsTableViewController.swift in Sources */,
 				316ACFA521A0E21E001C5C57 /* SneakerViewCell.swift in Sources */,
 				316ACF9E21A0D221001C5C57 /* Segues.swift in Sources */,
+				310F0EB321B47C0C0030D5A7 /* DirtySnkrViewCell.swift in Sources */,
 				316ACF6A21A0C6A0001C5C57 /* AppDelegate.swift in Sources */,
 				316ACF9921A0C966001C5C57 /* SnkrsTableViewController.swift in Sources */,
 				316ACFB121A1C152001C5C57 /* Cells.swift in Sources */,

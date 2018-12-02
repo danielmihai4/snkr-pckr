@@ -17,6 +17,7 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
         super.viewDidLoad()
         
         loadSnkrs()
+        setTitle()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -28,9 +29,9 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 193
+        return 434
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         self.tableView.reloadData()
     }
@@ -45,24 +46,6 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
         cell.colorwayLabel.text = snkr.colorway
         
         return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.delete {
-            
-            deleteSnkr(indexPath: indexPath)
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let closeAction = UIContextualAction(style: .normal, title:  "Pick", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            self.toggleWearState(indexPath: indexPath)
-        })
-        closeAction.image = UIImage(named: "icon-wear-sneaker")
-        closeAction.backgroundColor = getColor(indexPath: indexPath)
-        closeAction.title = getTitle(indexPath: indexPath)
-        
-        return UISwipeActionsConfiguration(actions: [closeAction])
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -85,11 +68,50 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
                 name: source.nameTextField.text!,
                 colorway: source.colorwayTextField.text!,
                 lastWornDate: nil,
+                isClean: true,
                 pic: resizedPicture)
             
             snkrs.append(snkr)
             
             storeSnkrEntity(snkr: snkr)
+            setTitle()
+        }
+    }
+    
+    @IBAction func showOptions(_ sender: Any) {
+        
+        if let cell = (sender as AnyObject).superview??.superview as? SnkrTableViewCell {
+            let indexPath = tableView.indexPath(for: cell)
+            let snkr = snkrs[(indexPath?.row)!]
+            let optionMenu = UIAlertController(title: nil, message: AlertLabels.optionsTitle, preferredStyle: .actionSheet)
+            
+            let cancelAction = UIAlertAction(title: ButtonLabels.cancel, style: .cancel)
+            let deleteAction = UIAlertAction(title: ButtonLabels.delete, style: .destructive, handler: { (action) -> Void in
+                self.deleteSnkr(indexPath: indexPath!)
+            });
+            let cleanAction = UIAlertAction(title: ButtonLabels.clean, style: .default, handler: { (action) -> Void in
+                self.markSnkrToClean(indexPath: indexPath!)
+            });
+            
+            if snkr.lastWornDate == nil {
+                let selectSnkrAction = UIAlertAction(title: ButtonLabels.wearSnkr, style: .default, handler: { (action) -> Void in
+                    self.toggleWearState(indexPath: indexPath!)
+                });
+                
+                optionMenu.addAction(selectSnkrAction)
+            } else {
+                let unselectSnkrAction = UIAlertAction(title: ButtonLabels.unselectSnkr, style: .default, handler: { (action) -> Void in
+                    self.toggleWearState(indexPath: indexPath!)
+                });
+                
+                optionMenu.addAction(unselectSnkrAction)
+            }
+            
+            optionMenu.addAction(cleanAction)
+            optionMenu.addAction(deleteAction)
+            optionMenu.addAction(cancelAction)
+            
+            self.present(optionMenu, animated: true, completion: nil)
         }
     }
     
@@ -100,16 +122,11 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
         self.overlayBlurredBackgroundView()
     }
     
-    private func getColor(indexPath: IndexPath) -> UIColor {
+    private func markSnkrToClean(indexPath: IndexPath) {
         let snkr = self.snkrs[indexPath.row]
+        snkr.isClean = false
         
-        return snkr.lastWornDate != nil ? .purple : .green
-    }
-    
-    private func getTitle(indexPath: IndexPath) -> String {
-        let snkr = self.snkrs[indexPath.row]
-        
-        return snkr.lastWornDate != nil ? "" : "Pick"
+        self.updateSnkrEntity(snkr: snkr)
     }
     
     private func toggleWearState(indexPath: IndexPath) {
@@ -121,6 +138,7 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
             snkr.lastWornDate = Date()
         }
         
+        self.updateSnkrEntity(snkr: snkr)
         self.tableView.reloadData()
     }
     
@@ -178,13 +196,22 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
                     name: snkrEntity.name!,
                     colorway: snkrEntity.colorway!,
                     lastWornDate: snkrEntity.lastWornDate,
+                    isClean: snkrEntity.isClean,
                     pic: UIImage(data: snkrEntity.pic!)!)
-                
+                                
                 snkrs.append(snkr)
             }
-            
         } catch {
             print ("Cannot load snkrs")
+        }
+    }
+    
+    private func setTitle() {
+        
+        if (snkrs.count == 1) {
+            self.title = String(format: "%d Snkr", snkrs.count)
+        } else {
+            self.title = String(format: "%d Snkrs", snkrs.count)
         }
     }
     
@@ -195,9 +222,30 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
         snkrEntity.name = snkr.name
         snkrEntity.colorway = snkr.colorway
         snkrEntity.lastWornDate = snkr.lastWornDate
+        snkrEntity.isClean = snkr.isClean!
         snkrEntity.pic = UIImageJPEGRepresentation(snkr.pic, 1)
         
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
+    }
+    
+    private func updateSnkrEntity(snkr: Snkr) {
+        let request: NSFetchRequest<SnkrEntity> = SnkrEntity.fetchRequest()
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let predicate = NSPredicate(format: "name=%@ AND colorway=%@", snkr.name, snkr.colorway)
+        
+        request.predicate = predicate
+        
+        do {
+            let snkrEntities = try context.fetch(request)
+            let snkrEntity = snkrEntities.first!
+            
+            snkrEntity.lastWornDate = snkr.lastWornDate
+            snkrEntity.isClean = snkr.isClean!
+            
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        } catch let error {
+            print (error.localizedDescription)
+        }
     }
     
     private func deleteSnkrEntity(snkr: Snkr) {
@@ -210,7 +258,10 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
         do {
             let snkrEntities = try context.fetch(request)
             
-            context.delete(snkrEntities.first!)
+            for snkrEntity in snkrEntities {
+                context.delete(snkrEntity)
+                (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            }
         } catch let error {
             print(error.localizedDescription)
         }
@@ -258,6 +309,7 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
         for iteratorSnkr in snkrs {
             if iteratorSnkr.name == snkr.name && iteratorSnkr.colorway == snkr.colorway {
                 iteratorSnkr.lastWornDate = Date()
+                updateSnkrEntity(snkr: snkr)
             }
         }
         

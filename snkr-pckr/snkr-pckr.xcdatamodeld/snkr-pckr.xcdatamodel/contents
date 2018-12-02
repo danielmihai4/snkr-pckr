@@ -2,11 +2,12 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="18B75" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="SnkrEntity" representedClassName="SnkrEntity" syncable="YES" codeGenerationType="class">
         <attribute name="colorway" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isClean" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="lastWornDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pic" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="SnkrEntity" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="SnkrEntity" positionX="-63" positionY="-18" width="128" height="120"/>
     </elements>
 </model>

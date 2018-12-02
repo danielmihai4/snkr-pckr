@@ -12,5 +12,11 @@ public struct ButtonLabels {
     static let dismiss = "Dismiss"
     static let ok = "OK"
     static let cancel = "Cancel"
+    static let delete = "Delete"
     static let selectPhoto = "Select photo from library"
+    static let clean = "Clean"
+    static let wearSnkr = "Wear it!"
+    static let unselectSnkr = "Unselect snkr."
+    static let no = "No"
+    static let yes = "Yes"
 }

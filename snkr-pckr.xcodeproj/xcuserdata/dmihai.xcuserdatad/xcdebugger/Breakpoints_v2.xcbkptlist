@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "snkr-pckr/controllers/SnkrsTableViewController.swift"
-            timestampString = "564870434.011495"
+            timestampString = "565482664.697486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "265"
-            endingLineNumber = "265"
+            startingLineNumber = "317"
+            endingLineNumber = "317"
             landmarkName = "confirmPickedSnkr(snkr:)"
             landmarkType = "7">
          </BreakpointContent>

@@ -14,4 +14,11 @@ class SnkrTableViewCell: UITableViewCell {
     @IBOutlet weak var colorwayLabel: UILabel!
     @IBOutlet weak var lastWornLabel: UILabel!
     @IBOutlet weak var pic: UIImageView!
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        let margins = UIEdgeInsetsMake(0, 5, 5, 5)  //set the values for top,left,bottom,right margins
+        contentView.frame = UIEdgeInsetsInsetRect(contentView.frame, margins)
+    }
 }

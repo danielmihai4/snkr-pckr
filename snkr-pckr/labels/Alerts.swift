@@ -12,6 +12,8 @@ public struct AlertLabels {
     static let nameTitle = "Dude! The name, please!"
     static let nameMessage = "Can't save it with no name."
     static let confirmTitle = "Confirm"
-    static let deleteMessage = "Are you sure you want to delete this?"
+    static let deleteMessage = "Are you sure you want to delete it?"
     static let addPhotoTitle = "Select a photo"
+    static let optionsTitle = "Options"
+    static let cleanMessage = "Are you sure you cleaned it?"
 }

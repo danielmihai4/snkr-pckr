@@ -10,4 +10,5 @@ import Foundation
 
 public struct Cells {
     public static let Snkr = "SnkrCell"
+    public static let DirtySnkr = "DirtySnkrCell"
 }

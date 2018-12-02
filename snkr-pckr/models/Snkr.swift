@@ -14,11 +14,13 @@ public class Snkr {
     let colorway: String
     let pic: UIImage
     var lastWornDate: Date?
+    var isClean: Bool?
     
-    public init(name: String, colorway: String, lastWornDate: Date?, pic: UIImage) {
+    public init(name: String, colorway: String, lastWornDate: Date?, isClean: Bool, pic: UIImage) {
         self.name = name
         self.colorway = colorway
         self.lastWornDate = lastWornDate
+        self.isClean = isClean
         self.pic = pic
     }
 }
