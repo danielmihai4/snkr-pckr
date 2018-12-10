@@ -17,14 +17,12 @@ class DirtySnkrsTableViewController: UITableViewController, TableViewCellDelegat
         super.viewDidLoad()
 
         loadSnkrs()
-        setTitle()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         dirtySnkrs.removeAll()
         loadSnkrs()
         self.tableView.reloadData()
-        setTitle()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -61,12 +59,24 @@ class DirtySnkrsTableViewController: UITableViewController, TableViewCellDelegat
         }
     }
     
-    private func setTitle() {
-        if (dirtySnkrs.count == 1) {
-            self.title = String(format: "%d Dirty Snkr", dirtySnkrs.count)
-        } else {
-            self.title = String(format: "%d Dirty Snkrs", dirtySnkrs.count)
-        }
+    @IBAction func cleanAllSnkrs(_ sender: Any) {
+        let dialogMessage = UIAlertController(title: AlertLabels.confirmTitle, message: AlertLabels.cleanAllMessage, preferredStyle: .alert)
+        let noAction = UIAlertAction(title: ButtonLabels.no, style: .cancel, handler: nil)
+        let yesAction = UIAlertAction(title: ButtonLabels.yes, style: .default, handler: { (action) -> Void in
+            
+            for snkr in self.dirtySnkrs {
+                snkr.isClean = true
+                self.updateSnkrEntity(snkr: snkr)
+            }
+            
+            self.dirtySnkrs.removeAll()
+            self.tableView.reloadData()
+        });
+        
+        dialogMessage.addAction(yesAction)
+        dialogMessage.addAction(noAction)
+        
+        self.present(dialogMessage, animated: true, completion: nil)
     }
     
     private func loadSnkrs() {
@@ -123,8 +133,7 @@ class DirtySnkrsTableViewController: UITableViewController, TableViewCellDelegat
             snkr.isClean = true
             
             self.tableView.deleteRows(at: [indexPath!], with: UITableViewRowAnimation.automatic)
-            self.updateSnkrEntity(snkr: snkr)
-            self.setTitle()
+            self.updateSnkrEntity(snkr: snkr)            
         });
         
         dialogMessage.addAction(yesAction)

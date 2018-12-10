@@ -20,6 +20,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="HdK-YI-0jG" userLabel="Search Footer" customClass="SearchFooter" customModule="snkr_pckr" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="462" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SnkrCell" rowHeight="434" id="rKo-6l-Ekk" customClass="SnkrTableViewCell" customModule="snkr_pckr" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="434"/>
@@ -118,6 +123,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchFooter" destination="HdK-YI-0jG" id="MLA-cb-fWq"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eRh-tu-5ur" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -134,7 +142,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="J0y-TL-1cr" kind="relationship" relationship="viewControllers" id="p8r-MB-zqc"/>
-                        <segue destination="lDu-ik-who" kind="relationship" relationship="viewControllers" id="JM7-MS-jGM"/>
+                        <segue destination="aPr-fa-Gvw" kind="relationship" relationship="viewControllers" id="gyT-5R-Zuq"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="260-me-FWS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -199,11 +207,37 @@
                             <outlet property="delegate" destination="lDu-ik-who" id="aGo-rx-ivE"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Dirty Snkrs" id="h0B-Ju-S7k"/>
+                    <tabBarItem key="tabBarItem" title="Dirty Snkrs" image="icon-dirty" id="h0B-Ju-S7k"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Dirty Snkrs" id="66K-ed-aaq">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="icon-brush" id="UGm-Zw-TOd">
+                            <connections>
+                                <action selector="cleanAllSnkrs:" destination="lDu-ik-who" id="TVd-hN-jiv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wmd-iH-FKL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1604" y="1378"/>
+            <point key="canvasLocation" x="-652" y="1542"/>
+        </scene>
+        <!--Dirty Snkrs-->
+        <scene sceneID="uqt-Xw-Yzn">
+            <objects>
+                <navigationController id="aPr-fa-Gvw" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Dirty Snkrs" image="icon-dirty" id="cou-1u-45X"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1vW-oP-nlY">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="lDu-ik-who" kind="relationship" relationship="rootViewController" id="rPx-3S-NmR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cXJ-G0-cWd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1586" y="1542"/>
         </scene>
         <!--Modal View Controller-->
         <scene sceneID="ItL-4g-yYp">
@@ -389,7 +423,7 @@
         <scene sceneID="xzJ-gI-snW">
             <objects>
                 <navigationController id="J0y-TL-1cr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Snkrs" id="4np-Vi-BzU"/>
+                    <tabBarItem key="tabBarItem" title="Snkrs" image="icon-collection" id="4np-Vi-BzU"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eyR-z5-4Pu">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -405,7 +439,10 @@
     </scenes>
     <resources>
         <image name="icon-add-sneaker" width="32" height="32"/>
+        <image name="icon-brush" width="32" height="32"/>
         <image name="icon-cancel" width="512" height="512"/>
+        <image name="icon-collection" width="32" height="32"/>
+        <image name="icon-dirty" width="32" height="32"/>
         <image name="icon-menu" width="256" height="256"/>
         <image name="icon-random" width="32" height="32"/>
         <image name="icon-wear-sneaker-big" width="512" height="512"/>

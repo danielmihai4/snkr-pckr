@@ -12,12 +12,23 @@ import CoreData
 class SnkrsTableViewController: UITableViewController, ModalViewControllerDelegate {
     
     var snkrs = [Snkr]()
+    var filteredSnkrs = [Snkr]()
+    
+    @IBOutlet weak var searchFooter: SearchFooter!
+    
+    let searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         loadSnkrs()
         setTitle()
+        
+        tableView.tableFooterView = searchFooter
+        
+        
+        NSLog("Will setup Search Contoller")
+        setupSearchController()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -25,6 +36,12 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isFiltering() {
+            searchFooter.setIsFilteringToShow(filteredItemCount: filteredSnkrs.count, of: filteredSnkrs.count)
+            return filteredSnkrs.count
+        }
+        
+        searchFooter.setNotFiltering()
         return snkrs.count
     }
     
@@ -38,7 +55,7 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cells.Snkr, for: indexPath) as! SnkrTableViewCell
-        let snkr = snkrs[indexPath.row]
+        let snkr = isFiltering() ? filteredSnkrs[indexPath.row] : snkrs[indexPath.row]
         
         cell.pic.image = snkr.pic
         cell.nameLabel.text = snkr.name
@@ -122,11 +139,51 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
         self.overlayBlurredBackgroundView()
     }
     
+    private func filterContentForSearchText(searchText: String) {
+        NSLog ("Filtering based on \(searchText)")
+        filteredSnkrs = snkrs.filter({(snkr : Snkr) -> Bool in
+            let snkrTitle = getSnkrTitle(snkr: snkr)
+            let doesMatch = snkrTitle.lowercased().contains(searchText.lowercased())
+            
+            NSLog ("--Checking Snkr: \(snkrTitle)")
+            NSLog ("----DoesMatch: \(doesMatch)")
+            
+            return searchBarIsEmpty() ? false : doesMatch
+        })
+        
+        tableView.reloadData()
+    }
+    
+    private func searchBarIsEmpty() -> Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    private func setupSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        
+        searchController.searchBar.placeholder = "Search Snkrs"
+        searchController.searchBar.delegate = self
+        
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+    }
+    
     private func markSnkrToClean(indexPath: IndexPath) {
         let snkr = self.snkrs[indexPath.row]
         snkr.isClean = false
         
         self.updateSnkrEntity(snkr: snkr)
+    }
+    
+    private func getSnkrTitles() -> [String] {
+        var snkrTitles = [String]()
+        
+        for snkr in snkrs {
+            snkrTitles.append(getSnkrTitle(snkr: snkr))
+        }
+        
+        return snkrTitles
     }
     
     private func toggleWearState(indexPath: IndexPath) {
@@ -297,6 +354,14 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
         return unpickedSnkrs[Int(arc4random_uniform(UInt32(unpickedSnkrs.count)))]
     }
     
+    private func getSnkrTitle(snkr: Snkr) -> String {
+        return "\(snkr.name)\(snkr.colorway)"
+    }
+    
+    private func isFiltering() -> Bool {
+        return searchController.isActive && !searchBarIsEmpty()
+    }
+    
     internal func cancelPickedSnkr() {
         for subview in view.subviews {
             if subview.isKind(of: UIVisualEffectView.self) {
@@ -316,3 +381,17 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
         self.tableView.reloadData()
     }
 }
+
+extension SnkrsTableViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        filterContentForSearchText(searchText: searchBar.text!)
+    }
+}
+
+extension SnkrsTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+    }
+}
+
+

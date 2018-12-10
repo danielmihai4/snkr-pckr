@@ -16,4 +16,5 @@ public struct AlertLabels {
     static let addPhotoTitle = "Select a photo"
     static let optionsTitle = "Options"
     static let cleanMessage = "Are you sure you cleaned it?"
+    static let cleanAllMessage = "Are you sure you cleaned them all?"
 }
