@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewSnkrViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, UIActionSheetDelegate {
+class NewSnkrViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, UIActionSheetDelegate, UITextFieldDelegate {
     
     var imageView = UIImageView()
 
@@ -28,8 +28,11 @@ class NewSnkrViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         scrollView.delegate = self
         scrollView.addSubview(imageView)
+        
+        self.nameTextField.delegate = self
+        self.colorwayTextField.delegate = self
     }
-
+    
     @IBAction func addPic(_ sender: Any) {
         let imageController = UIImagePickerController()
         
@@ -104,6 +107,11 @@ class NewSnkrViewController: UIViewController, UIImagePickerControllerDelegate, 
         let horizontalPadding = imageViewSize.width < scrollViewSize.width ? (scrollViewSize.width - imageViewSize.width) / 2 : 0
         
         scrollView.contentInset = UIEdgeInsets(top: verticalPadding, left: horizontalPadding, bottom: verticalPadding, right: horizontalPadding)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {

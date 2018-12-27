@@ -26,8 +26,6 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
         
         tableView.tableFooterView = searchFooter
         
-        
-        NSLog("Will setup Search Contoller")
         setupSearchController()
     }
 
@@ -46,7 +44,7 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 434
+        return 350
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -144,9 +142,6 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
         filteredSnkrs = snkrs.filter({(snkr : Snkr) -> Bool in
             let snkrTitle = getSnkrTitle(snkr: snkr)
             let doesMatch = snkrTitle.lowercased().contains(searchText.lowercased())
-            
-            NSLog ("--Checking Snkr: \(snkrTitle)")
-            NSLog ("----DoesMatch: \(doesMatch)")
             
             return searchBarIsEmpty() ? false : doesMatch
         })

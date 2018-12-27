@@ -17,12 +17,15 @@ class DirtySnkrsTableViewController: UITableViewController, TableViewCellDelegat
         super.viewDidLoad()
 
         loadSnkrs()
+        
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        self.tableView.backgroundColor = UIColor.lightGray
     }
     
     override func viewWillAppear(_ animated: Bool) {
         dirtySnkrs.removeAll()
         loadSnkrs()
-        self.tableView.reloadData()
+        reloadData()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -34,11 +37,11 @@ class DirtySnkrsTableViewController: UITableViewController, TableViewCellDelegat
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 410
+        return 325
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        self.tableView.reloadData()
+        reloadData()
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -70,7 +73,7 @@ class DirtySnkrsTableViewController: UITableViewController, TableViewCellDelegat
             }
             
             self.dirtySnkrs.removeAll()
-            self.tableView.reloadData()
+            self.reloadData()
         });
         
         dialogMessage.addAction(yesAction)
@@ -140,5 +143,20 @@ class DirtySnkrsTableViewController: UITableViewController, TableViewCellDelegat
         dialogMessage.addAction(noAction)
         
         self.present(dialogMessage, animated: true, completion: nil)
+    }
+    
+    private func reloadData() {
+        self.tableView.reloadData()
+        
+        if dirtySnkrs.isEmpty {
+            let backgroundImage = UIImage(named: "icon-sponge.png")
+            let imageView = UIImageView(image: backgroundImage)
+            
+            imageView.contentMode = .scaleAspectFit
+            
+            self.tableView.backgroundView = imageView
+        } else {
+            self.tableView.backgroundView = nil
+        }
     }
 }
