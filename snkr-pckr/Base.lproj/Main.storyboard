@@ -353,6 +353,9 @@
                             </textField>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SH3-H5-EIL">
                                 <rect key="frame" x="16" y="154" width="343" height="258"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="SH3-H5-EIL" secondAttribute="height" multiplier="1.33:1" id="mXw-4n-wC5"/>
+                                </constraints>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NdC-Z9-n0c">
                                 <rect key="frame" x="16" y="420" width="343" height="104"/>
