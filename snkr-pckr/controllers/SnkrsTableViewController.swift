@@ -44,7 +44,7 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 350
+        return 358
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -92,10 +92,9 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
             setTitle()
         }
     }
-    
     @IBAction func showOptions(_ sender: Any) {
         
-        if let cell = (sender as AnyObject).superview??.superview as? SnkrTableViewCell {
+        if let cell = (sender as AnyObject).superview??.superview?.superview as? SnkrTableViewCell {
             let indexPath = tableView.indexPath(for: cell)
             let snkr = snkrs[(indexPath?.row)!]
             let optionMenu = UIAlertController(title: nil, message: AlertLabels.optionsTitle, preferredStyle: .actionSheet)
