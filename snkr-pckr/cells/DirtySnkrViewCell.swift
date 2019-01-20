@@ -31,7 +31,7 @@ class DirtySnkrViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let margins = UIEdgeInsetsMake(0, 5, 5, 5)  //set the values for top,left,bottom,right margins
+        let margins = UIEdgeInsetsMake(0, 0, 0, 0)  //set the values for top,left,bottom,right margins
         contentView.frame = UIEdgeInsetsInsetRect(contentView.frame, margins)
     }
     

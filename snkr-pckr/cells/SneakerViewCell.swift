@@ -18,24 +18,23 @@ class SnkrTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-//        let margins = UIEdgeInsetsMake(0, 0, 5, 0)  //set the values for top, left, bottom, right margins
-//        contentView.frame = UIEdgeInsetsInsetRect(contentView.frame, margins)
+        let margins = UIEdgeInsetsMake(0, 0, 1, 0)  //set the values for top, left, bottom, right margins
+        contentView.frame = UIEdgeInsetsInsetRect(contentView.frame, margins)
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        
-        self.backView.layer.borderWidth = 1
         self.backView.layer.cornerRadius = 10
-        self.backView.layer.borderColor = UIColor.white.cgColor
+        self.backView.layer.borderColor = UIColor.clear.cgColor
+        self.backView.backgroundColor = UIColor.clear
         self.backView.layer.masksToBounds = true
         
         self.layer.shadowOpacity = 0.35
         self.layer.shadowOffset = CGSize(width: 0, height: 2)
-        self.layer.shadowRadius = 2
+        self.layer.shadowRadius = 3
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.masksToBounds = false
+        
     }
 }

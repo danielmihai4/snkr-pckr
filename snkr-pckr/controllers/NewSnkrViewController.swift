@@ -31,6 +31,9 @@ class NewSnkrViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         self.nameTextField.delegate = self
         self.colorwayTextField.delegate = self
+        
+        //imageView.image = UIImage(named: "icon-camera.png")
+        imageView.image = UIImage(named: "icon-sponge.png")
     }
     
     @IBAction func addPic(_ sender: Any) {
@@ -130,7 +133,7 @@ class NewSnkrViewController: UIViewController, UIImagePickerControllerDelegate, 
         let widthScale = scrollViewSize.width / imageViewSize.width
         let heightScale = scrollViewSize.height / imageViewSize.height
         
-        scrollView.minimumZoomScale = min(widthScale, heightScale)
+        scrollView.minimumZoomScale = max(widthScale, heightScale)
         scrollView.maximumZoomScale = 1.0
     }
     
@@ -142,7 +145,7 @@ class NewSnkrViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     @objc func handleDoubleTap(recognizer: UITapGestureRecognizer) {
         if(scrollView.zoomScale > scrollView.minimumZoomScale) {
-            scrollView.setZoomScale(scrollView.minimumZoomScale, animated: true)
+            scrollView.setZoomScale(scrollView.minimumZoomScale, animated: true)            
         } else {
             scrollView.setZoomScale(scrollView.maximumZoomScale, animated: true)
         }

@@ -11,7 +11,11 @@ import CoreData
 
 class SnkrsTableViewController: UITableViewController, ModalViewControllerDelegate {
     
-    var snkrs = [Snkr]()
+    var snkrs = [Snkr]() {
+        didSet {
+            self.setTitle()
+        }
+    }
     var filteredSnkrs = [Snkr]()
     
     @IBOutlet weak var searchFooter: SearchFooter!
@@ -22,9 +26,9 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
         super.viewDidLoad()
         
         loadSnkrs()
-        setTitle()
         
         tableView.tableFooterView = searchFooter
+        tableView.separatorStyle = .none
         
         setupSearchController()
     }
@@ -44,7 +48,7 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 358
+        return 355
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -57,7 +61,7 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
         
         cell.pic.image = snkr.pic
         cell.nameLabel.text = snkr.name
-        cell.lastWornLabel.text = formatDate(lastWornDate: snkr.lastWornDate)
+        cell.lastWornLabel.text = DateUtils.formatDate(lastWornDate: snkr.lastWornDate)//formatDate(lastWornDate: snkr.lastWornDate)
         cell.colorwayLabel.text = snkr.colorway
         
         return cell
@@ -89,7 +93,6 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
             snkrs.append(snkr)
             
             storeSnkrEntity(snkr: snkr)
-            setTitle()
         }
     }
     @IBAction func showOptions(_ sender: Any) {
@@ -137,7 +140,6 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
     }
     
     private func filterContentForSearchText(searchText: String) {
-        NSLog ("Filtering based on \(searchText)")
         filteredSnkrs = snkrs.filter({(snkr : Snkr) -> Bool in
             let snkrTitle = getSnkrTitle(snkr: snkr)
             let doesMatch = snkrTitle.lowercased().contains(searchText.lowercased())
@@ -200,24 +202,13 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
             let snkr = self.snkrs.remove(at: indexPath.row)
             
             self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-            self.deleteSnkrEntity(snkr: snkr)
+            self.deleteSnkrEntity(snkr: snkr)            
         });
         
         dialogMessage.addAction(ok)
         dialogMessage.addAction(cancel)
         
         self.present(dialogMessage, animated: true, completion: nil)
-    }
-    
-    private func formatDate(lastWornDate: Date?) -> String {
-        if lastWornDate == nil {
-            return "Not worn yet."
-        }
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy HH:mm"
-        
-        return formatter.string(from: lastWornDate!)
     }
     
     private func cropAndScaleImage(scrollView: UIScrollView) -> UIImage {

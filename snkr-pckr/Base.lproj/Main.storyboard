@@ -136,12 +136,14 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Snkrs" id="cIl-j2-XxO">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="icon-random" id="CtL-BD-ZvC">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="pickSnkr:" destination="EVK-tN-3HL" id="yYc-Hf-2ue"/>
                                 <segue destination="fNd-3U-1B7" kind="presentation" identifier="ShowPickedSnkrSegue" id="llo-Os-JF0"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="icon-add-sneaker" id="pDn-vN-xR4">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <segue destination="tLZ-hh-w0e" kind="show" id="Fo5-Oq-qts"/>
                             </connections>
@@ -163,6 +165,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="J0y-TL-1cr" kind="relationship" relationship="viewControllers" id="p8r-MB-zqc"/>
@@ -238,6 +241,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Dirty Snkrs" id="66K-ed-aaq">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="icon-brush" id="UGm-Zw-TOd">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="cleanAllSnkrs:" destination="lDu-ik-who" id="TVd-hN-jiv"/>
                             </connections>
@@ -381,16 +385,18 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SH3-H5-EIL">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="SH3-H5-EIL">
                                 <rect key="frame" x="0.0" y="154" width="375" height="280"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="SH3-H5-EIL" secondAttribute="height" multiplier="75:56" id="vsV-OI-Mvv"/>
                                 </constraints>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iTe-Kg-UI3">
-                                <rect key="frame" x="165" y="442" width="44" height="132"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="39"/>
-                                <state key="normal" title="📷"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iTe-Kg-UI3">
+                                <rect key="frame" x="157" y="442" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="5uJ-ns-8lq"/>
+                                </constraints>
+                                <state key="normal" image="icon-camera"/>
                                 <connections>
                                     <action selector="addPic:" destination="tLZ-hh-w0e" eventType="touchUpInside" id="bCw-m9-Vfn"/>
                                 </connections>
@@ -399,23 +405,24 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="SH3-H5-EIL" firstAttribute="top" secondItem="eGp-TK-WyW" secondAttribute="bottom" constant="10" id="052-Yo-qrh"/>
+                            <constraint firstItem="iTe-Kg-UI3" firstAttribute="centerX" secondItem="SH3-H5-EIL" secondAttribute="centerX" id="30e-1e-JSX"/>
                             <constraint firstItem="sLo-lf-nH4" firstAttribute="leading" secondItem="eGp-TK-WyW" secondAttribute="leading" id="6nD-nw-jta"/>
-                            <constraint firstItem="iTe-Kg-UI3" firstAttribute="bottom" secondItem="2wi-Mk-W0Z" secondAttribute="bottom" id="7GW-fc-LYL"/>
                             <constraint firstItem="sLo-lf-nH4" firstAttribute="top" secondItem="2wi-Mk-W0Z" secondAttribute="top" constant="10" id="F6h-eu-hh4"/>
-                            <constraint firstItem="iTe-Kg-UI3" firstAttribute="top" secondItem="SH3-H5-EIL" secondAttribute="bottom" constant="8" symbolic="YES" id="FQK-76-9sQ"/>
                             <constraint firstItem="eGp-TK-WyW" firstAttribute="trailing" secondItem="SH3-H5-EIL" secondAttribute="trailing" id="JnA-sJ-8Mv"/>
                             <constraint firstItem="sLo-lf-nH4" firstAttribute="trailing" secondItem="eGp-TK-WyW" secondAttribute="trailing" id="NXw-Ro-m61"/>
-                            <constraint firstItem="SH3-H5-EIL" firstAttribute="centerX" secondItem="iTe-Kg-UI3" secondAttribute="centerX" id="NhV-vQ-2ez"/>
                             <constraint firstItem="eGp-TK-WyW" firstAttribute="leading" secondItem="SH3-H5-EIL" secondAttribute="leading" id="e3i-xQ-FoG"/>
                             <constraint firstAttribute="trailing" secondItem="sLo-lf-nH4" secondAttribute="trailing" id="f0u-Sr-End"/>
+                            <constraint firstItem="iTe-Kg-UI3" firstAttribute="leading" secondItem="2wi-Mk-W0Z" secondAttribute="leading" constant="157" id="gFi-en-Qzb"/>
                             <constraint firstItem="eGp-TK-WyW" firstAttribute="top" secondItem="sLo-lf-nH4" secondAttribute="bottom" constant="10" id="i7M-wT-OfE"/>
                             <constraint firstItem="sLo-lf-nH4" firstAttribute="leading" secondItem="TIQ-gI-wRO" secondAttribute="leading" id="icr-Nw-c8H"/>
+                            <constraint firstItem="iTe-Kg-UI3" firstAttribute="top" secondItem="SH3-H5-EIL" secondAttribute="bottom" constant="8" symbolic="YES" id="wQm-cz-AXO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2wi-Mk-W0Z"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Add Sneaker" id="nJc-zd-Ivp">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="YAQ-p3-uqk">
+                        <barButtonItem key="rightBarButtonItem" image="icon-save" id="YAQ-p3-uqk">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="addSnkr:" destination="tLZ-hh-w0e" id="LXu-ln-wCy"/>
                             </connections>
@@ -438,10 +445,13 @@
         <scene sceneID="xzJ-gI-snW">
             <objects>
                 <navigationController id="J0y-TL-1cr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Snkrs" image="icon-collection" id="4np-Vi-BzU"/>
+                    <tabBarItem key="tabBarItem" title="Snkrs" image="icon-collection" id="4np-Vi-BzU">
+                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eyR-z5-4Pu">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="EVK-tN-3HL" kind="relationship" relationship="rootViewController" id="I1o-wr-jM0"/>
@@ -455,12 +465,15 @@
     <resources>
         <image name="icon-add-sneaker" width="32" height="32"/>
         <image name="icon-brush" width="32" height="32"/>
+        <image name="icon-camera" width="240" height="240"/>
         <image name="icon-cancel" width="512" height="512"/>
         <image name="icon-collection" width="32" height="32"/>
         <image name="icon-dirty" width="32" height="32"/>
         <image name="icon-menu" width="256" height="256"/>
         <image name="icon-random" width="32" height="32"/>
+        <image name="icon-save" width="32" height="32"/>
         <image name="icon-vertical-line" width="30" height="30"/>
         <image name="icon-wear-sneaker-big" width="512" height="512"/>
     </resources>
+    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

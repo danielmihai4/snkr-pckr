@@ -42,7 +42,7 @@ class ModalViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        view.backgroundColor = UIColor(white: 1, alpha: 0.9)
+        view.backgroundColor = UIColor(white: 1, alpha: 0.95)
     }
     
 }
