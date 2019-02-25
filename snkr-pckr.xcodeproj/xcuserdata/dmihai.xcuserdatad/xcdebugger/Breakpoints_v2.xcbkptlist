@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "snkr-pckr/controllers/SnkrsTableViewController.swift"
-            timestampString = "569697487.420795"
+            timestampString = "572739310.797776"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "367"
-            endingLineNumber = "367"
+            startingLineNumber = "300"
+            endingLineNumber = "300"
             landmarkName = "confirmPickedSnkr(snkr:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "snkr-pckr/cells/SneakerViewCell.swift"
-            timestampString = "569697487.420905"
+            timestampString = "569698085.76376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "6"

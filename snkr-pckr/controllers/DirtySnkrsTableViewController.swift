@@ -12,6 +12,7 @@ import CoreData
 class DirtySnkrsTableViewController: UITableViewController, TableViewCellDelegate {
     
     var dirtySnkrs = [Snkr]()
+    var snkrService = SnkrService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +70,7 @@ class DirtySnkrsTableViewController: UITableViewController, TableViewCellDelegat
             
             for snkr in self.dirtySnkrs {
                 snkr.isClean = true
-                self.updateSnkrEntity(snkr: snkr)
+                self.snkrService.update(snkr: snkr)
             }
             
             self.dirtySnkrs.removeAll()
@@ -83,48 +84,7 @@ class DirtySnkrsTableViewController: UITableViewController, TableViewCellDelegat
     }
     
     private func loadSnkrs() {
-        let request: NSFetchRequest<SnkrEntity> = SnkrEntity.fetchRequest()
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let predicate = NSPredicate(format: "isClean == %@", NSNumber(value: false))
-        
-        request.predicate = predicate
-        
-        do {
-            let snkrEntities = try context.fetch(request)
-            
-            for snkrEntity in snkrEntities {
-                let dirtySnkr = Snkr(
-                    name: snkrEntity.name!,
-                    colorway: snkrEntity.colorway!,
-                    lastWornDate: snkrEntity.lastWornDate,
-                    isClean: snkrEntity.isClean,
-                    pic: UIImage(data: snkrEntity.pic!)!)
-                
-                dirtySnkrs.append(dirtySnkr)
-            }
-        } catch {
-            print ("Cannot load dirty snkrs.")
-        }
-    }
-    
-    private func updateSnkrEntity(snkr: Snkr) {
-        let request: NSFetchRequest<SnkrEntity> = SnkrEntity.fetchRequest()
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let predicate = NSPredicate(format: "name=%@ AND colorway=%@", snkr.name, snkr.colorway)
-        
-        request.predicate = predicate
-        
-        do {
-            let snkrEntities = try context.fetch(request)
-            let snkrEntity = snkrEntities.first!
-            
-            snkrEntity.lastWornDate = snkr.lastWornDate
-            snkrEntity.isClean = snkr.isClean!
-            
-            (UIApplication.shared.delegate as! AppDelegate).saveContext()
-        } catch let error {
-            print (error.localizedDescription)
-        }
+        dirtySnkrs = snkrService.loadAll(isClean: false)
     }
     
     private func markSnkrClean(cell: DirtySnkrViewCell) {
@@ -136,7 +96,7 @@ class DirtySnkrsTableViewController: UITableViewController, TableViewCellDelegat
             snkr.isClean = true
             
             self.tableView.deleteRows(at: [indexPath!], with: UITableViewRowAnimation.automatic)
-            self.updateSnkrEntity(snkr: snkr)            
+            self.snkrService.update(snkr: snkr)
         });
         
         dialogMessage.addAction(yesAction)

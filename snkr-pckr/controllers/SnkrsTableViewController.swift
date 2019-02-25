@@ -17,6 +17,7 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
         }
     }
     var filteredSnkrs = [Snkr]()
+    var snkrService = SnkrService()
     
     @IBOutlet weak var searchFooter: SearchFooter!
     
@@ -84,6 +85,7 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
             let resizedPicture = cropAndScaleImage(scrollView: source.scrollView)
             
             let snkr = Snkr(
+                id: UUID(),
                 name: source.nameTextField.text!,
                 colorway: source.colorwayTextField.text!,
                 lastWornDate: nil,
@@ -92,7 +94,8 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
             
             snkrs.append(snkr)
             
-            storeSnkrEntity(snkr: snkr)
+            //storeSnkrEntity(snkr: snkr)
+            snkrService.store(snkr: snkr)
         }
     }
     @IBAction func showOptions(_ sender: Any) {
@@ -169,7 +172,8 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
         let snkr = self.snkrs[indexPath.row]
         snkr.isClean = false
         
-        self.updateSnkrEntity(snkr: snkr)
+        //self.updateSnkrEntity(snkr: snkr)
+        snkrService.update(snkr: snkr)
     }
     
     private func getSnkrTitles() -> [String] {
@@ -181,7 +185,7 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
         
         return snkrTitles
     }
-    
+
     private func toggleWearState(indexPath: IndexPath) {
         let snkr = self.snkrs[indexPath.row]
         
@@ -191,7 +195,7 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
             snkr.lastWornDate = Date()
         }
         
-        self.updateSnkrEntity(snkr: snkr)
+        self.snkrService.update(snkr: snkr)
         self.tableView.reloadData()
     }
     
@@ -202,7 +206,8 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
             let snkr = self.snkrs.remove(at: indexPath.row)
             
             self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-            self.deleteSnkrEntity(snkr: snkr)            
+            //self.deleteSnkrEntity(snkr: snkr)
+            self.snkrService.delete(snkr: snkr)
         });
         
         dialogMessage.addAction(ok)
@@ -225,27 +230,7 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
     }
     
     private func loadSnkrs() {
-        var snkrEntities = [SnkrEntity]()
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "SnkrEntity")
-        request.returnsObjectsAsFaults = false
-        
-        do {
-            snkrEntities = try context.fetch(request) as! [SnkrEntity]
-            
-            for snkrEntity in snkrEntities {
-                let snkr = Snkr(
-                    name: snkrEntity.name!,
-                    colorway: snkrEntity.colorway!,
-                    lastWornDate: snkrEntity.lastWornDate,
-                    isClean: snkrEntity.isClean,
-                    pic: UIImage(data: snkrEntity.pic!)!)
-                                
-                snkrs.append(snkr)
-            }
-        } catch {
-            print ("Cannot load snkrs")
-        }
+        snkrs = snkrService.loadAll()
     }
     
     private func setTitle() {
@@ -254,58 +239,6 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
             self.title = String(format: "%d Snkr", snkrs.count)
         } else {
             self.title = String(format: "%d Snkrs", snkrs.count)
-        }
-    }
-    
-    private func storeSnkrEntity(snkr: Snkr) {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let snkrEntity = SnkrEntity(context: context)
-        
-        snkrEntity.name = snkr.name
-        snkrEntity.colorway = snkr.colorway
-        snkrEntity.lastWornDate = snkr.lastWornDate
-        snkrEntity.isClean = snkr.isClean!
-        snkrEntity.pic = UIImageJPEGRepresentation(snkr.pic, 1)
-        
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
-    }
-    
-    private func updateSnkrEntity(snkr: Snkr) {
-        let request: NSFetchRequest<SnkrEntity> = SnkrEntity.fetchRequest()
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let predicate = NSPredicate(format: "name=%@ AND colorway=%@", snkr.name, snkr.colorway)
-        
-        request.predicate = predicate
-        
-        do {
-            let snkrEntities = try context.fetch(request)
-            let snkrEntity = snkrEntities.first!
-            
-            snkrEntity.lastWornDate = snkr.lastWornDate
-            snkrEntity.isClean = snkr.isClean!
-            
-            (UIApplication.shared.delegate as! AppDelegate).saveContext()
-        } catch let error {
-            print (error.localizedDescription)
-        }
-    }
-    
-    private func deleteSnkrEntity(snkr: Snkr) {
-        let request: NSFetchRequest<SnkrEntity> = SnkrEntity.fetchRequest()
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let predicate = NSPredicate(format: "name=%@ AND colorway=%@", snkr.name, snkr.colorway)
-        
-        request.predicate = predicate
-        
-        do {
-            let snkrEntities = try context.fetch(request)
-            
-            for snkrEntity in snkrEntities {
-                context.delete(snkrEntity)
-                (UIApplication.shared.delegate as! AppDelegate).saveContext()
-            }
-        } catch let error {
-            print(error.localizedDescription)
         }
     }
     
@@ -359,7 +292,7 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
         for iteratorSnkr in snkrs {
             if iteratorSnkr.name == snkr.name && iteratorSnkr.colorway == snkr.colorway {
                 iteratorSnkr.lastWornDate = Date()
-                updateSnkrEntity(snkr: snkr)
+                self.snkrService.update(snkr: snkr)
             }
         }
         

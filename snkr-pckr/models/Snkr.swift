@@ -10,13 +10,15 @@ import Foundation
 import UIKit
 
 public class Snkr {
+    let id: UUID
     let name: String
     let colorway: String
     let pic: UIImage
     var lastWornDate: Date?
     var isClean: Bool?
     
-    public init(name: String, colorway: String, lastWornDate: Date?, isClean: Bool, pic: UIImage) {
+    public init(id: UUID, name: String, colorway: String, lastWornDate: Date?, isClean: Bool, pic: UIImage) {
+        self.id = id
         self.name = name
         self.colorway = colorway
         self.lastWornDate = lastWornDate

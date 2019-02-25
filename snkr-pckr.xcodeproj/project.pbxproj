@@ -27,6 +27,7 @@
 		316ACFAF21A1BF39001C5C57 /* Snkr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316ACFAE21A1BF39001C5C57 /* Snkr.swift */; };
 		316ACFB121A1C152001C5C57 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316ACFB021A1C152001C5C57 /* Cells.swift */; };
 		316ACFD521A1D40F001C5C57 /* snkr-pckr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 316ACFD321A1D40F001C5C57 /* snkr-pckr.xcdatamodeld */; };
+		31A6F37D222348FD000FD665 /* SnkrService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A6F37C222348FD000FD665 /* SnkrService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		316ACFAE21A1BF39001C5C57 /* Snkr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snkr.swift; sourceTree = "<group>"; };
 		316ACFB021A1C152001C5C57 /* Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
 		316ACFD421A1D40F001C5C57 /* snkr-pckr.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "snkr-pckr.xcdatamodel"; sourceTree = "<group>"; };
+		31A6F37C222348FD000FD665 /* SnkrService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnkrService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +226,7 @@
 		31AEB5F321B363200062015A /* services */ = {
 			isa = PBXGroup;
 			children = (
+				31A6F37C222348FD000FD665 /* SnkrService.swift */,
 			);
 			name = services;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				310F0EB121B47BE80030D5A7 /* DirtySnkrsTableViewController.swift in Sources */,
 				316ACFA521A0E21E001C5C57 /* SneakerViewCell.swift in Sources */,
 				316ACF9E21A0D221001C5C57 /* Segues.swift in Sources */,
+				31A6F37D222348FD000FD665 /* SnkrService.swift in Sources */,
 				310F0EB321B47C0C0030D5A7 /* DirtySnkrViewCell.swift in Sources */,
 				316ACF6A21A0C6A0001C5C57 /* AppDelegate.swift in Sources */,
 				316ACF9921A0C966001C5C57 /* SnkrsTableViewController.swift in Sources */,

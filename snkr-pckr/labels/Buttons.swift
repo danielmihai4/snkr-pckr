@@ -19,4 +19,5 @@ public struct ButtonLabels {
     static let unselectSnkr = "Unselect snkr."
     static let no = "No"
     static let yes = "Yes"
+    static let move = "Move"
 }
