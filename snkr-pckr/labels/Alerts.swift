@@ -17,4 +17,8 @@ public struct AlertLabels {
     static let optionsTitle = "Options"
     static let cleanMessage = "Are you sure you cleaned it?"
     static let cleanAllMessage = "Are you sure you cleaned them all?"
+    static let newCategoryTitle = "New Category"
+    static let newCategoryPlaceholder = "Name"
+    static let newCategoryCancelActionName = "Cancel"
+    static let newCategorySaveActionName = "Save"
 }

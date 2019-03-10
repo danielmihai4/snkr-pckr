@@ -115,6 +115,7 @@ class DirtySnkrsTableViewController: UITableViewController, TableViewCellDelegat
             imageView.contentMode = .scaleAspectFit
             
             self.tableView.backgroundView = imageView
+            self.tableView.backgroundColor = CellConstants.lightGray
         } else {
             self.tableView.backgroundView = nil
         }

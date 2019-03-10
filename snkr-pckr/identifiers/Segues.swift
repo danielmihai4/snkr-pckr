@@ -11,4 +11,6 @@ import Foundation
 public struct Segues {
     public static let AddNewSnkr = "AddNewSnkrSegue"
     public static let ShowPickedSnkr = "ShowPickedSnkrSegue"
+    public static let ShowSnkrSelector = "ShowSnkrSelectorSegue"
+    public static let ShowCategorySnkrs = "ShowCategorySnkrsSegue"
 }

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		310F0EB121B47BE80030D5A7 /* DirtySnkrsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310F0EB021B47BE80030D5A7 /* DirtySnkrsTableViewController.swift */; };
 		310F0EB321B47C0C0030D5A7 /* DirtySnkrViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310F0EB221B47C0C0030D5A7 /* DirtySnkrViewCell.swift */; };
-		31242EC221AB0D4000F5230E /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31242EC121AB0D4000F5230E /* ModalViewController.swift */; };
+		31242EC221AB0D4000F5230E /* PickedSnkrModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31242EC121AB0D4000F5230E /* PickedSnkrModalViewController.swift */; };
 		313C394D21F4D12500F79981 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313C394C21F4D12500F79981 /* DateUtils.swift */; };
 		315D131B21BD9F4F0016EE48 /* SearchFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D131A21BD9F4F0016EE48 /* SearchFooter.swift */; };
 		316ACF6A21A0C6A0001C5C57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316ACF6921A0C6A0001C5C57 /* AppDelegate.swift */; };
@@ -28,6 +28,18 @@
 		316ACFB121A1C152001C5C57 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316ACFB021A1C152001C5C57 /* Cells.swift */; };
 		316ACFD521A1D40F001C5C57 /* snkr-pckr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 316ACFD321A1D40F001C5C57 /* snkr-pckr.xcdatamodeld */; };
 		31A6F37D222348FD000FD665 /* SnkrService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A6F37C222348FD000FD665 /* SnkrService.swift */; };
+		31E06D042234728C00737C74 /* CategoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E06D032234728C00737C74 /* CategoryViewCell.swift */; };
+		31E06D062234731B00737C74 /* CategoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E06D052234731B00737C74 /* CategoriesTableViewController.swift */; };
+		31E06D08223474B900737C74 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E06D07223474B900737C74 /* Category.swift */; };
+		31E06D0A2234753700737C74 /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E06D092234753700737C74 /* CategoryService.swift */; };
+		31E06D0D22347E6E00737C74 /* CellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E06D0C22347E6E00737C74 /* CellConstants.swift */; };
+		31E06D0F22347FBA00737C74 /* CellLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E06D0E22347FBA00737C74 /* CellLabels.swift */; };
+		31E06D112234903100737C74 /* SnkrSelectorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E06D102234903100737C74 /* SnkrSelectorTableViewController.swift */; };
+		31E06D13223490A300737C74 /* SnkrSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E06D12223490A300737C74 /* SnkrSelectorCell.swift */; };
+		31E06D162234984E00737C74 /* TableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E06D152234984E00737C74 /* TableViewCellDelegate.swift */; };
+		31E06D1822354DFD00737C74 /* CategorySnkrCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E06D1722354DFD00737C74 /* CategorySnkrCell.swift */; };
+		31E06D1A223552FC00737C74 /* CategorySnkrsModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E06D19223552FC00737C74 /* CategorySnkrsModalViewController.swift */; };
+		31E06D1C223553E800737C74 /* CategorySnkrsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E06D1B223553E800737C74 /* CategorySnkrsTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +62,7 @@
 /* Begin PBXFileReference section */
 		310F0EB021B47BE80030D5A7 /* DirtySnkrsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirtySnkrsTableViewController.swift; sourceTree = "<group>"; };
 		310F0EB221B47C0C0030D5A7 /* DirtySnkrViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirtySnkrViewCell.swift; sourceTree = "<group>"; };
-		31242EC121AB0D4000F5230E /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
+		31242EC121AB0D4000F5230E /* PickedSnkrModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickedSnkrModalViewController.swift; sourceTree = "<group>"; };
 		313C394C21F4D12500F79981 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		315D131A21BD9F4F0016EE48 /* SearchFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFooter.swift; sourceTree = "<group>"; };
 		316ACF6621A0C6A0001C5C57 /* snkr-pckr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "snkr-pckr.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +87,18 @@
 		316ACFB021A1C152001C5C57 /* Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
 		316ACFD421A1D40F001C5C57 /* snkr-pckr.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "snkr-pckr.xcdatamodel"; sourceTree = "<group>"; };
 		31A6F37C222348FD000FD665 /* SnkrService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnkrService.swift; sourceTree = "<group>"; };
+		31E06D032234728C00737C74 /* CategoryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewCell.swift; sourceTree = "<group>"; };
+		31E06D052234731B00737C74 /* CategoriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewController.swift; sourceTree = "<group>"; };
+		31E06D07223474B900737C74 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		31E06D092234753700737C74 /* CategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
+		31E06D0C22347E6E00737C74 /* CellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConstants.swift; sourceTree = "<group>"; };
+		31E06D0E22347FBA00737C74 /* CellLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellLabels.swift; sourceTree = "<group>"; };
+		31E06D102234903100737C74 /* SnkrSelectorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnkrSelectorTableViewController.swift; sourceTree = "<group>"; };
+		31E06D12223490A300737C74 /* SnkrSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnkrSelectorCell.swift; sourceTree = "<group>"; };
+		31E06D152234984E00737C74 /* TableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellDelegate.swift; sourceTree = "<group>"; };
+		31E06D1722354DFD00737C74 /* CategorySnkrCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySnkrCell.swift; sourceTree = "<group>"; };
+		31E06D19223552FC00737C74 /* CategorySnkrsModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySnkrsModalViewController.swift; sourceTree = "<group>"; };
+		31E06D1B223553E800737C74 /* CategorySnkrsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySnkrsTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				315D131A21BD9F4F0016EE48 /* SearchFooter.swift */,
+				31E06D1B223553E800737C74 /* CategorySnkrsTableView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -141,6 +166,8 @@
 		316ACF6821A0C6A0001C5C57 /* snkr-pckr */ = {
 			isa = PBXGroup;
 			children = (
+				31E06D142234980900737C74 /* protocols */,
+				31E06D0B22347E5900737C74 /* constants */,
 				313C394B21F4D10400F79981 /* utils */,
 				315D131921BD9F1D0016EE48 /* views */,
 				31AEB5F321B363200062015A /* services */,
@@ -182,8 +209,11 @@
 			children = (
 				316ACF9821A0C966001C5C57 /* SnkrsTableViewController.swift */,
 				316ACF9A21A0CD1B001C5C57 /* NewSnkrViewController.swift */,
-				31242EC121AB0D4000F5230E /* ModalViewController.swift */,
+				31242EC121AB0D4000F5230E /* PickedSnkrModalViewController.swift */,
 				310F0EB021B47BE80030D5A7 /* DirtySnkrsTableViewController.swift */,
+				31E06D052234731B00737C74 /* CategoriesTableViewController.swift */,
+				31E06D102234903100737C74 /* SnkrSelectorTableViewController.swift */,
+				31E06D19223552FC00737C74 /* CategorySnkrsModalViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -202,6 +232,9 @@
 			children = (
 				316ACFA421A0E21E001C5C57 /* SneakerViewCell.swift */,
 				310F0EB221B47C0C0030D5A7 /* DirtySnkrViewCell.swift */,
+				31E06D032234728C00737C74 /* CategoryViewCell.swift */,
+				31E06D12223490A300737C74 /* SnkrSelectorCell.swift */,
+				31E06D1722354DFD00737C74 /* CategorySnkrCell.swift */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -211,6 +244,7 @@
 			children = (
 				316ACFA721A1B3AB001C5C57 /* Buttons.swift */,
 				316ACFAB21A1B420001C5C57 /* Alerts.swift */,
+				31E06D0E22347FBA00737C74 /* CellLabels.swift */,
 			);
 			path = labels;
 			sourceTree = "<group>";
@@ -219,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				316ACFAE21A1BF39001C5C57 /* Snkr.swift */,
+				31E06D07223474B900737C74 /* Category.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -227,8 +262,25 @@
 			isa = PBXGroup;
 			children = (
 				31A6F37C222348FD000FD665 /* SnkrService.swift */,
+				31E06D092234753700737C74 /* CategoryService.swift */,
 			);
 			name = services;
+			sourceTree = "<group>";
+		};
+		31E06D0B22347E5900737C74 /* constants */ = {
+			isa = PBXGroup;
+			children = (
+				31E06D0C22347E6E00737C74 /* CellConstants.swift */,
+			);
+			path = constants;
+			sourceTree = "<group>";
+		};
+		31E06D142234980900737C74 /* protocols */ = {
+			isa = PBXGroup;
+			children = (
+				31E06D152234984E00737C74 /* TableViewCellDelegate.swift */,
+			);
+			path = protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,20 +416,32 @@
 			files = (
 				316ACFA821A1B3AB001C5C57 /* Buttons.swift in Sources */,
 				316ACFAC21A1B420001C5C57 /* Alerts.swift in Sources */,
+				31E06D08223474B900737C74 /* Category.swift in Sources */,
+				31E06D162234984E00737C74 /* TableViewCellDelegate.swift in Sources */,
 				316ACF9B21A0CD1B001C5C57 /* NewSnkrViewController.swift in Sources */,
-				31242EC221AB0D4000F5230E /* ModalViewController.swift in Sources */,
+				31242EC221AB0D4000F5230E /* PickedSnkrModalViewController.swift in Sources */,
+				31E06D112234903100737C74 /* SnkrSelectorTableViewController.swift in Sources */,
 				316ACFAF21A1BF39001C5C57 /* Snkr.swift in Sources */,
 				316ACFD521A1D40F001C5C57 /* snkr-pckr.xcdatamodeld in Sources */,
+				31E06D1822354DFD00737C74 /* CategorySnkrCell.swift in Sources */,
+				31E06D042234728C00737C74 /* CategoryViewCell.swift in Sources */,
 				315D131B21BD9F4F0016EE48 /* SearchFooter.swift in Sources */,
 				313C394D21F4D12500F79981 /* DateUtils.swift in Sources */,
 				310F0EB121B47BE80030D5A7 /* DirtySnkrsTableViewController.swift in Sources */,
 				316ACFA521A0E21E001C5C57 /* SneakerViewCell.swift in Sources */,
+				31E06D1A223552FC00737C74 /* CategorySnkrsModalViewController.swift in Sources */,
 				316ACF9E21A0D221001C5C57 /* Segues.swift in Sources */,
 				31A6F37D222348FD000FD665 /* SnkrService.swift in Sources */,
 				310F0EB321B47C0C0030D5A7 /* DirtySnkrViewCell.swift in Sources */,
+				31E06D13223490A300737C74 /* SnkrSelectorCell.swift in Sources */,
 				316ACF6A21A0C6A0001C5C57 /* AppDelegate.swift in Sources */,
+				31E06D1C223553E800737C74 /* CategorySnkrsTableView.swift in Sources */,
+				31E06D062234731B00737C74 /* CategoriesTableViewController.swift in Sources */,
 				316ACF9921A0C966001C5C57 /* SnkrsTableViewController.swift in Sources */,
 				316ACFB121A1C152001C5C57 /* Cells.swift in Sources */,
+				31E06D0F22347FBA00737C74 /* CellLabels.swift in Sources */,
+				31E06D0A2234753700737C74 /* CategoryService.swift in Sources */,
+				31E06D0D22347E6E00737C74 /* CellConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

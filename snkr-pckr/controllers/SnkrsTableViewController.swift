@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class SnkrsTableViewController: UITableViewController, ModalViewControllerDelegate {
+class SnkrsTableViewController: UITableViewController, PickedSnkrModalViewControllerDelegate {
     
     var snkrs = [Snkr]() {
         didSet {
@@ -71,7 +71,7 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             if identifier == Segues.ShowPickedSnkr {
-                if let viewController = segue.destination as? ModalViewController {
+                if let viewController = segue.destination as? PickedSnkrModalViewController {
                     viewController.delegate = self
                     viewController.modalPresentationStyle = .overFullScreen
                     viewController.snkr = pickRandomSnkr()
@@ -94,7 +94,6 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
             
             snkrs.append(snkr)
             
-            //storeSnkrEntity(snkr: snkr)
             snkrService.store(snkr: snkr)
         }
     }
@@ -172,7 +171,6 @@ class SnkrsTableViewController: UITableViewController, ModalViewControllerDelega
         let snkr = self.snkrs[indexPath.row]
         snkr.isClean = false
         
-        //self.updateSnkrEntity(snkr: snkr)
         snkrService.update(snkr: snkr)
     }
     

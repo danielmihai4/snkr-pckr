@@ -25,16 +25,11 @@ class SnkrTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        let lightGray = UIColor(red: 229/255.0, green: 229/255.0, blue: 229/255.0, alpha: 1)
+        
         self.backView.layer.cornerRadius = 10
-        self.backView.layer.borderColor = UIColor.clear.cgColor
-        self.backView.backgroundColor = UIColor.clear
+        self.backView.layer.borderColor = lightGray.cgColor
+        self.backView.backgroundColor = lightGray
         self.backView.layer.masksToBounds = true
-        
-        self.layer.shadowOpacity = 0.35
-        self.layer.shadowOffset = CGSize(width: 0, height: 2)
-        self.layer.shadowRadius = 3
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.masksToBounds = false
-        
     }
 }

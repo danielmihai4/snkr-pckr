@@ -1,34 +1,39 @@
 //
-//  DirtySnkrViewCell.swift
+//  SnkrSelectorCell.swift
 //  snkr-pckr
 //
-//  Created by Daniel Mihai on 02/12/2018.
-//  Copyright © 2018 Daniel Mihai. All rights reserved.
+//  Created by Daniel Mihai on 10/03/2019.
+//  Copyright © 2019 Daniel Mihai. All rights reserved.
 //
 
 import UIKit
 
-class DirtySnkrViewCell: UITableViewCell {
-
+class SnkrSelectorCell: UITableViewCell {
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var colorwayLabel: UILabel!
     @IBOutlet weak var pic: UIImageView!
+    @IBOutlet weak var checkbox: UIImageView!
     
     var delegate: TableViewCellDelegate?
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
-        doubleTap.numberOfTapsRequired = 2
-        addGestureRecognizer(doubleTap)
-    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let margins = UIEdgeInsetsMake(0, 0, 0, 0)  //set the values for top,left,bottom,right margins
-        contentView.frame = UIEdgeInsetsInsetRect(contentView.frame, margins)
+        contentView.frame = UIEdgeInsetsInsetRect(contentView.frame, CellConstants.margins)
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.layer.cornerRadius = 10
+        self.layer.borderColor = CellConstants.lightGray.cgColor
+        self.backgroundColor = CellConstants.lightGray
+        self.layer.masksToBounds = true
+        
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
+        doubleTap.numberOfTapsRequired = 2
+        addGestureRecognizer(doubleTap)
     }
     
     @objc func doubleTapped() {
@@ -43,4 +48,5 @@ class DirtySnkrViewCell: UITableViewCell {
         
         return superView.indexPath(for: self)
     }
+    
 }

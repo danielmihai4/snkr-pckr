@@ -8,15 +8,15 @@
 
 import UIKit
 
-protocol ModalViewControllerDelegate: class {
+protocol PickedSnkrModalViewControllerDelegate: class {
     func cancelPickedSnkr()
     func confirmPickedSnkr(snkr: Snkr)
 }
 
-class ModalViewController: UIViewController {
+class PickedSnkrModalViewController: UIViewController {
     
     var snkr: Snkr!
-    weak var delegate: ModalViewControllerDelegate?
+    weak var delegate: PickedSnkrModalViewControllerDelegate?
     
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var pic: UIImageView!

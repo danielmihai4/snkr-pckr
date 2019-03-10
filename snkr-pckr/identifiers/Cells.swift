@@ -11,4 +11,7 @@ import Foundation
 public struct Cells {
     public static let Snkr = "SnkrCell"
     public static let DirtySnkr = "DirtySnkrCell"
+    public static let Category = "CategoryCell"
+    public static let SnkrSelector = "SnkrSelectorCell"
+    public static let CategorySnkr = "CategorySnkrCell"
 }
