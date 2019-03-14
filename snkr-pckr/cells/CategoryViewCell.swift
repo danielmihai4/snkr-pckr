@@ -12,13 +12,20 @@ class CategoryViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var snkrCountLabel: UILabel!
+    @IBOutlet weak var backView: UIView!
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        contentView.frame = UIEdgeInsetsInsetRect(contentView.frame, CellConstants.margins)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.layer.cornerRadius = 10
-        self.layer.borderColor = CellConstants.lightGray.cgColor
-        self.backgroundColor = CellConstants.lightGray
-        self.layer.masksToBounds = true
+        self.backView.layer.cornerRadius = 10
+        self.backView.layer.borderColor = CellConstants.lightGray.cgColor
+        self.backView.backgroundColor = CellConstants.lightGray
+        self.backView.layer.masksToBounds = true
     }
 }

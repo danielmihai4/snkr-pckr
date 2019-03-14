@@ -20,7 +20,6 @@ class DirtySnkrsTableViewController: UITableViewController, TableViewCellDelegat
         loadSnkrs()
         
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        self.tableView.backgroundColor = UIColor.lightGray
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -114,8 +113,8 @@ class DirtySnkrsTableViewController: UITableViewController, TableViewCellDelegat
             
             imageView.contentMode = .scaleAspectFit
             
+            self.tableView.backgroundColor = UIColor.lightGray
             self.tableView.backgroundView = imageView
-            self.tableView.backgroundColor = CellConstants.lightGray
         } else {
             self.tableView.backgroundView = nil
         }

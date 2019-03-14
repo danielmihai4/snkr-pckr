@@ -13,6 +13,7 @@ class DirtySnkrViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var colorwayLabel: UILabel!
     @IBOutlet weak var pic: UIImageView!
+    @IBOutlet weak var backView: UIView!
     
     var delegate: TableViewCellDelegate?
     
@@ -22,13 +23,17 @@ class DirtySnkrViewCell: UITableViewCell {
         let doubleTap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
         doubleTap.numberOfTapsRequired = 2
         addGestureRecognizer(doubleTap)
+        
+        self.backView.layer.cornerRadius = 10
+        self.backView.layer.borderColor = CellConstants.lightGray.cgColor
+        self.backView.backgroundColor = CellConstants.lightGray
+        self.backView.layer.masksToBounds = true
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let margins = UIEdgeInsetsMake(0, 0, 0, 0)  //set the values for top,left,bottom,right margins
-        contentView.frame = UIEdgeInsetsInsetRect(contentView.frame, margins)
+        contentView.frame = UIEdgeInsetsInsetRect(contentView.frame, CellConstants.margins)
     }
     
     @objc func doubleTapped() {
