@@ -19,7 +19,9 @@ class SnkrSelectorTableViewController: UITableViewController, TableViewCellDeleg
         super.viewDidLoad()
         
         snkrs = snkrService.loadAll()
+        
         self.title = category?.name
+        self.tableView.separatorStyle = .none
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -31,7 +33,7 @@ class SnkrSelectorTableViewController: UITableViewController, TableViewCellDeleg
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 104
+        return 130
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

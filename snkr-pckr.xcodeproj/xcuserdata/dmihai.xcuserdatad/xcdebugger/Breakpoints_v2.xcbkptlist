@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "snkr-pckr/controllers/SnkrSelectorTableViewController.swift"
-            timestampString = "573951341.5185291"
+            timestampString = "574324524.269098"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "toggleSnkr(cell:)"
             landmarkType = "7">
          </BreakpointContent>

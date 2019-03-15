@@ -14,6 +14,7 @@ class SnkrSelectorCell: UITableViewCell {
     @IBOutlet weak var colorwayLabel: UILabel!
     @IBOutlet weak var pic: UIImageView!
     @IBOutlet weak var checkbox: UIImageView!
+    @IBOutlet weak var backView: UIView!
     
     var delegate: TableViewCellDelegate?
     
@@ -26,10 +27,10 @@ class SnkrSelectorCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.layer.cornerRadius = 10
-        self.layer.borderColor = CellConstants.lightGray.cgColor
-        self.backgroundColor = CellConstants.lightGray
-        self.layer.masksToBounds = true
+        self.backView.layer.cornerRadius = 10
+        self.backView.layer.borderColor = CellConstants.lightGray.cgColor
+        self.backView.backgroundColor = CellConstants.lightGray
+        self.backView.layer.masksToBounds = true
         
         let doubleTap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
         doubleTap.numberOfTapsRequired = 2

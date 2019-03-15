@@ -13,6 +13,7 @@ class CategorySnkrCell: UITableViewCell {
     @IBOutlet weak var pic: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var colorwayLabel: UILabel!
+    @IBOutlet weak var backView: UIView!
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -23,9 +24,9 @@ class CategorySnkrCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.layer.cornerRadius = 10
-        self.layer.borderColor = CellConstants.lightGray.cgColor
-        self.backgroundColor = CellConstants.lightGray
-        self.layer.masksToBounds = true
+        self.backView.layer.cornerRadius = 10
+        self.backView.layer.borderColor = CellConstants.lightGray.cgColor
+        self.backView.backgroundColor = CellConstants.lightGray
+        self.backView.layer.masksToBounds = true
     }
 }

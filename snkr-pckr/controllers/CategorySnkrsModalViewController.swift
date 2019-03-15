@@ -38,6 +38,10 @@ class CategorySnkrsModalViewController: UIViewController,UITableViewDataSource, 
         return (category?.snkrs.count)!
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 75
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cells.CategorySnkr , for: indexPath) as! CategorySnkrCell
         let snkr = self.category?.snkrs[indexPath.row]
