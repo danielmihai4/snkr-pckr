@@ -24,9 +24,7 @@ class CategorySnkrCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.backView.layer.cornerRadius = 10
-        self.backView.layer.borderColor = CellConstants.lightGray.cgColor
-        self.backView.backgroundColor = CellConstants.lightGray
+        self.backView.layer.cornerRadius = CellConstants.cornerRadius
         self.backView.layer.masksToBounds = true
     }
 }

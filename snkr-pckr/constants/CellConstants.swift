@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 
 class CellConstants {
-    static let margins = UIEdgeInsetsMake(0, 0, 2, 0)  //set the values for top, left, bottom, right margins
-    static let lightGray = UIColor(red: 229/255.0, green: 229/255.0, blue: 229/255.0, alpha: 1)
-    static let cornerRadius = 10
+    static let margins = UIEdgeInsetsMake(1, 0, 1, 0)  //set the values for top, left, bottom, right margins
+    static let cornerRadius = CGFloat(6)
+    
+    static let pastelGray = UIColor(displayP3Red: 215/255.0, green: 206/255.5, blue: 178/255.0, alpha: 1.0)
 }

@@ -42,7 +42,9 @@ class PickedSnkrModalViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        view.backgroundColor = UIColor(white: 1, alpha: 0.95)
+        let backgroundColor = self.view.backgroundColor
+    
+        self.view.backgroundColor = backgroundColor?.withAlphaComponent(0.95)
     }
     
 }

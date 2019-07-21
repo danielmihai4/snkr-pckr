@@ -8,8 +8,7 @@
 
 import UIKit
 
-class CategorySnkrsModalViewController: UIViewController,UITableViewDataSource, UITableViewDelegate
-{
+class CategorySnkrsModalViewController: UIViewController,UITableViewDataSource, UITableViewDelegate {
     var category: Category? = nil
     
     @IBOutlet weak var categoryNameLabel: UILabel!
@@ -26,10 +25,6 @@ class CategorySnkrsModalViewController: UIViewController,UITableViewDataSource, 
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
     }
     
-    override func viewDidLayoutSubviews() {
-        view.backgroundColor = UIColor(white: 1, alpha: 0.95)
-    }
-
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

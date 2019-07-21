@@ -44,13 +44,15 @@ class SnkrSelectorTableViewController: UITableViewController, TableViewCellDeleg
         cell.nameLabel.text = snkr.name
         cell.colorwayLabel.text = snkr.colorway
         cell.delegate = self
+        cell.selectionStyle = .none
         
         let categoryHasSnkr = category?.snkrs.contains {$0.id == snkr.id}
         if categoryHasSnkr != nil && (categoryHasSnkr)! {
-            cell.checkbox.image = UIImage(named: "icon-checkbox-selected.png")
+            cell.checkbox.image = UIImage(named: "icon-checkbox-selected.png")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
         } else {
-            cell.checkbox.image = UIImage(named: "icon-checkbox-unselected.png")
+            cell.checkbox.image = UIImage(named: "icon-checkbox-unselected.png")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
         }
+        cell.checkbox.tintColor = CellConstants.pastelGray
         
         return cell
     }

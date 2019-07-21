@@ -108,13 +108,12 @@ class DirtySnkrsTableViewController: UITableViewController, TableViewCellDelegat
         self.tableView.reloadData()
         
         if dirtySnkrs.isEmpty {
-            let backgroundImage = UIImage(named: "icon-sponge.png")
+            let backgroundImage = UIImage(named: "icon-washing-machine.png")
             let imageView = UIImageView(image: backgroundImage)
             
             imageView.contentMode = .scaleAspectFit
-            
-            self.tableView.backgroundColor = UIColor.lightGray
-            self.tableView.backgroundView = imageView
+                        
+            self.tableView.backgroundView = imageView            
         } else {
             self.tableView.backgroundView = nil
         }

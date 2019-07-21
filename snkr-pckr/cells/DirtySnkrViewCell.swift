@@ -24,9 +24,7 @@ class DirtySnkrViewCell: UITableViewCell {
         doubleTap.numberOfTapsRequired = 2
         addGestureRecognizer(doubleTap)
         
-        self.backView.layer.cornerRadius = 10
-        self.backView.layer.borderColor = CellConstants.lightGray.cgColor
-        self.backView.backgroundColor = CellConstants.lightGray
+        self.backView.layer.cornerRadius = CellConstants.cornerRadius
         self.backView.layer.masksToBounds = true
     }
     

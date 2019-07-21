@@ -40,6 +40,7 @@
 		31E06D1822354DFD00737C74 /* CategorySnkrCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E06D1722354DFD00737C74 /* CategorySnkrCell.swift */; };
 		31E06D1A223552FC00737C74 /* CategorySnkrsModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E06D19223552FC00737C74 /* CategorySnkrsModalViewController.swift */; };
 		31E06D1C223553E800737C74 /* CategorySnkrsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E06D1B223553E800737C74 /* CategorySnkrsTableView.swift */; };
+		31E1EAE222E2FD3F00B3CB5F /* AnimatedTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E1EAE122E2FD3F00B3CB5F /* AnimatedTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		31E06D1722354DFD00737C74 /* CategorySnkrCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySnkrCell.swift; sourceTree = "<group>"; };
 		31E06D19223552FC00737C74 /* CategorySnkrsModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySnkrsModalViewController.swift; sourceTree = "<group>"; };
 		31E06D1B223553E800737C74 /* CategorySnkrsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySnkrsTableView.swift; sourceTree = "<group>"; };
+		31E1EAE122E2FD3F00B3CB5F /* AnimatedTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +216,7 @@
 				31E06D052234731B00737C74 /* CategoriesTableViewController.swift */,
 				31E06D102234903100737C74 /* SnkrSelectorTableViewController.swift */,
 				31E06D19223552FC00737C74 /* CategorySnkrsModalViewController.swift */,
+				31E1EAE122E2FD3F00B3CB5F /* AnimatedTabBarController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				316ACFA821A1B3AB001C5C57 /* Buttons.swift in Sources */,
 				316ACFAC21A1B420001C5C57 /* Alerts.swift in Sources */,
 				31E06D08223474B900737C74 /* Category.swift in Sources */,
+				31E1EAE222E2FD3F00B3CB5F /* AnimatedTabBarController.swift in Sources */,
 				31E06D162234984E00737C74 /* TableViewCellDelegate.swift in Sources */,
 				316ACF9B21A0CD1B001C5C57 /* NewSnkrViewController.swift in Sources */,
 				31242EC221AB0D4000F5230E /* PickedSnkrModalViewController.swift in Sources */,

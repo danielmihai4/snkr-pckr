@@ -18,18 +18,14 @@ class SnkrTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        let margins = UIEdgeInsetsMake(0, 0, 1, 0)  //set the values for top, left, bottom, right margins
+        let margins = CellConstants.margins
         contentView.frame = UIEdgeInsetsInsetRect(contentView.frame, margins)
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        let lightGray = UIColor(red: 229/255.0, green: 229/255.0, blue: 229/255.0, alpha: 1)
-        
-        self.backView.layer.cornerRadius = 10
-        self.backView.layer.borderColor = lightGray.cgColor
-        self.backView.backgroundColor = lightGray
+    
+        self.backView.layer.cornerRadius = CellConstants.cornerRadius
         self.backView.layer.masksToBounds = true
     }
 }

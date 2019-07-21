@@ -30,6 +30,7 @@ class SnkrsTableViewController: UITableViewController, PickedSnkrModalViewContro
         
         tableView.tableFooterView = searchFooter
         tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
         
         setupSearchController()
     }
@@ -62,7 +63,7 @@ class SnkrsTableViewController: UITableViewController, PickedSnkrModalViewContro
         
         cell.pic.image = snkr.pic
         cell.nameLabel.text = snkr.name
-        cell.lastWornLabel.text = DateUtils.formatDate(lastWornDate: snkr.lastWornDate)//formatDate(lastWornDate: snkr.lastWornDate)
+        cell.lastWornLabel.text = DateUtils.formatDate(lastWornDate: snkr.lastWornDate)
         cell.colorwayLabel.text = snkr.colorway
         
         return cell
