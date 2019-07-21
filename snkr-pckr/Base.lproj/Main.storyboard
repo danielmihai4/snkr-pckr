@@ -191,7 +191,7 @@
                         <color key="backgroundColor" red="0.40000000000000002" green="0.38823529410000002" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.84313725490000002" green="0.80784313730000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DirtySnkrCell" rowHeight="325" id="SvK-JR-Ggs" customClass="DirtySnkrViewCell" customModule="snkr_pckr" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DirtySnkrCell" rowHeight="325" id="SvK-JR-Ggs" customClass="DirtySnkrViewCell" customModule="snkr_pckr" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="325"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SvK-JR-Ggs" id="hEi-SY-YFH">
@@ -293,7 +293,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfg-gS-pfY">
-                                                    <rect key="frame" x="344" y="17" width="23" height="23"/>
+                                                    <rect key="frame" x="335" y="13" width="32" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="2dz-F1-mzk"/>
+                                                        <constraint firstAttribute="width" secondItem="dfg-gS-pfY" secondAttribute="height" multiplier="1:1" id="vtF-eH-Kx8"/>
+                                                    </constraints>
                                                     <color key="tintColor" red="0.84313725490000002" green="0.80784313730000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <state key="normal" image="icon-more">
                                                         <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -303,13 +307,13 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category Name." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zQd-kU-gJh">
-                                                    <rect key="frame" x="8" y="8" width="152" height="40"/>
+                                                    <rect key="frame" x="8" y="9" width="152" height="40"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                                     <color key="textColor" red="0.84313725490000002" green="0.80784313730000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="No Snkrs." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vr8-TM-MOL">
-                                                    <rect key="frame" x="270.5" y="8" width="65.5" height="40"/>
+                                                    <rect key="frame" x="261" y="9" width="66" height="40"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                                                     <color key="textColor" red="0.84313725490000002" green="0.80784313730000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -318,25 +322,25 @@
                                             <color key="backgroundColor" red="0.64705882349999999" green="0.61960784310000006" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstItem="zQd-kU-gJh" firstAttribute="bottom" secondItem="vr8-TM-MOL" secondAttribute="bottom" id="5JJ-IQ-1Z8"/>
-                                                <constraint firstItem="dfg-gS-pfY" firstAttribute="top" secondItem="elD-cO-SvV" secondAttribute="top" constant="17" id="FfL-5J-nZZ"/>
-                                                <constraint firstItem="zQd-kU-gJh" firstAttribute="top" secondItem="vr8-TM-MOL" secondAttribute="top" id="IqQ-sn-1ok"/>
-                                                <constraint firstItem="vr8-TM-MOL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="elD-cO-SvV" secondAttribute="leading" constant="20" symbolic="YES" id="JIk-F6-bSR"/>
-                                                <constraint firstItem="dfg-gS-pfY" firstAttribute="leading" secondItem="vr8-TM-MOL" secondAttribute="trailing" constant="8" symbolic="YES" id="Nuu-rf-jhH"/>
-                                                <constraint firstItem="zQd-kU-gJh" firstAttribute="top" secondItem="elD-cO-SvV" secondAttribute="topMargin" id="P1z-S0-nbK"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zQd-kU-gJh" secondAttribute="trailingMargin" id="che-Y6-aSK"/>
-                                                <constraint firstItem="vr8-TM-MOL" firstAttribute="centerY" secondItem="dfg-gS-pfY" secondAttribute="centerY" id="o63-Q0-5K6"/>
-                                                <constraint firstItem="zQd-kU-gJh" firstAttribute="leading" secondItem="elD-cO-SvV" secondAttribute="leadingMargin" id="wLG-lc-pjv"/>
-                                                <constraint firstItem="dfg-gS-pfY" firstAttribute="trailing" secondItem="elD-cO-SvV" secondAttribute="trailingMargin" id="xQq-HR-rZn"/>
+                                                <constraint firstItem="dfg-gS-pfY" firstAttribute="top" secondItem="elD-cO-SvV" secondAttribute="top" constant="13" id="Der-gs-cpU"/>
+                                                <constraint firstItem="vr8-TM-MOL" firstAttribute="centerY" secondItem="dfg-gS-pfY" secondAttribute="centerY" id="Fe9-Ms-KL4"/>
+                                                <constraint firstItem="dfg-gS-pfY" firstAttribute="trailing" secondItem="elD-cO-SvV" secondAttribute="trailingMargin" id="Haq-7w-WaT"/>
+                                                <constraint firstItem="zQd-kU-gJh" firstAttribute="top" secondItem="vr8-TM-MOL" secondAttribute="top" id="Uep-dE-liZ"/>
+                                                <constraint firstItem="zQd-kU-gJh" firstAttribute="top" secondItem="elD-cO-SvV" secondAttribute="top" constant="9" id="Wgr-S7-yx9"/>
+                                                <constraint firstItem="dfg-gS-pfY" firstAttribute="leading" secondItem="vr8-TM-MOL" secondAttribute="trailing" constant="8" symbolic="YES" id="ZKR-lr-jGl"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zQd-kU-gJh" secondAttribute="trailingMargin" id="kae-SE-oKO"/>
+                                                <constraint firstItem="vr8-TM-MOL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="elD-cO-SvV" secondAttribute="leading" constant="20" symbolic="YES" id="nNq-UB-pPb"/>
+                                                <constraint firstItem="zQd-kU-gJh" firstAttribute="leading" secondItem="elD-cO-SvV" secondAttribute="leadingMargin" id="ukK-O3-PrJ"/>
+                                                <constraint firstItem="zQd-kU-gJh" firstAttribute="bottom" secondItem="vr8-TM-MOL" secondAttribute="bottom" id="yKd-UQ-laY"/>
                                             </constraints>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstItem="elD-cO-SvV" firstAttribute="top" secondItem="i0q-Fu-iFK" secondAttribute="top" id="46h-ci-8ms"/>
-                                        <constraint firstItem="elD-cO-SvV" firstAttribute="centerY" secondItem="i0q-Fu-iFK" secondAttribute="centerY" id="Bx0-Mi-FY5"/>
-                                        <constraint firstAttribute="trailing" secondItem="elD-cO-SvV" secondAttribute="trailing" id="ETQ-Cf-D4g"/>
-                                        <constraint firstItem="elD-cO-SvV" firstAttribute="leading" secondItem="i0q-Fu-iFK" secondAttribute="leading" id="k5c-LD-g9w"/>
+                                        <constraint firstItem="elD-cO-SvV" firstAttribute="top" secondItem="i0q-Fu-iFK" secondAttribute="top" id="0Vf-WQ-kIV"/>
+                                        <constraint firstItem="elD-cO-SvV" firstAttribute="leading" secondItem="i0q-Fu-iFK" secondAttribute="leading" id="4EI-Gg-nIQ"/>
+                                        <constraint firstAttribute="trailing" secondItem="elD-cO-SvV" secondAttribute="trailing" id="5mn-WP-vn4"/>
+                                        <constraint firstItem="elD-cO-SvV" firstAttribute="centerY" secondItem="i0q-Fu-iFK" secondAttribute="centerY" id="lOu-yf-s9x"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -856,18 +860,18 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon-add-sneaker" width="32" height="32"/>
-        <image name="icon-brush" width="32" height="32"/>
+        <image name="icon-add-sneaker" width="24" height="24"/>
+        <image name="icon-brush" width="24" height="24"/>
         <image name="icon-camera" width="240" height="240"/>
         <image name="icon-cancel" width="512" height="512"/>
-        <image name="icon-category" width="30" height="30"/>
-        <image name="icon-checkbox-unselected" width="23" height="23"/>
-        <image name="icon-collection" width="32" height="32"/>
-        <image name="icon-dirty" width="32" height="32"/>
+        <image name="icon-category" width="24" height="24"/>
+        <image name="icon-checkbox-unselected" width="64" height="64"/>
+        <image name="icon-collection" width="24" height="24"/>
+        <image name="icon-dirty" width="24" height="24"/>
         <image name="icon-menu" width="256" height="256"/>
-        <image name="icon-more" width="23" height="23"/>
-        <image name="icon-random" width="32" height="32"/>
-        <image name="icon-save" width="23" height="23"/>
+        <image name="icon-more" width="64" height="64"/>
+        <image name="icon-random" width="24" height="24"/>
+        <image name="icon-save" width="24" height="24"/>
         <image name="icon-wear-sneaker-big" width="512" height="512"/>
     </resources>
     <color key="tintColor" red="0.84313725490000002" green="0.80784313730000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
