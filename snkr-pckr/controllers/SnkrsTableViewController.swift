@@ -104,7 +104,7 @@ class SnkrsTableViewController: UITableViewController, PickedSnkrModalViewContro
             let indexPath = tableView.indexPath(for: cell)
             let snkr = snkrs[(indexPath?.row)!]
             let optionMenu = UIAlertController(title: nil, message: AlertLabels.optionsTitle, preferredStyle: .actionSheet)
-            
+
             let cancelAction = UIAlertAction(title: ButtonLabels.cancel, style: .cancel)
             let deleteAction = UIAlertAction(title: ButtonLabels.delete, style: .destructive, handler: { (action) -> Void in
                 self.deleteSnkr(indexPath: indexPath!)
@@ -112,26 +112,26 @@ class SnkrsTableViewController: UITableViewController, PickedSnkrModalViewContro
             let cleanAction = UIAlertAction(title: ButtonLabels.clean, style: .default, handler: { (action) -> Void in
                 self.markSnkrToClean(indexPath: indexPath!)
             });
-            
+
             if snkr.lastWornDate == nil {
                 let selectSnkrAction = UIAlertAction(title: ButtonLabels.wearSnkr, style: .default, handler: { (action) -> Void in
                     self.toggleWearState(indexPath: indexPath!)
                 });
-                
+
                 optionMenu.addAction(selectSnkrAction)
             } else {
                 let unselectSnkrAction = UIAlertAction(title: ButtonLabels.unselectSnkr, style: .default, handler: { (action) -> Void in
                     self.toggleWearState(indexPath: indexPath!)
                 });
-                
+
                 optionMenu.addAction(unselectSnkrAction)
             }
-            
+
             optionMenu.addAction(cleanAction)
             optionMenu.addAction(deleteAction)
             optionMenu.addAction(cancelAction)
-            
-            self.present(optionMenu, animated: true, completion: nil)
+
+            self.present(optionMenu, animated: true, completion: nil)                    
         }
     }
     
@@ -205,7 +205,6 @@ class SnkrsTableViewController: UITableViewController, PickedSnkrModalViewContro
             let snkr = self.snkrs.remove(at: indexPath.row)
             
             self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-            //self.deleteSnkrEntity(snkr: snkr)
             self.snkrService.delete(snkr: snkr)
         });
         

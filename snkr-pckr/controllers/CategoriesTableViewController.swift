@@ -17,8 +17,6 @@ class CategoriesTableViewController: UITableViewController {
         super.viewDidLoad()
 
         categories = categoryService.loadAll()
-        
-        tableView.separatorStyle = .none
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -72,8 +70,7 @@ class CategoriesTableViewController: UITableViewController {
         
         cell.nameLabel.text = category.name
         cell.snkrCountLabel.text = displaySnkrCount(snkrCount: category.snkrs.count)
-        cell.selectionStyle = .none
-
+        
         return cell
     }
     

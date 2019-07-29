@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C9FB75DDD92C27E321A53E6 /* Pods_snkr_pckr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8259DEF3E8D6B570193FF0EF /* Pods_snkr_pckr.framework */; };
 		310F0EB121B47BE80030D5A7 /* DirtySnkrsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310F0EB021B47BE80030D5A7 /* DirtySnkrsTableViewController.swift */; };
 		310F0EB321B47C0C0030D5A7 /* DirtySnkrViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310F0EB221B47C0C0030D5A7 /* DirtySnkrViewCell.swift */; };
 		31242EC221AB0D4000F5230E /* PickedSnkrModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31242EC121AB0D4000F5230E /* PickedSnkrModalViewController.swift */; };
@@ -41,6 +42,13 @@
 		31E06D1A223552FC00737C74 /* CategorySnkrsModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E06D19223552FC00737C74 /* CategorySnkrsModalViewController.swift */; };
 		31E06D1C223553E800737C74 /* CategorySnkrsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E06D1B223553E800737C74 /* CategorySnkrsTableView.swift */; };
 		31E1EAE222E2FD3F00B3CB5F /* AnimatedTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E1EAE122E2FD3F00B3CB5F /* AnimatedTabBarController.swift */; };
+		31E1EAE422E4EB2C00B3CB5F /* WishlistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E1EAE322E4EB2C00B3CB5F /* WishlistTableViewController.swift */; };
+		31E1EAE622E4EC1700B3CB5F /* WishlistItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E1EAE522E4EC1700B3CB5F /* WishlistItemTableViewCell.swift */; };
+		31E1EAE822E4EF6400B3CB5F /* WishlistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E1EAE722E4EF6400B3CB5F /* WishlistItem.swift */; };
+		31E1EAEA22E4F12600B3CB5F /* WishlistItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E1EAE922E4F12600B3CB5F /* WishlistItemService.swift */; };
+		31E1EAEC22E503DD00B3CB5F /* NewWishlistItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E1EAEB22E503DD00B3CB5F /* NewWishlistItemViewController.swift */; };
+		5ABFF3E0DA51A2FAB6A19516 /* Pods_snkr_pckrUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5794A4EAB571910AC9AF7D7 /* Pods_snkr_pckrUITests.framework */; };
+		C42E6EF9D684CE7F5FEBFD14 /* Pods_snkr_pckrTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42FAAD0D1F8E6DB98FF54F70 /* Pods_snkr_pckrTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +109,20 @@
 		31E06D19223552FC00737C74 /* CategorySnkrsModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySnkrsModalViewController.swift; sourceTree = "<group>"; };
 		31E06D1B223553E800737C74 /* CategorySnkrsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySnkrsTableView.swift; sourceTree = "<group>"; };
 		31E1EAE122E2FD3F00B3CB5F /* AnimatedTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedTabBarController.swift; sourceTree = "<group>"; };
+		31E1EAE322E4EB2C00B3CB5F /* WishlistTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistTableViewController.swift; sourceTree = "<group>"; };
+		31E1EAE522E4EC1700B3CB5F /* WishlistItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistItemTableViewCell.swift; sourceTree = "<group>"; };
+		31E1EAE722E4EF6400B3CB5F /* WishlistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistItem.swift; sourceTree = "<group>"; };
+		31E1EAE922E4F12600B3CB5F /* WishlistItemService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistItemService.swift; sourceTree = "<group>"; };
+		31E1EAEB22E503DD00B3CB5F /* NewWishlistItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWishlistItemViewController.swift; sourceTree = "<group>"; };
+		34C0133643D40E2B587F8BF2 /* Pods-snkr-pckrTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-snkr-pckrTests.release.xcconfig"; path = "Target Support Files/Pods-snkr-pckrTests/Pods-snkr-pckrTests.release.xcconfig"; sourceTree = "<group>"; };
+		41C3A35A19A29F0A94520E6D /* Pods-snkr-pckr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-snkr-pckr.release.xcconfig"; path = "Target Support Files/Pods-snkr-pckr/Pods-snkr-pckr.release.xcconfig"; sourceTree = "<group>"; };
+		42FAAD0D1F8E6DB98FF54F70 /* Pods_snkr_pckrTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_snkr_pckrTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		486856459946FFAB9514C327 /* Pods-snkr-pckrUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-snkr-pckrUITests.debug.xcconfig"; path = "Target Support Files/Pods-snkr-pckrUITests/Pods-snkr-pckrUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8259DEF3E8D6B570193FF0EF /* Pods_snkr_pckr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_snkr_pckr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		875F4E47A1432FD09AC393D0 /* Pods-snkr-pckr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-snkr-pckr.debug.xcconfig"; path = "Target Support Files/Pods-snkr-pckr/Pods-snkr-pckr.debug.xcconfig"; sourceTree = "<group>"; };
+		9066A8DB6D0FF479B7FB99E1 /* Pods-snkr-pckrUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-snkr-pckrUITests.release.xcconfig"; path = "Target Support Files/Pods-snkr-pckrUITests/Pods-snkr-pckrUITests.release.xcconfig"; sourceTree = "<group>"; };
+		A5794A4EAB571910AC9AF7D7 /* Pods_snkr_pckrUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_snkr_pckrUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E540078D40C4146BBE73120B /* Pods-snkr-pckrTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-snkr-pckrTests.debug.xcconfig"; path = "Target Support Files/Pods-snkr-pckrTests/Pods-snkr-pckrTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C9FB75DDD92C27E321A53E6 /* Pods_snkr_pckr.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C42E6EF9D684CE7F5FEBFD14 /* Pods_snkr_pckrTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +146,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5ABFF3E0DA51A2FAB6A19516 /* Pods_snkr_pckrUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +177,8 @@
 				316ACF7D21A0C6A9001C5C57 /* snkr-pckrTests */,
 				316ACF8821A0C6A9001C5C57 /* snkr-pckrUITests */,
 				316ACF6721A0C6A0001C5C57 /* Products */,
+				9F7AB328085E26589A602CFC /* Pods */,
+				8DB52007638665D4B5B9847B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -217,6 +244,8 @@
 				31E06D102234903100737C74 /* SnkrSelectorTableViewController.swift */,
 				31E06D19223552FC00737C74 /* CategorySnkrsModalViewController.swift */,
 				31E1EAE122E2FD3F00B3CB5F /* AnimatedTabBarController.swift */,
+				31E1EAE322E4EB2C00B3CB5F /* WishlistTableViewController.swift */,
+				31E1EAEB22E503DD00B3CB5F /* NewWishlistItemViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -238,6 +267,7 @@
 				31E06D032234728C00737C74 /* CategoryViewCell.swift */,
 				31E06D12223490A300737C74 /* SnkrSelectorCell.swift */,
 				31E06D1722354DFD00737C74 /* CategorySnkrCell.swift */,
+				31E1EAE522E4EC1700B3CB5F /* WishlistItemTableViewCell.swift */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -257,6 +287,7 @@
 			children = (
 				316ACFAE21A1BF39001C5C57 /* Snkr.swift */,
 				31E06D07223474B900737C74 /* Category.swift */,
+				31E1EAE722E4EF6400B3CB5F /* WishlistItem.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -266,6 +297,7 @@
 			children = (
 				31A6F37C222348FD000FD665 /* SnkrService.swift */,
 				31E06D092234753700737C74 /* CategoryService.swift */,
+				31E1EAE922E4F12600B3CB5F /* WishlistItemService.swift */,
 			);
 			name = services;
 			sourceTree = "<group>";
@@ -286,6 +318,30 @@
 			path = protocols;
 			sourceTree = "<group>";
 		};
+		8DB52007638665D4B5B9847B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8259DEF3E8D6B570193FF0EF /* Pods_snkr_pckr.framework */,
+				42FAAD0D1F8E6DB98FF54F70 /* Pods_snkr_pckrTests.framework */,
+				A5794A4EAB571910AC9AF7D7 /* Pods_snkr_pckrUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9F7AB328085E26589A602CFC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				875F4E47A1432FD09AC393D0 /* Pods-snkr-pckr.debug.xcconfig */,
+				41C3A35A19A29F0A94520E6D /* Pods-snkr-pckr.release.xcconfig */,
+				E540078D40C4146BBE73120B /* Pods-snkr-pckrTests.debug.xcconfig */,
+				34C0133643D40E2B587F8BF2 /* Pods-snkr-pckrTests.release.xcconfig */,
+				486856459946FFAB9514C327 /* Pods-snkr-pckrUITests.debug.xcconfig */,
+				9066A8DB6D0FF479B7FB99E1 /* Pods-snkr-pckrUITests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -293,6 +349,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 316ACF8E21A0C6A9001C5C57 /* Build configuration list for PBXNativeTarget "snkr-pckr" */;
 			buildPhases = (
+				E5C07D1422D3D915B8712473 /* [CP] Check Pods Manifest.lock */,
 				316ACF6221A0C6A0001C5C57 /* Sources */,
 				316ACF6321A0C6A0001C5C57 /* Frameworks */,
 				316ACF6421A0C6A0001C5C57 /* Resources */,
@@ -310,6 +367,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 316ACF9121A0C6A9001C5C57 /* Build configuration list for PBXNativeTarget "snkr-pckrTests" */;
 			buildPhases = (
+				9E57868F6A175AE2064C14F0 /* [CP] Check Pods Manifest.lock */,
 				316ACF7621A0C6A9001C5C57 /* Sources */,
 				316ACF7721A0C6A9001C5C57 /* Frameworks */,
 				316ACF7821A0C6A9001C5C57 /* Resources */,
@@ -328,6 +386,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 316ACF9421A0C6A9001C5C57 /* Build configuration list for PBXNativeTarget "snkr-pckrUITests" */;
 			buildPhases = (
+				65606914143EE618962F7240 /* [CP] Check Pods Manifest.lock */,
 				316ACF8121A0C6A9001C5C57 /* Sources */,
 				316ACF8221A0C6A9001C5C57 /* Frameworks */,
 				316ACF8321A0C6A9001C5C57 /* Resources */,
@@ -412,6 +471,75 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		65606914143EE618962F7240 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-snkr-pckrUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9E57868F6A175AE2064C14F0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-snkr-pckrTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E5C07D1422D3D915B8712473 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-snkr-pckr-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		316ACF6221A0C6A0001C5C57 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -428,13 +556,16 @@
 				316ACFAF21A1BF39001C5C57 /* Snkr.swift in Sources */,
 				316ACFD521A1D40F001C5C57 /* snkr-pckr.xcdatamodeld in Sources */,
 				31E06D1822354DFD00737C74 /* CategorySnkrCell.swift in Sources */,
+				31E1EAEA22E4F12600B3CB5F /* WishlistItemService.swift in Sources */,
 				31E06D042234728C00737C74 /* CategoryViewCell.swift in Sources */,
+				31E1EAE622E4EC1700B3CB5F /* WishlistItemTableViewCell.swift in Sources */,
 				315D131B21BD9F4F0016EE48 /* SearchFooter.swift in Sources */,
 				313C394D21F4D12500F79981 /* DateUtils.swift in Sources */,
 				310F0EB121B47BE80030D5A7 /* DirtySnkrsTableViewController.swift in Sources */,
 				316ACFA521A0E21E001C5C57 /* SneakerViewCell.swift in Sources */,
 				31E06D1A223552FC00737C74 /* CategorySnkrsModalViewController.swift in Sources */,
 				316ACF9E21A0D221001C5C57 /* Segues.swift in Sources */,
+				31E1EAE822E4EF6400B3CB5F /* WishlistItem.swift in Sources */,
 				31A6F37D222348FD000FD665 /* SnkrService.swift in Sources */,
 				310F0EB321B47C0C0030D5A7 /* DirtySnkrViewCell.swift in Sources */,
 				31E06D13223490A300737C74 /* SnkrSelectorCell.swift in Sources */,
@@ -443,6 +574,8 @@
 				31E06D062234731B00737C74 /* CategoriesTableViewController.swift in Sources */,
 				316ACF9921A0C966001C5C57 /* SnkrsTableViewController.swift in Sources */,
 				316ACFB121A1C152001C5C57 /* Cells.swift in Sources */,
+				31E1EAEC22E503DD00B3CB5F /* NewWishlistItemViewController.swift in Sources */,
+				31E1EAE422E4EB2C00B3CB5F /* WishlistTableViewController.swift in Sources */,
 				31E06D0F22347FBA00737C74 /* CellLabels.swift in Sources */,
 				31E06D0A2234753700737C74 /* CategoryService.swift in Sources */,
 				31E06D0D22347E6E00737C74 /* CellConstants.swift in Sources */,
@@ -616,11 +749,13 @@
 		};
 		316ACF8F21A0C6A9001C5C57 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 875F4E47A1432FD09AC393D0 /* Pods-snkr-pckr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 34Q552Z465;
 				INFOPLIST_FILE = "snkr-pckr/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -634,11 +769,13 @@
 		};
 		316ACF9021A0C6A9001C5C57 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 41C3A35A19A29F0A94520E6D /* Pods-snkr-pckr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 34Q552Z465;
 				INFOPLIST_FILE = "snkr-pckr/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -652,6 +789,7 @@
 		};
 		316ACF9221A0C6A9001C5C57 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E540078D40C4146BBE73120B /* Pods-snkr-pckrTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -672,6 +810,7 @@
 		};
 		316ACF9321A0C6A9001C5C57 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34C0133643D40E2B587F8BF2 /* Pods-snkr-pckrTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -692,6 +831,7 @@
 		};
 		316ACF9521A0C6A9001C5C57 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 486856459946FFAB9514C327 /* Pods-snkr-pckrUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -711,6 +851,7 @@
 		};
 		316ACF9621A0C6A9001C5C57 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9066A8DB6D0FF479B7FB99E1 /* Pods-snkr-pckrUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

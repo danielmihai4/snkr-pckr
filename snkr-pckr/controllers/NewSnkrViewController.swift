@@ -30,10 +30,7 @@ class NewSnkrViewController: UIViewController, UIImagePickerControllerDelegate, 
         scrollView.addSubview(imageView)
         
         self.nameTextField.delegate = self
-        self.colorwayTextField.delegate = self
-        
-        //imageView.image = UIImage(named: "icon-camera.png")
-        imageView.image = UIImage(named: "icon-sponge.png")
+        self.colorwayTextField.delegate = self            
     }
     
     @IBAction func addPic(_ sender: Any) {
