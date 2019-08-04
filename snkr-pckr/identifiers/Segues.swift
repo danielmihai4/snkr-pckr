@@ -13,4 +13,5 @@ public struct Segues {
     public static let ShowPickedSnkr = "ShowPickedSnkrSegue"
     public static let ShowSnkrSelector = "ShowSnkrSelectorSegue"
     public static let ShowCategorySnkrs = "ShowCategorySnkrsSegue"
+    public static let AddNewWishlistItem = "AddNewWishlistItemSegue"
 }

@@ -8,8 +8,9 @@
 
 import UIKit
 import CoreData
+import SwiftEntryKit
 
-class SnkrsTableViewController: UITableViewController, PickedSnkrModalViewControllerDelegate {
+class SnkrsTableViewController: UITableViewController, PickedSnkrModalViewControllerDelegate, PopUpOptionsControlleDelegate, ConfirmationPopupDelegate {
     
     var snkrs = [Snkr]() {
         didSet {
@@ -18,6 +19,7 @@ class SnkrsTableViewController: UITableViewController, PickedSnkrModalViewContro
     }
     var filteredSnkrs = [Snkr]()
     var snkrService = SnkrService()
+    var snkrToDelete: Snkr?
     
     @IBOutlet weak var searchFooter: SearchFooter!
     
@@ -98,40 +100,15 @@ class SnkrsTableViewController: UITableViewController, PickedSnkrModalViewContro
             snkrService.store(snkr: snkr)
         }
     }
+    
     @IBAction func showOptions(_ sender: Any) {
         
         if let cell = (sender as AnyObject).superview??.superview?.superview as? SnkrTableViewCell {
             let indexPath = tableView.indexPath(for: cell)
             let snkr = snkrs[(indexPath?.row)!]
-            let optionMenu = UIAlertController(title: nil, message: AlertLabels.optionsTitle, preferredStyle: .actionSheet)
-
-            let cancelAction = UIAlertAction(title: ButtonLabels.cancel, style: .cancel)
-            let deleteAction = UIAlertAction(title: ButtonLabels.delete, style: .destructive, handler: { (action) -> Void in
-                self.deleteSnkr(indexPath: indexPath!)
-            });
-            let cleanAction = UIAlertAction(title: ButtonLabels.clean, style: .default, handler: { (action) -> Void in
-                self.markSnkrToClean(indexPath: indexPath!)
-            });
-
-            if snkr.lastWornDate == nil {
-                let selectSnkrAction = UIAlertAction(title: ButtonLabels.wearSnkr, style: .default, handler: { (action) -> Void in
-                    self.toggleWearState(indexPath: indexPath!)
-                });
-
-                optionMenu.addAction(selectSnkrAction)
-            } else {
-                let unselectSnkrAction = UIAlertAction(title: ButtonLabels.unselectSnkr, style: .default, handler: { (action) -> Void in
-                    self.toggleWearState(indexPath: indexPath!)
-                });
-
-                optionMenu.addAction(unselectSnkrAction)
-            }
-
-            optionMenu.addAction(cleanAction)
-            optionMenu.addAction(deleteAction)
-            optionMenu.addAction(cancelAction)
-
-            self.present(optionMenu, animated: true, completion: nil)                    
+            let contentView = SnkrOptionsPopupView(with: self, snkr: snkr)
+            
+            SwiftEntryKit.display(entry: contentView, using: contentView.getAttributes(), presentInsideKeyWindow: true)
         }
     }
     
@@ -168,13 +145,6 @@ class SnkrsTableViewController: UITableViewController, PickedSnkrModalViewContro
         definesPresentationContext = true
     }
     
-    private func markSnkrToClean(indexPath: IndexPath) {
-        let snkr = self.snkrs[indexPath.row]
-        snkr.isClean = false
-        
-        snkrService.update(snkr: snkr)
-    }
-    
     private func getSnkrTitles() -> [String] {
         var snkrTitles = [String]()
         
@@ -185,35 +155,6 @@ class SnkrsTableViewController: UITableViewController, PickedSnkrModalViewContro
         return snkrTitles
     }
 
-    private func toggleWearState(indexPath: IndexPath) {
-        let snkr = self.snkrs[indexPath.row]
-        
-        if snkr.lastWornDate != nil {
-            snkr.lastWornDate = nil
-        } else {
-            snkr.lastWornDate = Date()
-        }
-        
-        self.snkrService.update(snkr: snkr)
-        self.tableView.reloadData()
-    }
-    
-    private func deleteSnkr(indexPath: IndexPath) {
-        let dialogMessage = UIAlertController(title: AlertLabels.confirmTitle, message: AlertLabels.deleteMessage, preferredStyle: .alert)
-        let cancel = UIAlertAction(title: ButtonLabels.cancel, style: .cancel, handler: nil)
-        let ok = UIAlertAction(title: ButtonLabels.ok, style: .default, handler: { (action) -> Void in
-            let snkr = self.snkrs.remove(at: indexPath.row)
-            
-            self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-            self.snkrService.delete(snkr: snkr)
-        });
-        
-        dialogMessage.addAction(ok)
-        dialogMessage.addAction(cancel)
-        
-        self.present(dialogMessage, animated: true, completion: nil)
-    }
-    
     private func cropAndScaleImage(scrollView: UIScrollView) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(scrollView.bounds.size, true, UIScreen.main.scale)
         
@@ -295,6 +236,40 @@ class SnkrsTableViewController: UITableViewController, PickedSnkrModalViewContro
         }
         
         self.tableView.reloadData()
+    }
+    
+    internal func deleteSnkr(_ snkr: Snkr) {
+        snkrToDelete = snkr
+        
+        let confirmationPopup = ConfirmationPopup(title: PopUpLabels.confirmDeleteSnkrPopupTitle, image: snkr.pic, delegate: self)
+        
+        SwiftEntryKit.display(entry: confirmationPopup.getContentView(), using: confirmationPopup.getAttributes())
+    }
+    
+    internal func toggleWearState(_ snkr: Snkr) {
+        snkr.lastWornDate = snkr.lastWornDate != nil ? nil : Date()
+        
+        self.snkrService.update(snkr: snkr)
+        self.tableView.reloadData()
+    }
+    
+    internal func markToClean(_ snkr: Snkr) {
+        snkr.isClean = false
+        
+        snkrService.update(snkr: snkr)
+    }
+    
+    internal func performCancelAction() {
+        snkrToDelete = nil
+    }
+    
+    internal func performConfirmAction() {
+        let index = self.snkrs.firstIndex{$0 === snkrToDelete}
+        let indexPath = IndexPath(row: index!, section: 0)
+        
+        self.snkrs.remove(at: indexPath.row)
+        self.tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+        self.snkrService.delete(snkr: self.snkrToDelete!)
     }
 }
 

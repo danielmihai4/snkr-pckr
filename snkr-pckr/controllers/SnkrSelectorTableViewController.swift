@@ -48,11 +48,11 @@ class SnkrSelectorTableViewController: UITableViewController, TableViewCellDeleg
         
         let categoryHasSnkr = category?.snkrs.contains {$0.id == snkr.id}
         if categoryHasSnkr != nil && (categoryHasSnkr)! {
-            cell.checkbox.image = UIImage(named: "icon-checkbox-selected.png")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            cell.checkbox.image = UIImage(named: "icon-checkbox-selected.png")?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
         } else {
-            cell.checkbox.image = UIImage(named: "icon-checkbox-unselected.png")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            cell.checkbox.image = UIImage(named: "icon-checkbox-unselected.png")?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
         }
-        cell.checkbox.tintColor = CellConstants.pastelGray
+        cell.checkbox.tintColor = Colors.pastelGrey
         
         return cell
     }
@@ -73,7 +73,7 @@ class SnkrSelectorTableViewController: UITableViewController, TableViewCellDeleg
         if categoryHasSnkr != nil && (categoryHasSnkr)! {
             cell.checkbox.image = UIImage(named: "icon-checkbox-unselected.png")
             
-            let index = category?.snkrs.index {$0.id == snkr.id}
+            let index = category?.snkrs.firstIndex {$0.id == snkr.id}
             category?.snkrs.remove(at: index!)
             categoryService.removeSnkr(category: category!, snkr: snkr)
         } else {

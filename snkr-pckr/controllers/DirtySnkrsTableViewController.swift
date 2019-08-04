@@ -8,8 +8,9 @@
 
 import UIKit
 import CoreData
+import SwiftEntryKit
 
-class DirtySnkrsTableViewController: UITableViewController, TableViewCellDelegate {
+class DirtySnkrsTableViewController: UITableViewController, TableViewCellDelegate, ConfirmationPopupDelegate {
     
     var dirtySnkrs = [Snkr]()
     var snkrService = SnkrService()
@@ -19,7 +20,7 @@ class DirtySnkrsTableViewController: UITableViewController, TableViewCellDelegat
 
         loadSnkrs()
         
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,24 +63,24 @@ class DirtySnkrsTableViewController: UITableViewController, TableViewCellDelegat
         }
     }
     
+    internal func performConfirmAction() {
+        for snkr in self.dirtySnkrs {
+            snkr.isClean = true
+            self.snkrService.update(snkr: snkr)
+        }
+        
+        self.dirtySnkrs.removeAll()
+        self.reloadData()
+    }
+    
+    internal func performCancelAction() {
+        //nothing to do
+    }
+    
     @IBAction func cleanAllSnkrs(_ sender: Any) {
-        let dialogMessage = UIAlertController(title: AlertLabels.confirmTitle, message: AlertLabels.cleanAllMessage, preferredStyle: .alert)
-        let noAction = UIAlertAction(title: ButtonLabels.no, style: .cancel, handler: nil)
-        let yesAction = UIAlertAction(title: ButtonLabels.yes, style: .default, handler: { (action) -> Void in
-            
-            for snkr in self.dirtySnkrs {
-                snkr.isClean = true
-                self.snkrService.update(snkr: snkr)
-            }
-            
-            self.dirtySnkrs.removeAll()
-            self.reloadData()
-        });
+        let confirmationPopup = ConfirmationPopup(title: PopUpLabels.confirmCleanAllPopupTitle, titleAlignment: NSTextAlignment.center, image: nil, delegate: self)
         
-        dialogMessage.addAction(yesAction)
-        dialogMessage.addAction(noAction)
-        
-        self.present(dialogMessage, animated: true, completion: nil)
+        SwiftEntryKit.display(entry: confirmationPopup.getContentView(), using: confirmationPopup.getAttributes())
     }
     
     private func loadSnkrs() {
@@ -94,7 +95,7 @@ class DirtySnkrsTableViewController: UITableViewController, TableViewCellDelegat
             let snkr = self.dirtySnkrs.remove(at: (indexPath?.row)!)
             snkr.isClean = true
             
-            self.tableView.deleteRows(at: [indexPath!], with: UITableViewRowAnimation.automatic)
+            self.tableView.deleteRows(at: [indexPath!], with: UITableView.RowAnimation.automatic)
             self.snkrService.update(snkr: snkr)
         });
         

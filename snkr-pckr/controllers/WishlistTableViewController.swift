@@ -16,15 +16,15 @@ class WishlistTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.wishlistItems = wishlistItemService.loadAll()
+        loadWishlistItems()
         
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
-        let releaseDate = formatter.date(from: "01/08/2019")
-        wishlistItems.append(WishlistItem(id: UUID(), name: "Air Jordan 4", colorway: "Cool Grey", price: 165, releaseDate: releaseDate!, pic: UIImage(named: "jordan-4")!))
-        
-        let releaseDate2 = formatter.date(from: "11/12/2019")
-        wishlistItems.append(WishlistItem(id: UUID(), name: "Air Jordan 11", colorway: "Bred", price: 165, releaseDate: releaseDate2!, pic: UIImage(named: "jordan-11")!))
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "dd/MM/yyyy"
+//        let releaseDate = formatter.date(from: "01/08/2019")
+//        wishlistItems.append(WishlistItem(id: UUID(), name: "Air Jordan 4", colorway: "Cool Grey", price: 165, releaseDate: releaseDate!, pic: UIImage(named: "jordan-4")!))
+//        
+//        let releaseDate2 = formatter.date(from: "11/12/2019")
+//        wishlistItems.append(WishlistItem(id: UUID(), name: "Air Jordan 11", colorway: "Bred", price: 165, releaseDate: releaseDate2!, pic: UIImage(named: "jordan-11")!))
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -43,18 +43,14 @@ class WishlistTableViewController: UITableViewController {
         return true
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if (editingStyle == UITableViewCellEditingStyle.delete) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCell.EditingStyle.delete) {
             let wishlistItem = self.wishlistItems[indexPath.row]
             
             self.wishlistItemService.delete(wishlistItem: wishlistItem)
             self.wishlistItems.remove(at: indexPath.row)
             self.tableView.reloadData()
         }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -67,7 +63,7 @@ class WishlistTableViewController: UITableViewController {
         
         cell.nameLabel.text = wishlistItem.name
         cell.colorwayLabel.text = wishlistItem.colorway
-        cell.priceLabel.text = formatPrice(price: wishlistItem.price)
+        cell.priceLabel.text = formatPrice(wishlistItem.price)
         cell.releaseDateDayLabel.text = DateUtils.formatReleaseDateDay(releaseDate: wishlistItem.releaseDate)
         cell.releaseDateMonthLabel.text = DateUtils.formatReleaseDateMonth(releaseDate: wishlistItem.releaseDate)
         cell.pic.image = wishlistItem.pic
@@ -75,11 +71,63 @@ class WishlistTableViewController: UITableViewController {
         return cell
     }
     
-    private func formatPrice(price: NSDecimalNumber) -> String {
+    @IBAction func saveWishlistItem(segue:UIStoryboardSegue) {
+        if let source = segue.source as? NewWishlistItemViewController {
+            let resizedPicture = cropAndScaleImage(scrollView: source.scrollView)
+            
+            let wishlistItem = WishlistItem(
+                id: UUID(),
+                name: source.nameTextField.text!,
+                colorway: source.colorwayTextField.text!,
+                price: parsePrice(source.priceTextField.text!),
+                releaseDate: DateUtils.parseReleaseDate(releaseDate: source.releaseDateTextField.text!),
+                pic: resizedPicture)
+            
+            addAndSortWishlistItems(wishlistItem)
+            
+            wishlistItemService.store(wishlistItem: wishlistItem)
+        }
+    }
+    
+    private func loadWishlistItems() {
+        self.wishlistItems = wishlistItemService.loadAll()
+        self.wishlistItems.sort {
+            $0.releaseDate < $1.releaseDate
+        }
+    }
+    
+    private func addAndSortWishlistItems(_ wishlistItem: WishlistItem) {
+        self.wishlistItems.append(wishlistItem)
+        self.wishlistItems.sort {
+            $0.releaseDate < $1.releaseDate
+        }
+    }
+    
+    private func formatPrice(_ price: NSDecimalNumber) -> String {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .currency
         numberFormatter.locale = Locale(identifier: "en_GB")
         
         return numberFormatter.string(from: price)!
+    }
+    
+    private func parsePrice(_ price: String) -> NSDecimalNumber {
+        let formatter = NumberFormatter()
+        formatter.generatesDecimalNumbers = true
+        
+        return formatter.number(from: price) as? NSDecimalNumber ?? 0
+    }
+    
+    private func cropAndScaleImage(scrollView: UIScrollView) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(scrollView.bounds.size, true, UIScreen.main.scale)
+        
+        let offset = scrollView.contentOffset
+        
+        UIGraphicsGetCurrentContext()?.translateBy(x: -offset.x, y: -offset.y)
+        scrollView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let pictureToSave = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return pictureToSave!
     }
 }

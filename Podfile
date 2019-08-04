@@ -16,5 +16,7 @@ target 'snkr-pckr' do
     inherit! :search_paths
     # Pods for testing
   end
-  
+
+  pod 'SwiftEntryKit', '1.1.1'  
+
 end

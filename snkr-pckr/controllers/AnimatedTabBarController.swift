@@ -38,10 +38,10 @@ extension AnimatedTabBarController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         guard
             let tabViewControllers = tabBarController.viewControllers,
-            let targetIndex = tabViewControllers.index(where: { (item) -> Bool in item == viewController }),
+            let targetIndex = tabViewControllers.firstIndex(where: { (item) -> Bool in item == viewController }),
             let targetView = tabViewControllers[targetIndex].view,
             let currentViewController = selectedViewController,
-            let currentIndex = tabViewControllers.index(where: { (item) -> Bool in item == currentViewController })
+            let currentIndex = tabViewControllers.firstIndex(where: { (item) -> Bool in item == currentViewController })
             else { return false }
         
         if currentIndex != targetIndex {

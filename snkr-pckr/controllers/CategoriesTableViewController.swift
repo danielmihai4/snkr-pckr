@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftEntryKit
 
 class CategoriesTableViewController: UITableViewController {
     
@@ -35,8 +36,8 @@ class CategoriesTableViewController: UITableViewController {
         return true
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if (editingStyle == UITableViewCellEditingStyle.delete) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCell.EditingStyle.delete) {
             let category = self.categories[indexPath.row]
             
             self.categoryService.delete(category: category)
@@ -75,27 +76,7 @@ class CategoriesTableViewController: UITableViewController {
     }
     
     @IBAction func addCategory(_ sender: Any) {
-        let alert = UIAlertController(title: AlertLabels.newCategoryTitle, message: nil, preferredStyle: .alert);
-        
-        let cancelAction = UIAlertAction(title: AlertLabels.newCategoryCancelActionName, style: .cancel);
-        let saveAction = UIAlertAction(title: AlertLabels.newCategorySaveActionName, style: .destructive, handler: { (action) -> Void in
-            guard let textField = alert.textFields?.first else {
-                print ("Cannot retrieve alert text field.")
-                return;
-            }
-            
-            self.saveCategory(name: textField.text!)
-        });
-        
-        alert.addTextField { (textField:UITextField) in
-            textField.placeholder = AlertLabels.newCategoryPlaceholder
-            textField.keyboardType = UIKeyboardType.default
-        }
-        
-        alert.addAction(saveAction)
-        alert.addAction(cancelAction)
-        
-        self.present(alert, animated: true, completion: nil)
+        SwiftEntryKit.display(entry: createContentView(), using: createAttributes(), presentInsideKeyWindow: true)
     }
     
     private func displaySnkrCount(snkrCount: Int) -> String {
@@ -112,5 +93,113 @@ class CategoriesTableViewController: UITableViewController {
         categoryService.store(category: category)
         categories.append(category)
         tableView.reloadData()
+    }
+    
+    private func createContentView() -> EKFormMessageView {
+        let title = createTitle()
+        let nameTextField = createNameTextField()
+        let button = createButton(nameTextField)
+        
+        let contentView = EKFormMessageView(with: title, textFieldsContent: [nameTextField], buttonContent: button)
+        contentView.backgroundColor = Colors.independence
+        
+        return contentView
+    }
+    
+    private func createTitle() -> EKProperty.LabelContent {
+        return EKProperty.LabelContent(text: PopUpLabels.newCategoryTitle, style: NewCategoryPopupStyle.titleStyle)
+    }
+    
+    private func createNameTextField() -> EKProperty.TextFieldContent {
+        return EKProperty.TextFieldContent(keyboardType: .namePhonePad,
+                                           placeholder: createPlaceholder(),
+                                           tintColor: EKColor(light: Colors.cadetGrey, dark: Colors.cadetGrey),
+                                           displayMode: EKAttributes.DisplayMode.inferred,
+                                           textStyle: NewCategoryPopupStyle.textStyle,
+                                           leadingImage: UIImage(named: "icon-category")!.withRenderingMode(.alwaysTemplate),
+                                           bottomBorderColor: EKColor(light: Colors.cadetGrey, dark: Colors.cadetGrey),
+                                           accessibilityIdentifier: "nameTextFiled")
+    }
+    
+    private func createPlaceholder() -> EKProperty.LabelContent {
+        return EKProperty.LabelContent (text: PopUpLabels.newCategoryNamePlaceholder, style: NewCategoryPopupStyle.placeholderStyle)
+    }
+    
+    private func createButton(_ nameTextField: EKProperty.TextFieldContent) -> EKProperty.ButtonContent {
+        return EKProperty.ButtonContent(
+            label: .init(text: PopUpLabels.newCategorySaveButtonTitle, style: NewCategoryPopupStyle.buttonStyle),
+            backgroundColor: EKColor(light: Colors.cadetGrey.withAlphaComponent(0.5), dark: Colors.cadetGrey.withAlphaComponent(0.5)),
+            highlightedBackgroundColor: EKColor.white.with(alpha: 0.8),
+            displayMode: EKAttributes.DisplayMode.inferred) {
+                let categoryName = nameTextField.textContent
+                if (!categoryName.isEmpty) {
+                    self.saveCategory(name: categoryName)
+                    SwiftEntryKit.dismiss()
+                }
+        }
+    }
+    
+    private func createAttributes() -> EKAttributes {
+        var attributes = EKAttributes()
+        attributes.positionConstraints = .fullWidth
+        attributes.positionConstraints.safeArea = .empty(fillSafeArea: true)
+        attributes.windowLevel = .statusBar
+        attributes.scroll = .edgeCrossingDisabled(swipeable: true)
+        attributes.popBehavior = .animated(animation: .translation)
+        attributes.displayDuration = .infinity
+        attributes.windowLevel = .normal
+        attributes.position = .bottom
+        attributes.displayDuration = .infinity
+        attributes.entranceAnimation = .init(
+            translate: .init(
+                duration: 0.65,
+                spring: .init(damping: 1, initialVelocity: 0)
+            )
+        )
+        attributes.exitAnimation = .init(
+            translate: .init(
+                duration: 0.65,
+                spring: .init(damping: 1, initialVelocity: 0)
+            )
+        )
+        attributes.popBehavior = .animated(
+            animation: .init(
+                translate: .init(
+                    duration: 0.65,
+                    spring: .init(damping: 1, initialVelocity: 0)
+                )
+            )
+        )
+        attributes.entryInteraction = .absorbTouches
+        attributes.screenInteraction = .dismiss
+        attributes.entryBackground = .gradient(
+            gradient: .init(
+                colors: [EKColor(rgb: 0x485563), EKColor(rgb: 0x29323c)],
+                startPoint: .zero,
+                endPoint: CGPoint(x: 1, y: 1)
+            )
+        )
+        attributes.shadow = .active(
+            with: .init(
+                color: .black,
+                opacity: 0.3,
+                radius: 3
+            )
+        )
+        
+        attributes.screenBackground = .color(color: EKColor(light: screenBackgroundColor(), dark: screenBackgroundColor()))
+        attributes.scroll = .edgeCrossingDisabled(swipeable: true)
+        attributes.statusBar = .light
+        attributes.positionConstraints.keyboardRelation = .bind(
+            offset: .init(
+                bottom: 0,
+                screenEdgeResistance: 0
+            )
+        )
+        return attributes
+    }
+    
+    private func screenBackgroundColor() -> UIColor {
+        return Colors.independence.withAlphaComponent(0.8)
     }
 }

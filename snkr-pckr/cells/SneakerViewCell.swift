@@ -18,8 +18,8 @@ class SnkrTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        let margins = CellConstants.margins
-        contentView.frame = UIEdgeInsetsInsetRect(contentView.frame, margins)
+        
+        contentView.frame = contentView.frame.inset(by: CellConstants.margins)
     }
     
     override func awakeFromNib() {

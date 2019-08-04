@@ -31,7 +31,7 @@ class DirtySnkrViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        contentView.frame = UIEdgeInsetsInsetRect(contentView.frame, CellConstants.margins)
+        contentView.frame = contentView.frame.inset(by: CellConstants.margins)
     }
     
     @objc func doubleTapped() {

@@ -22,7 +22,7 @@ class CategorySnkrsModalViewController: UIViewController,UITableViewDataSource, 
         super.viewDidLoad()
         
         categoryNameLabel.text = category?.name
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -44,7 +44,7 @@ class CategorySnkrsModalViewController: UIViewController,UITableViewDataSource, 
         cell.nameLabel.text = snkr?.name
         cell.colorwayLabel.text = snkr?.colorway
         cell.pic.image = snkr?.pic
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         return cell
     }

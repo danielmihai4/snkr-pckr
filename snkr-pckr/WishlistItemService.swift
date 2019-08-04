@@ -49,7 +49,7 @@ class WishlistItemService {
         wishlistItemEntity.colorway = wishlistItem.colorway
         wishlistItemEntity.price = wishlistItem.price
         wishlistItemEntity.releaseDate = wishlistItem.releaseDate
-        wishlistItemEntity.pic = UIImageJPEGRepresentation(wishlistItem.pic, 1)
+        wishlistItemEntity.pic = wishlistItem.pic.jpegData(compressionQuality: 1)
         
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
     }

@@ -78,7 +78,7 @@ class SnkrService {
         snkrEntity.colorway = snkr.colorway
         snkrEntity.lastWornDate = snkr.lastWornDate
         snkrEntity.isClean = snkr.isClean!
-        snkrEntity.pic = UIImageJPEGRepresentation(snkr.pic, 1)
+        snkrEntity.pic = snkr.pic.jpegData(compressionQuality: 1)
         
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
     }

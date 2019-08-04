@@ -38,6 +38,18 @@ class DateUtils {
         return formatReleaseDate(releaseDate: releaseDate, format: DATE_FORMAT_MONTH)
     }
     
+    class func formatReleaseDate(releaseDate: Date?) -> String {
+        DATE_FORMATTER.dateFormat = DATE_FORMAT_WITH_YEAR
+        
+        return DATE_FORMATTER.string(from: releaseDate!)
+    }
+    
+    class func parseReleaseDate(releaseDate: String) -> Date {
+        DATE_FORMATTER.dateFormat = DATE_FORMAT_WITH_YEAR
+        
+        return DATE_FORMATTER.date(from: releaseDate) ?? Date()
+    }
+    
     private class func formatReleaseDate(releaseDate: Date?, format: String) -> String {
         if releaseDate == nil {
             return NO_RELEASE_DATE_LABEL

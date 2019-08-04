@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import SwiftEntryKit
 
-class NewSnkrViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, UIActionSheetDelegate, UITextFieldDelegate {
+class NewSnkrViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, UIActionSheetDelegate, UITextFieldDelegate, SelectImagePopupViewDelegate {
     
     var imageView = UIImageView()
-
+    var imagePickerController = UIImagePickerController()
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var colorwayTextField: UITextField!
     @IBOutlet weak var scrollView: UIScrollView! {
@@ -24,46 +26,16 @@ class NewSnkrViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupImagePickerController()
+        setupTextFields()
         setupGestureRecognizer()
-        
-        scrollView.delegate = self
-        scrollView.addSubview(imageView)
-        
-        self.nameTextField.delegate = self
-        self.colorwayTextField.delegate = self            
+        setupScrollView()
     }
     
     @IBAction func addPic(_ sender: Any) {
-        let imageController = UIImagePickerController()
+        let selectImagePopup = SelectImagePopupView(with: self)
         
-        imageController.allowsEditing = false
-        imageController.delegate = self
-        
-        let alert = UIAlertController(title: AlertLabels.addPhotoTitle, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
-        let cancelButton = UIAlertAction(title: ButtonLabels.cancel, style: UIAlertActionStyle.cancel, handler: nil)
-        let libButton = UIAlertAction(title: ButtonLabels.selectPhoto, style: UIAlertActionStyle.default) {(alert: UIAlertAction!) in
-            imageController.sourceType = UIImagePickerControllerSourceType.photoLibrary
-            
-            self.present(imageController, animated: true, completion: nil)
-        }
-        
-        if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)) {
-            let cameraButton = UIAlertAction(title: "Take a picture", style: UIAlertActionStyle.default) { (alert: UIAlertAction!) in
-                imageController.sourceType = UIImagePickerControllerSourceType.camera
-                
-                self.present(imageController, animated: true, completion: nil)
-            }
-            
-            alert.addAction(cameraButton)
-        } else {
-            print("Camera not available")
-        }
-        
-        alert.addAction(libButton)
-        alert.addAction(cancelButton)
-        
-        self.present(alert, animated: true, completion: nil)
-        
+        SwiftEntryKit.display(entry: selectImagePopup, using: selectImagePopup.getAttributes())
     }
     
     @IBAction func addSnkr(_ sender: Any) {
@@ -73,7 +45,8 @@ class NewSnkrViewController: UIViewController, UIImagePickerControllerDelegate, 
             if snkrName.isEmpty {
                 canSave = false
                 
-                addAlert(title: AlertLabels.nameTitle, message: AlertLabels.nameMessage)
+                let alertPopup = AlertPopup(title: AlertLabels.nameTitle, message: AlertLabels.nameMessage, image: nil)
+                SwiftEntryKit.display(entry: alertPopup.getContentView(), using: alertPopup.getAttributes())
             }
         }
         
@@ -82,15 +55,15 @@ class NewSnkrViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        var image = info[UIImagePickerControllerEditedImage] as? UIImage
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        var image = info[.editedImage] as? UIImage
         
         if image == nil {
-            image = info[UIImagePickerControllerOriginalImage] as? UIImage
+            image = info[.editedImage] as? UIImage
         }
         
-        imageView.image = image
-        imageView.sizeToFit()
+        self.imageView.image = image
+        self.imageView.sizeToFit()
         resetScrollView()
         picker.dismiss(animated: true,completion: nil)
     }
@@ -134,12 +107,6 @@ class NewSnkrViewController: UIViewController, UIImagePickerControllerDelegate, 
         scrollView.maximumZoomScale = 1.0
     }
     
-    func setupGestureRecognizer() {
-        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(self.handleDoubleTap(recognizer:)))
-        doubleTap.numberOfTapsRequired = 2
-        scrollView.addGestureRecognizer(doubleTap)
-    }
-    
     @objc func handleDoubleTap(recognizer: UITapGestureRecognizer) {
         if(scrollView.zoomScale > scrollView.minimumZoomScale) {
             scrollView.setZoomScale(scrollView.minimumZoomScale, animated: true)            
@@ -148,11 +115,57 @@ class NewSnkrViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
-    private func addAlert(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+    internal func librarySelected() {
+        self.imagePickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
+        self.present(self.imagePickerController, animated: true, completion: nil)
+    }
+    
+    internal func cameraSelected() {
+        self.imagePickerController.sourceType = UIImagePickerController.SourceType.camera
+        self.present(self.imagePickerController, animated: true, completion: nil)
+    }
+    
+    private func setupGestureRecognizer() {
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(self.handleDoubleTap(recognizer:)))
+        doubleTap.numberOfTapsRequired = 2
+        scrollView.addGestureRecognizer(doubleTap)
+    }
+    
+    private func setupImagePickerController() {
+        self.imagePickerController.allowsEditing = true
+        self.imagePickerController.delegate = self
+        self.imagePickerController.mediaTypes = ["public.image", "public.movie"]
+    }
+    
+    private func setupTextFields() {
+        setupNameTextField()
+        setupColorwayTextField()
+    }
+    
+    private func setupNameTextField() {
+        self.nameTextField.layer.addSublayer(createBottomBorder(self.nameTextField))
+        self.nameTextField.layer.masksToBounds = true
+        self.nameTextField.delegate = self
+    }
+    
+    private func setupColorwayTextField() {
+        self.colorwayTextField.layer.addSublayer(createBottomBorder(self.colorwayTextField))
+        self.colorwayTextField.layer.masksToBounds = true
+        self.colorwayTextField.delegate = self
+    }
+    
+    private func setupScrollView() {
+        self.scrollView.delegate = self
+        self.scrollView.addSubview(self.imageView)
+    }
+    
+    private func createBottomBorder(_ textField: UITextField) -> CALayer {
+        let border = CALayer()
+        let width = CGFloat(1.0)
+        border.borderColor = Colors.pastelGrey.cgColor
+        border.frame = CGRect(x: 0, y: textField.frame.size.height - width, width:  textField.frame.size.width, height: textField.frame.size.height)
+        border.borderWidth = width
         
-        alertController.addAction(UIAlertAction(title: ButtonLabels.ok, style: UIAlertActionStyle.default, handler: nil))
-        
-        self.present(alertController, animated: false, completion: nil)
+        return border
     }
 }
