@@ -19,6 +19,8 @@
 		0EA0D56022F6F06700CC4E0D /* ConfirmationPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0D55F22F6F06700CC4E0D /* ConfirmationPopup.swift */; };
 		0EA0D56222F7334F00CC4E0D /* SelectImagePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0D56122F7334F00CC4E0D /* SelectImagePopupView.swift */; };
 		0EA0D56422F73B5A00CC4E0D /* AlertPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0D56322F73B5A00CC4E0D /* AlertPopup.swift */; };
+		0EF262E422FF0C6A001CFFCE /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF262E322FF0C6A001CFFCE /* Device.swift */; };
+		0EF262E622FF2282001CFFCE /* NewCategoryPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF262E522FF2282001CFFCE /* NewCategoryPopup.swift */; };
 		2C9FB75DDD92C27E321A53E6 /* Pods_snkr_pckr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8259DEF3E8D6B570193FF0EF /* Pods_snkr_pckr.framework */; };
 		310F0EB121B47BE80030D5A7 /* DirtySnkrsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310F0EB021B47BE80030D5A7 /* DirtySnkrsTableViewController.swift */; };
 		310F0EB321B47C0C0030D5A7 /* DirtySnkrViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310F0EB221B47C0C0030D5A7 /* DirtySnkrViewCell.swift */; };
@@ -93,6 +95,8 @@
 		0EA0D55F22F6F06700CC4E0D /* ConfirmationPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationPopup.swift; sourceTree = "<group>"; };
 		0EA0D56122F7334F00CC4E0D /* SelectImagePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectImagePopupView.swift; sourceTree = "<group>"; };
 		0EA0D56322F73B5A00CC4E0D /* AlertPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPopup.swift; sourceTree = "<group>"; };
+		0EF262E322FF0C6A001CFFCE /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		0EF262E522FF2282001CFFCE /* NewCategoryPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCategoryPopup.swift; sourceTree = "<group>"; };
 		310F0EB021B47BE80030D5A7 /* DirtySnkrsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirtySnkrsTableViewController.swift; sourceTree = "<group>"; };
 		310F0EB221B47C0C0030D5A7 /* DirtySnkrViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirtySnkrViewCell.swift; sourceTree = "<group>"; };
 		31242EC121AB0D4000F5230E /* PickedSnkrModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickedSnkrModalViewController.swift; sourceTree = "<group>"; };
@@ -187,11 +191,22 @@
 			path = styles;
 			sourceTree = "<group>";
 		};
+		0EF262E722FF247D001CFFCE /* popups */ = {
+			isa = PBXGroup;
+			children = (
+				0EA0D55F22F6F06700CC4E0D /* ConfirmationPopup.swift */,
+				0EA0D56322F73B5A00CC4E0D /* AlertPopup.swift */,
+				0EF262E522FF2282001CFFCE /* NewCategoryPopup.swift */,
+			);
+			path = popups;
+			sourceTree = "<group>";
+		};
 		313C394B21F4D10400F79981 /* utils */ = {
 			isa = PBXGroup;
 			children = (
 				313C394C21F4D12500F79981 /* DateUtils.swift */,
 				0E6E076922F392D60023401F /* CustomTabBar.swift */,
+				0EF262E322FF0C6A001CFFCE /* Device.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -199,13 +214,12 @@
 		315D131921BD9F1D0016EE48 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				0EF262E722FF247D001CFFCE /* popups */,
 				0EA0D55522F637AE00CC4E0D /* styles */,
 				315D131A21BD9F4F0016EE48 /* SearchFooter.swift */,
 				31E06D1B223553E800737C74 /* CategorySnkrsTableView.swift */,
 				0EA0D55922F647C400CC4E0D /* SnkrOptionsPopupView.swift */,
-				0EA0D55F22F6F06700CC4E0D /* ConfirmationPopup.swift */,
 				0EA0D56122F7334F00CC4E0D /* SelectImagePopupView.swift */,
-				0EA0D56322F73B5A00CC4E0D /* AlertPopup.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -610,6 +624,7 @@
 			files = (
 				316ACFA821A1B3AB001C5C57 /* Buttons.swift in Sources */,
 				316ACFAC21A1B420001C5C57 /* Alerts.swift in Sources */,
+				0EF262E422FF0C6A001CFFCE /* Device.swift in Sources */,
 				31E06D08223474B900737C74 /* Category.swift in Sources */,
 				0EA0D56022F6F06700CC4E0D /* ConfirmationPopup.swift in Sources */,
 				0E6E076822F392590023401F /* CustomBarController.swift in Sources */,
@@ -620,6 +635,7 @@
 				316ACF9B21A0CD1B001C5C57 /* NewSnkrViewController.swift in Sources */,
 				31242EC221AB0D4000F5230E /* PickedSnkrModalViewController.swift in Sources */,
 				31E06D112234903100737C74 /* SnkrSelectorTableViewController.swift in Sources */,
+				0EF262E622FF2282001CFFCE /* NewCategoryPopup.swift in Sources */,
 				316ACFAF21A1BF39001C5C57 /* Snkr.swift in Sources */,
 				316ACFD521A1D40F001C5C57 /* snkr-pckr.xcdatamodeld in Sources */,
 				0EA0D56222F7334F00CC4E0D /* SelectImagePopupView.swift in Sources */,

@@ -16,15 +16,7 @@ class WishlistTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadWishlistItems()
-        
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "dd/MM/yyyy"
-//        let releaseDate = formatter.date(from: "01/08/2019")
-//        wishlistItems.append(WishlistItem(id: UUID(), name: "Air Jordan 4", colorway: "Cool Grey", price: 165, releaseDate: releaseDate!, pic: UIImage(named: "jordan-4")!))
-//        
-//        let releaseDate2 = formatter.date(from: "11/12/2019")
-//        wishlistItems.append(WishlistItem(id: UUID(), name: "Air Jordan 11", colorway: "Bred", price: 165, releaseDate: releaseDate2!, pic: UIImage(named: "jordan-11")!))
+        loadWishlistItems()        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

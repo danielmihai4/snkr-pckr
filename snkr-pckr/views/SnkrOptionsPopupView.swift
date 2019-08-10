@@ -35,7 +35,7 @@ class SnkrOptionsPopupView: UIView {
         setupTapGestureRecognizer()
         
         scrollView.layoutIfNeeded()
-        scrollView.contentSize.height = 250
+        scrollView.contentSize.height = 200
         self.backgroundColor = Colors.independence
         
         set(.height, of: scrollView.contentSize.height + scrollViewVerticalOffset * 2, priority: .defaultHigh)
@@ -49,7 +49,7 @@ class SnkrOptionsPopupView: UIView {
         var attributes = EKAttributes.bottomFloat
         attributes.hapticFeedbackType = .success
         attributes.displayDuration = .infinity
-        attributes.entryBackground = .color(color: .standardBackground)
+        attributes.entryBackground = .color(color: EKColor(light: Colors.independence, dark: Colors.independence))
         attributes.screenBackground = .color(color: EKColor(light: screenBackgroundColor(), dark: screenBackgroundColor()))
         attributes.shadow = .active(with: .init(color: .black, opacity: 0.3, radius: 8))
         attributes.screenInteraction = .dismiss

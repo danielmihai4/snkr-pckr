@@ -1,0 +1,95 @@
+//
+//  NewCategoryPopup.swift
+//  snkr-pckr
+//
+//  Created by Daniel Mihai on 10/08/2019.
+//  Copyright © 2019 Daniel Mihai. All rights reserved.
+//
+
+import Foundation
+import SwiftEntryKit
+import UIKit
+
+protocol NewCategoryPopupDelegate {
+    func saveNewCategory(name: String)
+}
+
+class NewCategoryPopup {
+    
+    private let delegate: NewCategoryPopupDelegate
+    
+    public init(_ delegate: NewCategoryPopupDelegate) {
+        self.delegate = delegate
+    }
+    
+    public func getContentView() -> EKFormMessageView {
+        let title = createTitle()
+        let nameTextField = createNameTextField()
+        let button = createButton(nameTextField)
+        
+        let contentView = EKFormMessageView(with: title, textFieldsContent: [nameTextField], buttonContent: button)
+        contentView.backgroundColor = Colors.independence
+        
+        return contentView
+    }
+    
+    
+    public func getAttributes() -> EKAttributes {
+        var attributes = EKAttributes()
+        attributes.positionConstraints = .fullWidth
+        attributes.positionConstraints.safeArea = .empty(fillSafeArea: true)
+        attributes.windowLevel = .statusBar
+        attributes.scroll = .edgeCrossingDisabled(swipeable: true)
+        attributes.popBehavior = .animated(animation: .translation)
+        attributes.displayDuration = .infinity
+        attributes.windowLevel = .normal
+        attributes.position = .bottom
+        attributes.displayDuration = .infinity
+        attributes.entranceAnimation = .init(translate: .init(duration: 0.65, spring: .init(damping: 1, initialVelocity: 0)))
+        attributes.exitAnimation = .init(translate: .init(duration: 0.65, spring: .init(damping: 1, initialVelocity: 0)))
+        attributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.65, spring: .init(damping: 1, initialVelocity: 0))))
+        attributes.entryInteraction = .absorbTouches
+        attributes.screenInteraction = .dismiss
+        attributes.entryBackground = .color(color: EKColor(light: Colors.independence, dark: Colors.independence))
+        attributes.shadow = .active(with: .init(color: .black, opacity: 0.3, radius: 3))
+        attributes.screenBackground = .color(color: EKColor(light: Colors.independence.withAlphaComponent(0.8), dark: Colors.independence.withAlphaComponent(0.8)))
+        attributes.scroll = .edgeCrossingDisabled(swipeable: true)
+        attributes.statusBar = .light
+        attributes.positionConstraints.keyboardRelation = .bind(offset: .init(bottom: 0, screenEdgeResistance: 0))
+        
+        return attributes
+    }
+    
+    private func createTitle() -> EKProperty.LabelContent {
+        return EKProperty.LabelContent(text: PopUpLabels.newCategoryTitle, style: NewCategoryPopupStyle.titleStyle)
+    }
+    
+    private func createNameTextField() -> EKProperty.TextFieldContent {
+        return EKProperty.TextFieldContent(keyboardType: .namePhonePad,
+                                           placeholder: createPlaceholder(),
+                                           tintColor: EKColor(light: Colors.cadetGrey, dark: Colors.cadetGrey),
+                                           displayMode: EKAttributes.DisplayMode.inferred,
+                                           textStyle: NewCategoryPopupStyle.textStyle,
+                                           leadingImage: UIImage(named: "icon-category")!.withRenderingMode(.alwaysTemplate),
+                                           bottomBorderColor: EKColor(light: Colors.cadetGrey, dark: Colors.cadetGrey),
+                                           accessibilityIdentifier: "nameTextFiled")
+    }
+    
+    private func createPlaceholder() -> EKProperty.LabelContent {
+        return EKProperty.LabelContent (text: PopUpLabels.newCategoryNamePlaceholder, style: NewCategoryPopupStyle.placeholderStyle)
+    }
+    
+    private func createButton(_ nameTextField: EKProperty.TextFieldContent) -> EKProperty.ButtonContent {
+        return EKProperty.ButtonContent(
+            label: .init(text: PopUpLabels.newCategorySaveButtonTitle, style: NewCategoryPopupStyle.buttonStyle),
+            backgroundColor: EKColor(light: Colors.cadetGrey.withAlphaComponent(0.5), dark: Colors.cadetGrey.withAlphaComponent(0.5)),
+            highlightedBackgroundColor: EKColor.white.with(alpha: 0.8),
+            displayMode: EKAttributes.DisplayMode.inferred) {
+                let categoryName = nameTextField.textContent
+                if (!categoryName.isEmpty) {
+                    self.delegate.saveNewCategory(name: categoryName)
+                    SwiftEntryKit.dismiss()
+                }
+        }
+    }
+}

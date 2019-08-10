@@ -57,7 +57,7 @@ class CustomBarController: UITabBarController {
         self.view.addSubview(circleView)
         let tabWidth = self.view.bounds.width / CGFloat(self.tabBar.items?.count ?? 4)
         
-        circleView.frame = CGRect(x: tabWidth / 2 - 30, y: self.tabBar.frame.origin.y - 40, width: 60, height: 60)
+        circleView.frame = CGRect(x: tabWidth / 2 - 30, y: self.tabBar.frame.origin.y - getHeightOffset(), width: 60, height: 60)
         circleImageView.frame = self.circleView.bounds
     }
     open override func viewWillAppear(_ animated: Bool) {
@@ -78,6 +78,10 @@ class CustomBarController: UITabBarController {
             _barHeight = newValue
             updateTabBarFrame()
         }
+    }
+    
+    private func getHeightOffset() -> CGFloat {
+        return Device.isLargeScreen() ? CGFloat(80) : CGFloat(40)
     }
     
     private func updateTabBarFrame() {

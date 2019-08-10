@@ -14,6 +14,7 @@ class NewSnkrViewController: UIViewController, UIImagePickerControllerDelegate, 
     var imageView = UIImageView()
     var imagePickerController = UIImagePickerController()
     
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var colorwayTextField: UITextField!
     @IBOutlet weak var scrollView: UIScrollView! {
@@ -56,10 +57,10 @@ class NewSnkrViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        var image = info[.editedImage] as? UIImage
+        var image = info[.originalImage] as? UIImage
         
         if image == nil {
-            image = info[.editedImage] as? UIImage
+            image = info[.originalImage] as? UIImage
         }
         
         self.imageView.image = image
@@ -103,11 +104,20 @@ class NewSnkrViewController: UIViewController, UIImagePickerControllerDelegate, 
         let widthScale = scrollViewSize.width / imageViewSize.width
         let heightScale = scrollViewSize.height / imageViewSize.height
         
+        NSLog("ImageViewSize: \(imageViewSize)")
+        NSLog("ScrollViewSize: \(scrollViewSize)")
+        NSLog("WidthScale: \(widthScale)")
+        NSLog("HeightScale: \(heightScale)")
+        
         scrollView.minimumZoomScale = max(widthScale, heightScale)
         scrollView.maximumZoomScale = 1.0
     }
     
     @objc func handleDoubleTap(recognizer: UITapGestureRecognizer) {
+        NSLog("ScrollView Zoom Scale: \(scrollView.zoomScale)")
+        NSLog("ScrollView Minimum Zoom Scale: \(scrollView.minimumZoomScale)")
+        NSLog("ScrollView Maximum Zoom Scale: \(scrollView.maximumZoomScale)")
+        
         if(scrollView.zoomScale > scrollView.minimumZoomScale) {
             scrollView.setZoomScale(scrollView.minimumZoomScale, animated: true)            
         } else {
@@ -132,7 +142,7 @@ class NewSnkrViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     private func setupImagePickerController() {
-        self.imagePickerController.allowsEditing = true
+        self.imagePickerController.allowsEditing = false
         self.imagePickerController.delegate = self
         self.imagePickerController.mediaTypes = ["public.image", "public.movie"]
     }

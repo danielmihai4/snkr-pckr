@@ -22,7 +22,14 @@ class NewWishlistItemViewController: UIViewController, UIImagePickerControllerDe
     @IBOutlet weak var scrollView: UIScrollView! {
         didSet {
             resetScrollView()
-            scrollView.delegate = self
+            self.scrollView.delegate = self
+            self.scrollView.addConstraint(NSLayoutConstraint(item: self.scrollView,
+                                                             attribute: NSLayoutConstraint.Attribute.height,
+                                                             relatedBy: NSLayoutConstraint.Relation.equal,
+                                                             toItem: self.scrollView,
+                                                             attribute: NSLayoutConstraint.Attribute.width,
+                                                             multiplier: 56 / 75,
+                                                             constant: 0))
         }
     }
     
@@ -60,10 +67,8 @@ class NewWishlistItemViewController: UIViewController, UIImagePickerControllerDe
     }
     
     func showDatePicker(){
-        //Formate Date
         self.datePicker.datePickerMode = .date
         
-        //ToolBar
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
@@ -87,10 +92,10 @@ class NewWishlistItemViewController: UIViewController, UIImagePickerControllerDe
     }
     
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        var image = info[.editedImage] as? UIImage
+        var image = info[.originalImage] as? UIImage
         
         if image == nil {
-            image = info[.editedImage] as? UIImage
+            image = info[.originalImage] as? UIImage
         }
         
         self.imageView.image = image
@@ -152,12 +157,14 @@ class NewWishlistItemViewController: UIViewController, UIImagePickerControllerDe
         let widthScale = scrollViewSize.width / imageViewSize.width
         let heightScale = scrollViewSize.height / imageViewSize.height
         
+        NSLog("ScrollViewSize: \(scrollViewSize)")
+        
         self.scrollView.minimumZoomScale = max(widthScale, heightScale)
         self.scrollView.maximumZoomScale = 1.0
     }
     
     private func setupImagePickerController() {
-        self.imagePickerController.allowsEditing = true
+        self.imagePickerController.allowsEditing = false
         self.imagePickerController.delegate = self
         self.imagePickerController.mediaTypes = ["public.image", "public.movie"]
     }
@@ -209,5 +216,4 @@ class NewWishlistItemViewController: UIViewController, UIImagePickerControllerDe
         
         return border
     }
-
 }
