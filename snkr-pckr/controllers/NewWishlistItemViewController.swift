@@ -157,8 +157,6 @@ class NewWishlistItemViewController: UIViewController, UIImagePickerControllerDe
         let widthScale = scrollViewSize.width / imageViewSize.width
         let heightScale = scrollViewSize.height / imageViewSize.height
         
-        NSLog("ScrollViewSize: \(scrollViewSize)")
-        
         self.scrollView.minimumZoomScale = max(widthScale, heightScale)
         self.scrollView.maximumZoomScale = 1.0
     }
