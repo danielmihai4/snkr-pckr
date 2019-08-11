@@ -7,23 +7,45 @@
 //
 
 import UIKit
+import FoldingCell
 
-class CategoryViewCell: UITableViewCell {
+protocol CategoryViewCellDelegate {
+    func showOptions(for cell: CategoryViewCell)
+}
 
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var snkrCountLabel: UILabel!
-    @IBOutlet weak var backView: UIView!
+class CategoryViewCell: FoldingCell {
+
+    @IBOutlet weak var categoryNameLabel: UILabel!
+    @IBOutlet weak var noSnkrsLabel: UILabel!    
+    @IBOutlet weak var unfoldedCategoryNameLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        contentView.frame = contentView.frame.inset(by: CellConstants.margins)
-    }
+    var delegate: CategoryViewCellDelegate?
     
     override func awakeFromNib() {
-        super.awakeFromNib()
+        self.foregroundView.layer.cornerRadius = CellConstants.cornerRadius
+        self.foregroundView.layer.masksToBounds = true
         
-        self.backView.layer.cornerRadius = CellConstants.cornerRadius
-        self.backView.layer.masksToBounds = true
+        super.awakeFromNib()
     }
+    
+    override func animationDuration(_ itemIndex: NSInteger, type _: FoldingCell.AnimationType) -> TimeInterval {
+        let durations = [0.26, 0.2, 0.2]
+        return durations[itemIndex]
+    }
+    
+    
+    @IBAction func optionsButtonPressed(_ sender: Any) {
+        delegate?.showOptions(for: self)
+    }
+    
+    func getIndexPath() -> IndexPath? {
+        guard let superView = self.superview as? UITableView else {
+            print("Superview is not a UITableView - getIndexPath")
+            return nil
+        }
+        
+        return superView.indexPath(for: self)
+    }
+    
 }

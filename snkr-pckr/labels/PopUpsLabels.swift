@@ -24,4 +24,7 @@ class PopUpLabels {
     static let selectImageTitle = "Select an image."
     static let selectLibraryTitle = "Select image from library"
     static let selectCameraTitle = "Take a picture"
+    static let editCategoryButtonTitle = "Edit"
+    static let deleteCategoryButtonTitle = "Delete"
+    static let confirmCategorySnkrPopupTitle = "Are you sure you want to delete it?"
 }

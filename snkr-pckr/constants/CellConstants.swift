@@ -10,6 +10,6 @@ import Foundation
 import UIKit
 
 class CellConstants {
-    static let margins = UIEdgeInsets(top: 1, left: 0, bottom: 1, right: 0)  //set the values for top, left, bottom, right margins
+    static let margins = UIEdgeInsets(top: 1, left: 0, bottom: 1, right: 0) 
     static let cornerRadius = CGFloat(6)    
 }

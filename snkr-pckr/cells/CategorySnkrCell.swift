@@ -25,6 +25,6 @@ class CategorySnkrCell: UITableViewCell {
         super.awakeFromNib()
         
         self.backView.layer.cornerRadius = CellConstants.cornerRadius
-        self.backView.layer.masksToBounds = true
+        self.backView.layer.masksToBounds = true        
     }
 }

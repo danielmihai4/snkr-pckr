@@ -1,31 +1,30 @@
 //
-//  SnkrOptionsPopup.swift
+//  CategoryOptionsPopupView.swift
 //  snkr-pckr
 //
-//  Created by Daniel Mihai on 03/08/2019.
+//  Created by Daniel Mihai on 11/08/2019.
 //  Copyright © 2019 Daniel Mihai. All rights reserved.
 //
 
 import UIKit
 import SwiftEntryKit
 
-protocol PopUpOptionsControlleDelegate {
-    func deleteSnkr(_ snkr: Snkr)
-    func toggleWearState(_ snkr: Snkr)
-    func markToClean(_ snkr: Snkr)
+protocol CategoryOptionsPopupViewDelegate {
+    func deleteCategory(_ category: Category)
+    func editCategory(_ category: Category)
 }
 
-class SnkrOptionsPopupView: UIView {
+class CategoryOptionsPopupView: UIView {
     
     private let scrollViewVerticalOffset: CGFloat = 20
     private let titleLabel = UILabel()
     private let scrollView = UIScrollView()
     private var buttonViews: [EKButtonBarView] = []
-    private let snkr: Snkr
-    private let delegate: PopUpOptionsControlleDelegate
+    private let category: Category
+    private let delegate: CategoryOptionsPopupViewDelegate
     
-    public init(with delegate: PopUpOptionsControlleDelegate, snkr: Snkr) {
-        self.snkr = snkr
+    public init(with delegate: CategoryOptionsPopupViewDelegate, category: Category) {
+        self.category = category
         self.delegate = delegate
         super.init(frame: UIScreen.main.bounds)
         
@@ -96,18 +95,14 @@ class SnkrOptionsPopupView: UIView {
     
     private func setupButtons() {
         var buttonViews = [EKButtonBarView]()
-       
-        let wearSnkrButtonBarView = createWearSnkrButtonBarView()
-        scrollView.addSubview(wearSnkrButtonBarView)
-        buttonViews.append(wearSnkrButtonBarView)
         
-        let cleanSnkrButtonBarView = createCleanSnkrButtonBarView()
-        scrollView.addSubview(cleanSnkrButtonBarView)
-        buttonViews.append(cleanSnkrButtonBarView)
+        let editCategoryButtonBarView = creatEditCategoryButtonBarView()
+        scrollView.addSubview(editCategoryButtonBarView)
+        buttonViews.append(editCategoryButtonBarView)
         
-        let deleteSnkrButtonBarView = createDeleteSnkrButtonBarView()
-        scrollView.addSubview(deleteSnkrButtonBarView)
-        buttonViews.append(deleteSnkrButtonBarView)
+        let deleteCategoryButtonBarView = createDeleteCategoryButtonBarView()
+        scrollView.addSubview(deleteCategoryButtonBarView)
+        buttonViews.append(deleteCategoryButtonBarView)
         
         buttonViews.first!.layout(.top, to: .bottom, of: titleLabel, offset: 20)
         buttonViews.spread(.vertically, offset: 5)
@@ -127,60 +122,41 @@ class SnkrOptionsPopupView: UIView {
         endEditing(true)
     }
     
-    private func createWearSnkrButtonBarView() -> EKButtonBarView {
-        let title = snkr.lastWornDate == nil ? PopUpLabels.wearSnkrButtonTitle : PopUpLabels.unselectSnkrButtonTitle
-        let wearSnkrButtonContent = EKProperty.ButtonContent(
-            label: .init(text: title, style: OptionsPopupStyle.buttonStyle),
+    private func creatEditCategoryButtonBarView() -> EKButtonBarView {
+        let editCategoryButtonContent = EKProperty.ButtonContent(
+            label: .init(text: PopUpLabels.editCategoryButtonTitle, style: OptionsPopupStyle.buttonStyle),
             backgroundColor: EKColor(light: Colors.cadetGrey.withAlphaComponent(0.5), dark: Colors.cadetGrey.withAlphaComponent(0.5)),
             highlightedBackgroundColor: EKColor.white.with(alpha: 0.8),
             displayMode: EKAttributes.DisplayMode.inferred) {
-                self.delegate.toggleWearState(self.snkr)
+                self.delegate.editCategory(self.category)
                 SwiftEntryKit.dismiss()
         }
-        let wearSnkrButtonBarContent = EKProperty.ButtonBarContent(with: wearSnkrButtonContent, separatorColor: .clear, expandAnimatedly: true)
-        let wearSnkrButtonBarView = EKButtonBarView(with: wearSnkrButtonBarContent)
-        wearSnkrButtonBarView.clipsToBounds = true
-        wearSnkrButtonBarView.tag = 0
-        wearSnkrButtonBarView.expand()
+        let editCategoryButtonBarContent = EKProperty.ButtonBarContent(with: editCategoryButtonContent, separatorColor: .clear, expandAnimatedly: true)
+        let editCategoryButtonBarView = EKButtonBarView(with: editCategoryButtonBarContent)
+        editCategoryButtonBarView.clipsToBounds = true
+        editCategoryButtonBarView.tag = 0
+        editCategoryButtonBarView.expand()
         
-        return wearSnkrButtonBarView
+        return editCategoryButtonBarView
     }
     
-    private func createCleanSnkrButtonBarView() -> EKButtonBarView {
-        let cleanSnkrButtonContent = EKProperty.ButtonContent(
-            label: .init(text: PopUpLabels.cleanSnkrButtonTitle, style: OptionsPopupStyle.buttonStyle),
-            backgroundColor: EKColor(light: Colors.cadetGrey.withAlphaComponent(0.5), dark: Colors.cadetGrey.withAlphaComponent(0.5)),
-            highlightedBackgroundColor: EKColor.white.with(alpha: 0.8),
-            displayMode: EKAttributes.DisplayMode.inferred) {
-                self.delegate.markToClean(self.snkr)
-                SwiftEntryKit.dismiss()
-        }
-        let cleanSnkrButtonBarContent = EKProperty.ButtonBarContent(with: cleanSnkrButtonContent, separatorColor: .clear, expandAnimatedly: true)
-        let cleanSnkrButtonBarView = EKButtonBarView(with: cleanSnkrButtonBarContent)
-        cleanSnkrButtonBarView.clipsToBounds = true
-        cleanSnkrButtonBarView.tag = 0
-        cleanSnkrButtonBarView.expand()
-        
-        return cleanSnkrButtonBarView
-    }
-    
-    private func createDeleteSnkrButtonBarView() -> EKButtonBarView {
-        let deleteSnkrButtonContent = EKProperty.ButtonContent(
-            label: .init(text: PopUpLabels.deleteSnkrButtonTitle, style: OptionsPopupStyle.buttonStyle),
+    private func createDeleteCategoryButtonBarView() -> EKButtonBarView {
+        let deleteCategoryButtonContent = EKProperty.ButtonContent(
+            label: .init(text: PopUpLabels.deleteCategoryButtonTitle, style: OptionsPopupStyle.buttonStyle),
             backgroundColor: EKColor(light: Colors.cadetGrey.withAlphaComponent(0.2), dark: Colors.cadetGrey.withAlphaComponent(0.2)),
             highlightedBackgroundColor: EKColor.white.with(alpha: 0.8),
             displayMode: EKAttributes.DisplayMode.inferred) {  [unowned self] in
                 SwiftEntryKit.dismiss()
                 
-                self.delegate.deleteSnkr(self.snkr)
+                self.delegate.deleteCategory(self.category)
                 
         }
-        let deleteSnkrButtonBarContent = EKProperty.ButtonBarContent(with: deleteSnkrButtonContent, separatorColor: .clear, expandAnimatedly: true)
-        let deleteSnkrButtonBarView = EKButtonBarView(with: deleteSnkrButtonBarContent)
-        deleteSnkrButtonBarView.clipsToBounds = true
-        deleteSnkrButtonBarView.tag = 0
-        deleteSnkrButtonBarView.expand()
+        let deleteCategoryButtonBarContent = EKProperty.ButtonBarContent(with: deleteCategoryButtonContent, separatorColor: .clear, expandAnimatedly: true)
+        let deleteCategoryButtonBarView = EKButtonBarView(with: deleteCategoryButtonBarContent)
+        deleteCategoryButtonBarView.clipsToBounds = true
+        deleteCategoryButtonBarView.tag = 0
+        deleteCategoryButtonBarView.expand()
         
-        return deleteSnkrButtonBarView
+        return deleteCategoryButtonBarView
     }
 }

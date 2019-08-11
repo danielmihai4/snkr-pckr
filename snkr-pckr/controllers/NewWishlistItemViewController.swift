@@ -142,11 +142,9 @@ class NewWishlistItemViewController: UIViewController, UIImagePickerControllerDe
     }
     
     @objc func handleDoubleTap(recognizer: UITapGestureRecognizer) {
-        if(self.scrollView.zoomScale > self.scrollView.minimumZoomScale) {
-            self.scrollView.setZoomScale(self.scrollView.minimumZoomScale, animated: true)
-        } else {
-            self.scrollView.setZoomScale(self.scrollView.maximumZoomScale, animated: true)
-        }
+        let zoomScale = self.scrollView.zoomScale > self.scrollView.minimumZoomScale ? self.scrollView.minimumZoomScale : self.scrollView.maximumZoomScale
+        
+        self.scrollView.setZoomScale(zoomScale, animated: true)
     }
     
     private func resetScrollView() {
@@ -156,8 +154,6 @@ class NewWishlistItemViewController: UIViewController, UIImagePickerControllerDe
         let scrollViewSize = self.scrollView.bounds.size
         let widthScale = scrollViewSize.width / imageViewSize.width
         let heightScale = scrollViewSize.height / imageViewSize.height
-        
-        NSLog("ScrollViewSize: \(scrollViewSize)")
         
         self.scrollView.minimumZoomScale = max(widthScale, heightScale)
         self.scrollView.maximumZoomScale = 1.0
