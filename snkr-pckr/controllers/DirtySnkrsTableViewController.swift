@@ -38,7 +38,7 @@ class DirtySnkrsTableViewController: UITableViewController, TableViewCellDelegat
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 325
+        return 330
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -54,12 +54,36 @@ class DirtySnkrsTableViewController: UITableViewController, TableViewCellDelegat
         cell.colorwayLabel.text = snkr.colorway
         cell.delegate = self
         
+        if (dirtySnkrs.firstIndex{$0 === snkr} == 0) {
+            cell.addTopBorder()
+        }
+        
         return cell
     }
     
     internal func doubleTap(cell: UITableViewCell) {
         if let dirtySnkrCell = cell as? DirtySnkrViewCell {
-            markSnkrClean(cell: dirtySnkrCell)
+            class PopupDelegate: ConfirmationPopupDelegate {
+                let parent: DirtySnkrsTableViewController
+                let cell: DirtySnkrViewCell
+                
+                init(parent: DirtySnkrsTableViewController, cell: DirtySnkrViewCell) {
+                    self.parent = parent
+                    self.cell = cell
+                }
+                
+                internal func performCancelAction() {
+                    //nothing to do
+                }
+                
+                internal func performConfirmAction() {
+                    self.parent.markSnkrClean(self.cell)
+                }
+            }
+            
+            let confirmationPopup = ConfirmationPopup(title: PopUpLabels.confirmCleanSnkrPopupTitle, titleAlignment: NSTextAlignment.center, image: nil, delegate: PopupDelegate(parent: self, cell: dirtySnkrCell))
+            
+            SwiftEntryKit.display(entry: confirmationPopup.getContentView(), using: confirmationPopup.getAttributes())
         }
     }
     
@@ -87,32 +111,40 @@ class DirtySnkrsTableViewController: UITableViewController, TableViewCellDelegat
         dirtySnkrs = snkrService.loadAll(isClean: false)
     }
     
-    private func markSnkrClean(cell: DirtySnkrViewCell) {
-        let dialogMessage = UIAlertController(title: AlertLabels.confirmTitle, message: AlertLabels.cleanMessage, preferredStyle: .alert)
-        let noAction = UIAlertAction(title: ButtonLabels.no, style: .cancel, handler: nil)
-        let yesAction = UIAlertAction(title: ButtonLabels.yes, style: .default, handler: { (action) -> Void in
-            let indexPath = cell.getIndexPath()
-            let snkr = self.dirtySnkrs.remove(at: (indexPath?.row)!)
-            snkr.isClean = true
-            
-            self.tableView.deleteRows(at: [indexPath!], with: UITableView.RowAnimation.automatic)
-            self.snkrService.update(snkr: snkr)
-        });
+//    private func markSnkrClean(cell: DirtySnkrViewCell) {
+//        let dialogMessage = UIAlertController(title: AlertLabels.confirmTitle, message: AlertLabels.cleanMessage, preferredStyle: .alert)
+//        let noAction = UIAlertAction(title: ButtonLabels.no, style: .cancel, handler: nil)
+//        let yesAction = UIAlertAction(title: ButtonLabels.yes, style: .default, handler: { (action) -> Void in
+//            let indexPath = cell.getIndexPath()
+//            let snkr = self.dirtySnkrs.remove(at: (indexPath?.row)!)
+//            snkr.isClean = true
+//
+//            self.tableView.deleteRows(at: [indexPath!], with: UITableView.RowAnimation.automatic)
+//            self.snkrService.update(snkr: snkr)
+//        });
+//
+//        dialogMessage.addAction(yesAction)
+//        dialogMessage.addAction(noAction)
+//
+//        self.present(dialogMessage, animated: true, completion: nil)
+//    }
+    
+    private func markSnkrClean(_ cell: DirtySnkrViewCell) {
+        let indexPath = cell.getIndexPath()
+        let snkr = self.dirtySnkrs.remove(at: (indexPath?.row)!)
+        snkr.isClean = true
         
-        dialogMessage.addAction(yesAction)
-        dialogMessage.addAction(noAction)
-        
-        self.present(dialogMessage, animated: true, completion: nil)
+        self.tableView.deleteRows(at: [indexPath!], with: UITableView.RowAnimation.automatic)
+        self.snkrService.update(snkr: snkr)
     }
     
     private func reloadData() {
         self.tableView.reloadData()
         
         if dirtySnkrs.isEmpty {
-            let backgroundImage = UIImage(named: "icon-washing-machine.png")
-            let imageView = UIImageView(image: backgroundImage)
+            let imageView = UIImageView(image: UIImage(named: "icon-empty-box.png"))
             
-            imageView.contentMode = .scaleAspectFit
+            imageView.contentMode = .center
                         
             self.tableView.backgroundView = imageView            
         } else {

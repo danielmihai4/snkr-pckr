@@ -72,6 +72,10 @@ class CategoriesTableViewController: UITableViewController, NewCategoryPopupDele
         cell.nameLabel.text = category.name
         cell.snkrCountLabel.text = displaySnkrCount(snkrCount: category.snkrs.count)
         
+        if (categories.firstIndex{$0 === category} == 0) {
+            cell.addTopBorder()
+        }
+        
         return cell
     }
     
@@ -87,6 +91,10 @@ class CategoriesTableViewController: UITableViewController, NewCategoryPopupDele
         let newCategoryPopup = NewCategoryPopup(self)
         
         SwiftEntryKit.display(entry: newCategoryPopup.getContentView(), using: newCategoryPopup.getAttributes(), presentInsideKeyWindow: true)
+    }
+    
+    @IBAction func backToCategories(segue:UIStoryboardSegue) {
+        //nothing to do.
     }
     
     private func displaySnkrCount(snkrCount: Int) -> String {

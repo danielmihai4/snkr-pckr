@@ -60,6 +60,10 @@ class WishlistTableViewController: UITableViewController {
         cell.releaseDateMonthLabel.text = DateUtils.formatReleaseDateMonth(releaseDate: wishlistItem.releaseDate)
         cell.pic.image = wishlistItem.pic
         
+        if (wishlistItems.firstIndex{$0 === wishlistItem} == 0) {
+            cell.addTopBorder()
+        }
+        
         return cell
     }
     

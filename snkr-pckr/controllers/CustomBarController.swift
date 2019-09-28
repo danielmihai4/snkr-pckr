@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomBarController: UITabBarController {
+class CustomBarController: UITabBarController, UITabBarControllerDelegate {
 
     fileprivate var shouldSelectOnTabBar = true
     private var circleView : UIView!
@@ -39,6 +39,7 @@ class CustomBarController: UITabBarController {
     
     open override func viewDidLoad() {
         super.viewDidLoad()
+        self.delegate = self
         let tabBar = CustomTabBar()
         self.setValue(tabBar, forKey: "tabBar")
         
@@ -65,6 +66,33 @@ class CustomBarController: UITabBarController {
         circleImageView.image = image(with: self.tabBar.selectedItem?.image ?? self.tabBar.items?.first?.image, scaledTo: CGSize(width: 30, height: 30))
     }
     
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let tabBarIndex = tabBarController.selectedIndex
+        let indexPath = NSIndexPath(row: 0, section: 0)
+        let navigationViewController = viewController as? UINavigationController
+        if tabBarIndex == 0 {
+            let selectedNavigationViewController = navigationViewController?.viewControllers[0] as? SnkrsTableViewController
+            if (selectedNavigationViewController?.tableView.numberOfRows(inSection: 0))! > 0 {
+                selectedNavigationViewController?.tableView.scrollToRow(at: indexPath as IndexPath, at: .top, animated: true)
+            }
+        } else if tabBarIndex == 1 {
+            let selectedNavigationViewController = navigationViewController?.viewControllers[0] as? DirtySnkrsTableViewController
+            if (selectedNavigationViewController?.tableView.numberOfRows(inSection: 0))! > 0 {
+                selectedNavigationViewController?.tableView.scrollToRow(at: indexPath as IndexPath, at: .top, animated: true)
+            }
+        } else if tabBarIndex == 2 {
+            let selectedNavigationViewController = navigationViewController?.viewControllers[0] as? CategoriesTableViewController
+            if (selectedNavigationViewController?.tableView.numberOfRows(inSection: 0))! > 0 {
+                selectedNavigationViewController?.tableView.scrollToRow(at: indexPath as IndexPath, at: .top, animated: true)
+            }
+        } else if tabBarIndex == 3 {
+            let selectedNavigationViewController = navigationViewController?.viewControllers[0] as? WishlistTableViewController
+            if (selectedNavigationViewController?.tableView.numberOfRows(inSection: 0))! > 0 {
+                selectedNavigationViewController?.tableView.scrollToRow(at: indexPath as IndexPath, at: .top, animated: true)
+            }
+        }
+    }
+    
     private var _barHeight: CGFloat = 74
     open var barHeight: CGFloat {
         get {
@@ -81,7 +109,7 @@ class CustomBarController: UITabBarController {
     }
     
     private func getHeightOffset() -> CGFloat {
-        return Device.isLargeScreen() ? CGFloat(80) : CGFloat(40)
+        return Device.isLargeScreen() ? CGFloat(50) : CGFloat(40)
     }
     
     private func updateTabBarFrame() {

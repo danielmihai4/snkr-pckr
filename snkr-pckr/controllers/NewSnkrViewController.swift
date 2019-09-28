@@ -84,7 +84,12 @@ class NewSnkrViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
+        if let nextTextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            nextTextField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        
         return false
     }
     
@@ -104,21 +109,12 @@ class NewSnkrViewController: UIViewController, UIImagePickerControllerDelegate, 
         let widthScale = scrollViewSize.width / imageViewSize.width
         let heightScale = scrollViewSize.height / imageViewSize.height
         
-        NSLog("ImageViewSize: \(imageViewSize)")
-        NSLog("ScrollViewSize: \(scrollViewSize)")
-        NSLog("WidthScale: \(widthScale)")
-        NSLog("HeightScale: \(heightScale)")
-        
         scrollView.minimumZoomScale = max(widthScale, heightScale)
         scrollView.maximumZoomScale = 1.0
     }
     
     @objc func handleDoubleTap(recognizer: UITapGestureRecognizer) {
-        NSLog("ScrollView Zoom Scale: \(scrollView.zoomScale)")
-        NSLog("ScrollView Minimum Zoom Scale: \(scrollView.minimumZoomScale)")
-        NSLog("ScrollView Maximum Zoom Scale: \(scrollView.maximumZoomScale)")
-        
-        if(scrollView.zoomScale > scrollView.minimumZoomScale) {
+        if (scrollView.zoomScale > scrollView.minimumZoomScale) {
             scrollView.setZoomScale(scrollView.minimumZoomScale, animated: true)            
         } else {
             scrollView.setZoomScale(scrollView.maximumZoomScale, animated: true)

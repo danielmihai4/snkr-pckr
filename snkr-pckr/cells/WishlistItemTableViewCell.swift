@@ -18,16 +18,25 @@ class WishlistItemTableViewCell: UITableViewCell {
     @IBOutlet weak var releaseDateDayLabel: UILabel!
     @IBOutlet weak var releaseDateMonthLabel: UILabel!
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        contentView.frame = contentView.frame.inset(by: CellConstants.margins)
-    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.backView.layer.cornerRadius = CellConstants.cornerRadius
-        self.backView.layer.masksToBounds = true
+        addBottomBorder()
+    }
+    
+    public func addTopBorder() {
+        addBorder(x: 0, y: 0, width: self.backView.frame.width, height: CellConstants.borderSize)
+    }
+    
+    private func addBottomBorder() {
+        addBorder(x: 0, y: self.backView.frame.height - CellConstants.borderSize, width: self.backView.frame.width, height: CellConstants.borderSize)
+    }
+    
+    private func addBorder(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) {
+        let border = CALayer()
+        
+        border.backgroundColor = Colors.pastelGrey.cgColor
+        border.frame = CGRect(x: x, y: y, width: width, height: height)
+        self.backView.layer.addSublayer(border)
     }
 }
