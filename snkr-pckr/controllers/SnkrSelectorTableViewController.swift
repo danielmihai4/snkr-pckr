@@ -54,6 +54,10 @@ class SnkrSelectorTableViewController: UITableViewController, TableViewCellDeleg
         }
         cell.checkbox.tintColor = Colors.pastelGrey
         
+        if (snkrs.firstIndex{$0 === snkr} == 0) {
+            cell.addTopBorder()
+        }
+        
         return cell
     }
     

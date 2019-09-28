@@ -46,6 +46,10 @@ class CategorySnkrsModalViewController: UIViewController,UITableViewDataSource, 
         cell.pic.image = snkr?.pic
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
+        if (self.category?.snkrs.firstIndex{$0 === snkr} == 0) {
+            cell.addTopBorder()
+        }
+        
         return cell
     }
     

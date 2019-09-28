@@ -18,28 +18,14 @@ class SnkrSelectorCell: UITableViewCell {
     
     var delegate: TableViewCellDelegate?
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        contentView.frame = contentView.frame.inset(by: CellConstants.margins)
-    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.backView.layer.cornerRadius = CellConstants.cornerRadius
-        self.backView.layer.masksToBounds = true
-        
-        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
-        doubleTap.numberOfTapsRequired = 2
-        addGestureRecognizer(doubleTap)
+        setupGestureRecognizer()
+        addBottomBorder()
     }
     
-    @objc func doubleTapped() {
-        delegate?.doubleTap(cell: self)
-    }
-    
-    func getIndexPath() -> IndexPath? {
+    public func getIndexPath() -> IndexPath? {
         guard let superView = self.superview as? UITableView else {
             print("Superview is not a UITableView - getIndexPath")
             return nil
@@ -48,4 +34,29 @@ class SnkrSelectorCell: UITableViewCell {
         return superView.indexPath(for: self)
     }
     
+    public func addTopBorder() {
+        addBorder(x: 0, y: 0, width: self.backView.frame.width, height: CellConstants.borderSize)
+    }
+    
+    @objc func doubleTapped() {
+        self.delegate?.doubleTap(cell: self)
+    }
+    
+    private func addBottomBorder() {
+        addBorder(x: 0, y: self.backView.frame.height - CellConstants.borderSize, width: self.backView.frame.width, height: CellConstants.borderSize)
+    }
+    
+    private func addBorder(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) {
+        let border = CALayer()
+        
+        border.backgroundColor = Colors.pastelGrey.cgColor
+        border.frame = CGRect(x: x, y: y, width: width, height: height)
+        self.backView.layer.addSublayer(border)
+    }
+    
+    private func setupGestureRecognizer() {
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
+        doubleTap.numberOfTapsRequired = 2
+        addGestureRecognizer(doubleTap)
+    }
 }

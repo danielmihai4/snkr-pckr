@@ -29,11 +29,7 @@ class SnkrsTableViewController: UITableViewController, PickedSnkrModalViewContro
         super.viewDidLoad()
         
         loadSnkrs()
-        
-        tableView.tableFooterView = searchFooter
-        tableView.separatorStyle = .none
-        tableView.showsVerticalScrollIndicator = false
-        
+        setupTableView()
         setupSearchController()
     }
 
@@ -57,6 +53,7 @@ class SnkrsTableViewController: UITableViewController, PickedSnkrModalViewContro
     
     override func viewDidAppear(_ animated: Bool) {
         self.tableView.reloadData()
+        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -67,6 +64,10 @@ class SnkrsTableViewController: UITableViewController, PickedSnkrModalViewContro
         cell.nameLabel.text = snkr.name
         cell.lastWornLabel.text = DateUtils.formatDate(lastWornDate: snkr.lastWornDate)
         cell.colorwayLabel.text = snkr.colorway
+        
+        if (snkrs.firstIndex{$0 === snkr} == 0) {
+            cell.addTopBorder()
+        }
         
         return cell
     }
@@ -112,11 +113,21 @@ class SnkrsTableViewController: UITableViewController, PickedSnkrModalViewContro
         }
     }
     
+    @IBAction func cancel(segue:UIStoryboardSegue) {
+        //nothing to do.
+    }
+    
     @IBAction func pickSnkr(_ sender: Any) {
         self.definesPresentationContext = true
         self.providesPresentationContextTransitionStyle = true
         
         self.overlayBlurredBackgroundView()
+    }
+    
+    private func setupTableView() {
+        self.tableView.tableFooterView = searchFooter
+        self.tableView.separatorStyle = .none
+        self.tableView.showsVerticalScrollIndicator = false
     }
     
     private func filterContentForSearchText(searchText: String) {
@@ -127,7 +138,7 @@ class SnkrsTableViewController: UITableViewController, PickedSnkrModalViewContro
             return searchBarIsEmpty() ? false : doesMatch
         })
         
-        tableView.reloadData()
+        self.tableView.reloadData()
     }
     
     private func searchBarIsEmpty() -> Bool {

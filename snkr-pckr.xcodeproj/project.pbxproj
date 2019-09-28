@@ -19,6 +19,7 @@
 		0EA0D56022F6F06700CC4E0D /* ConfirmationPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0D55F22F6F06700CC4E0D /* ConfirmationPopup.swift */; };
 		0EA0D56222F7334F00CC4E0D /* SelectImagePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0D56122F7334F00CC4E0D /* SelectImagePopupView.swift */; };
 		0EA0D56422F73B5A00CC4E0D /* AlertPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0D56322F73B5A00CC4E0D /* AlertPopup.swift */; };
+		0EC68CA2230977810097942E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EC68CA1230977810097942E /* Assets.xcassets */; };
 		0EF262E422FF0C6A001CFFCE /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF262E322FF0C6A001CFFCE /* Device.swift */; };
 		0EF262E622FF2282001CFFCE /* NewCategoryPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF262E522FF2282001CFFCE /* NewCategoryPopup.swift */; };
 		2C9FB75DDD92C27E321A53E6 /* Pods_snkr_pckr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8259DEF3E8D6B570193FF0EF /* Pods_snkr_pckr.framework */; };
@@ -29,7 +30,6 @@
 		315D131B21BD9F4F0016EE48 /* SearchFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D131A21BD9F4F0016EE48 /* SearchFooter.swift */; };
 		316ACF6A21A0C6A0001C5C57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316ACF6921A0C6A0001C5C57 /* AppDelegate.swift */; };
 		316ACF6F21A0C6A0001C5C57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 316ACF6D21A0C6A0001C5C57 /* Main.storyboard */; };
-		316ACF7121A0C6A8001C5C57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 316ACF7021A0C6A8001C5C57 /* Assets.xcassets */; };
 		316ACF7421A0C6A8001C5C57 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 316ACF7221A0C6A8001C5C57 /* LaunchScreen.storyboard */; };
 		316ACF7F21A0C6A9001C5C57 /* snkr_pckrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316ACF7E21A0C6A9001C5C57 /* snkr_pckrTests.swift */; };
 		316ACF8A21A0C6A9001C5C57 /* snkr_pckrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316ACF8921A0C6A9001C5C57 /* snkr_pckrUITests.swift */; };
@@ -95,6 +95,7 @@
 		0EA0D55F22F6F06700CC4E0D /* ConfirmationPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationPopup.swift; sourceTree = "<group>"; };
 		0EA0D56122F7334F00CC4E0D /* SelectImagePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectImagePopupView.swift; sourceTree = "<group>"; };
 		0EA0D56322F73B5A00CC4E0D /* AlertPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPopup.swift; sourceTree = "<group>"; };
+		0EC68CA1230977810097942E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0EF262E322FF0C6A001CFFCE /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		0EF262E522FF2282001CFFCE /* NewCategoryPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCategoryPopup.swift; sourceTree = "<group>"; };
 		310F0EB021B47BE80030D5A7 /* DirtySnkrsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirtySnkrsTableViewController.swift; sourceTree = "<group>"; };
@@ -105,7 +106,6 @@
 		316ACF6621A0C6A0001C5C57 /* snkr-pckr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "snkr-pckr.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		316ACF6921A0C6A0001C5C57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		316ACF6E21A0C6A0001C5C57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		316ACF7021A0C6A8001C5C57 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		316ACF7321A0C6A8001C5C57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		316ACF7521A0C6A8001C5C57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		316ACF7A21A0C6A9001C5C57 /* snkr-pckrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "snkr-pckrTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -261,8 +261,8 @@
 				316ACF9721A0C91A001C5C57 /* controllers */,
 				316ACF6921A0C6A0001C5C57 /* AppDelegate.swift */,
 				316ACFD321A1D40F001C5C57 /* snkr-pckr.xcdatamodeld */,
+				0EC68CA1230977810097942E /* Assets.xcassets */,
 				316ACF6D21A0C6A0001C5C57 /* Main.storyboard */,
-				316ACF7021A0C6A8001C5C57 /* Assets.xcassets */,
 				316ACF7221A0C6A8001C5C57 /* LaunchScreen.storyboard */,
 				316ACF7521A0C6A8001C5C57 /* Info.plist */,
 			);
@@ -510,7 +510,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				316ACF7421A0C6A8001C5C57 /* LaunchScreen.storyboard in Resources */,
-				316ACF7121A0C6A8001C5C57 /* Assets.xcassets in Resources */,
+				0EC68CA2230977810097942E /* Assets.xcassets in Resources */,
 				316ACF6F21A0C6A0001C5C57 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

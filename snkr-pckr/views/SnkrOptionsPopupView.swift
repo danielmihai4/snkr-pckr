@@ -35,7 +35,7 @@ class SnkrOptionsPopupView: UIView {
         setupTapGestureRecognizer()
         
         scrollView.layoutIfNeeded()
-        scrollView.contentSize.height = 200
+        scrollView.contentSize.height = 220
         self.backgroundColor = Colors.independence
         
         set(.height, of: scrollView.contentSize.height + scrollViewVerticalOffset * 2, priority: .defaultHigh)
