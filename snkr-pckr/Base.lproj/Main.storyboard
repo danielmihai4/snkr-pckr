@@ -540,6 +540,7 @@
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="262-x3-AS8">
                                 <rect key="frame" x="0.0" y="401" width="375" height="24"/>
+                                <color key="tintColor" red="0.84313725490000002" green="0.80784313730000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="Iaq-9n-9mH"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="375" id="LDR-kI-SFZ"/>
@@ -550,6 +551,7 @@
                             </textField>
                             <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Colorway" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fau-Fx-xk1">
                                 <rect key="frame" x="0.0" y="433" width="375" height="24"/>
+                                <color key="tintColor" red="0.84313725490000002" green="0.80784313730000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="26O-mC-ZQq"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="375" id="A8y-Ct-rpe"/>
@@ -560,6 +562,7 @@
                             </textField>
                             <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Price" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jk3-UP-PYI">
                                 <rect key="frame" x="0.0" y="465" width="375" height="24"/>
+                                <color key="tintColor" red="0.84313725490000002" green="0.80784313730000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="Nds-J6-RNx"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="375" id="fNX-xb-sR9"/>
@@ -595,6 +598,7 @@
                             </view>
                             <textField opaque="NO" tag="3" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Release Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Itf-mN-5VP">
                                 <rect key="frame" x="0.0" y="497" width="375" height="24"/>
+                                <color key="tintColor" red="0.84313725490000002" green="0.80784313730000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="375" id="Enw-WI-pYy"/>
                                     <constraint firstAttribute="height" constant="24" id="lTm-VV-RSF"/>
