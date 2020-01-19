@@ -38,7 +38,7 @@ class DirtySnkrsTableViewController: UITableViewController, TableViewCellDelegat
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 330
+        return 300
     }
 
     override func viewDidAppear(_ animated: Bool) {

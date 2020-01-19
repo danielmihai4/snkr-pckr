@@ -36,7 +36,7 @@ class SnkrOptionsPopupView: UIView {
         
         scrollView.layoutIfNeeded()
         scrollView.contentSize.height = 220
-        self.backgroundColor = Colors.independence
+        self.backgroundColor = Colors.umber
         
         set(.height, of: scrollView.contentSize.height + scrollViewVerticalOffset * 2, priority: .defaultHigh)
     }
@@ -49,7 +49,7 @@ class SnkrOptionsPopupView: UIView {
         var attributes = EKAttributes.bottomFloat
         attributes.hapticFeedbackType = .success
         attributes.displayDuration = .infinity
-        attributes.entryBackground = .color(color: EKColor(light: Colors.independence, dark: Colors.independence))
+        attributes.entryBackground = .color(color: EKColor(light: Colors.umber, dark: Colors.umber))
         attributes.screenBackground = .color(color: EKColor(light: screenBackgroundColor(), dark: screenBackgroundColor()))
         attributes.shadow = .active(with: .init(color: .black, opacity: 0.3, radius: 8))
         attributes.screenInteraction = .dismiss
@@ -74,7 +74,7 @@ class SnkrOptionsPopupView: UIView {
     }
     
     private func screenBackgroundColor() -> UIColor {
-        return Colors.independence.withAlphaComponent(0.8)
+        return Colors.umber.withAlphaComponent(0.8)
     }
     
     private func setupScrollView() {
@@ -91,7 +91,7 @@ class SnkrOptionsPopupView: UIView {
         titleLabel.forceContentWrap(.vertically)
         titleLabel.text = PopUpLabels.optionsTitle
         titleLabel.font = MainFont.demiBold.with(size: 20)
-        titleLabel.textColor = Colors.cadetGrey
+        titleLabel.textColor = Colors.darkVanilla
     }
     
     private func setupButtons() {
@@ -131,7 +131,7 @@ class SnkrOptionsPopupView: UIView {
         let title = snkr.lastWornDate == nil ? PopUpLabels.wearSnkrButtonTitle : PopUpLabels.unselectSnkrButtonTitle
         let wearSnkrButtonContent = EKProperty.ButtonContent(
             label: .init(text: title, style: OptionsPopupStyle.buttonStyle),
-            backgroundColor: EKColor(light: Colors.cadetGrey.withAlphaComponent(0.5), dark: Colors.cadetGrey.withAlphaComponent(0.5)),
+            backgroundColor: EKColor(light: Colors.darkVanilla.withAlphaComponent(0.5), dark: Colors.darkVanilla.withAlphaComponent(0.5)),
             highlightedBackgroundColor: EKColor.white.with(alpha: 0.8),
             displayMode: EKAttributes.DisplayMode.inferred) {
                 self.delegate.toggleWearState(self.snkr)
@@ -149,7 +149,7 @@ class SnkrOptionsPopupView: UIView {
     private func createCleanSnkrButtonBarView() -> EKButtonBarView {
         let cleanSnkrButtonContent = EKProperty.ButtonContent(
             label: .init(text: PopUpLabels.cleanSnkrButtonTitle, style: OptionsPopupStyle.buttonStyle),
-            backgroundColor: EKColor(light: Colors.cadetGrey.withAlphaComponent(0.5), dark: Colors.cadetGrey.withAlphaComponent(0.5)),
+            backgroundColor: EKColor(light: Colors.darkVanilla.withAlphaComponent(0.5), dark: Colors.darkVanilla.withAlphaComponent(0.5)),
             highlightedBackgroundColor: EKColor.white.with(alpha: 0.8),
             displayMode: EKAttributes.DisplayMode.inferred) {
                 self.delegate.markToClean(self.snkr)
@@ -167,7 +167,7 @@ class SnkrOptionsPopupView: UIView {
     private func createDeleteSnkrButtonBarView() -> EKButtonBarView {
         let deleteSnkrButtonContent = EKProperty.ButtonContent(
             label: .init(text: PopUpLabels.deleteSnkrButtonTitle, style: OptionsPopupStyle.buttonStyle),
-            backgroundColor: EKColor(light: Colors.cadetGrey.withAlphaComponent(0.2), dark: Colors.cadetGrey.withAlphaComponent(0.2)),
+            backgroundColor: EKColor(light: Colors.darkVanilla.withAlphaComponent(0.2), dark: Colors.darkVanilla.withAlphaComponent(0.2)),
             highlightedBackgroundColor: EKColor.white.with(alpha: 0.8),
             displayMode: EKAttributes.DisplayMode.inferred) {  [unowned self] in
                 SwiftEntryKit.dismiss()

@@ -11,7 +11,9 @@ import Foundation
 class PopUpLabels {
     static let newCategoryTitle = "New Category"
     static let newCategoryNamePlaceholder = "Name"
+    static let downloadUrlPlaceholder = "URL"
     static let newCategorySaveButtonTitle = "Save"
+    static let downloadUrlButtonTitle = "Download"
     static let optionsTitle = "Options"
     static let deleteSnkrButtonTitle = "Delete"
     static let cleanSnkrButtonTitle = "Clean it!"
@@ -25,4 +27,5 @@ class PopUpLabels {
     static let selectImageTitle = "Select an image."
     static let selectLibraryTitle = "Select image from library"
     static let selectCameraTitle = "Take a picture"
+    static let urlDownloadTitle = "Download from URL"
 }

@@ -31,10 +31,13 @@ class NewSnkrViewController: UIViewController, UIImagePickerControllerDelegate, 
         setupTextFields()
         setupGestureRecognizer()
         setupScrollView()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @IBAction func addPic(_ sender: Any) {
-        let selectImagePopup = SelectImagePopupView(with: self)
+        let selectImagePopup = SelectImagePopupView(delegate: self, withUrlDownload: false)
         
         SwiftEntryKit.display(entry: selectImagePopup, using: selectImagePopup.getAttributes())
     }
@@ -53,6 +56,20 @@ class NewSnkrViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         if canSave {
             performSegue(withIdentifier: Segues.AddNewSnkr, sender: self)
+        }
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
         }
     }
     
@@ -131,6 +148,10 @@ class NewSnkrViewController: UIViewController, UIImagePickerControllerDelegate, 
         self.present(self.imagePickerController, animated: true, completion: nil)
     }
     
+    internal func urlDownloadSelected() {
+        //not needed
+    }
+    
     private func setupGestureRecognizer() {
         let doubleTap = UITapGestureRecognizer(target: self, action: #selector(self.handleDoubleTap(recognizer:)))
         doubleTap.numberOfTapsRequired = 2
@@ -149,15 +170,15 @@ class NewSnkrViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     private func setupNameTextField() {
-        self.nameTextField.layer.addSublayer(createBottomBorder(self.nameTextField))
         self.nameTextField.layer.masksToBounds = true
         self.nameTextField.delegate = self
+        addBorder(edge: .bottom, textField: self.nameTextField)
     }
     
     private func setupColorwayTextField() {
-        self.colorwayTextField.layer.addSublayer(createBottomBorder(self.colorwayTextField))
         self.colorwayTextField.layer.masksToBounds = true
         self.colorwayTextField.delegate = self
+        addBorder(edge: .bottom, textField: self.colorwayTextField)
     }
     
     private func setupScrollView() {
@@ -165,13 +186,25 @@ class NewSnkrViewController: UIViewController, UIImagePickerControllerDelegate, 
         self.scrollView.addSubview(self.imageView)
     }
     
-    private func createBottomBorder(_ textField: UITextField) -> CALayer {
+    private func addBorder(edge: UIRectEdge, textField: UITextField) {
         let border = CALayer()
-        let width = CGFloat(1.0)
-        border.borderColor = Colors.pastelGrey.cgColor
-        border.frame = CGRect(x: 0, y: textField.frame.size.height - width, width:  textField.frame.size.width, height: textField.frame.size.height)
-        border.borderWidth = width
+        let thickness = CGFloat(1.0)
         
-        return border
+        switch edge {
+        case .top:
+            border.frame = CGRect(x: 0, y: 0, width: textField.frame.width, height: thickness)
+        case .bottom:
+            border.frame = CGRect(x: 0, y: textField.frame.height - thickness, width: textField.frame.width, height: thickness)
+        case .left:
+            border.frame = CGRect(x: 0, y: 0, width: thickness, height: textField.frame.height)
+        case .right:
+            border.frame = CGRect(x: textField.frame.width - thickness, y: 0, width: thickness, height: textField.frame.height)
+        default:
+            break
+        }
+
+        border.backgroundColor =  Colors.dustStorm.cgColor
+
+        textField.layer.addSublayer(border)
     }
 }

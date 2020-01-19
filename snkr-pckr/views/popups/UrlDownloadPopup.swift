@@ -1,8 +1,8 @@
 //
-//  NewCategoryPopup.swift
+//  UrlDownloadPopup.swift
 //  snkr-pckr
 //
-//  Created by Daniel Mihai on 10/08/2019.
+//  Created by Daniel Mihai on 15/12/2019.
 //  Copyright © 2019 Daniel Mihai. All rights reserved.
 //
 
@@ -10,15 +10,15 @@ import Foundation
 import SwiftEntryKit
 import UIKit
 
-protocol NewCategoryPopupDelegate {
-    func saveNewCategory(name: String)
+protocol UrlDownloadPopupDelegate {
+    func download(urlString: String)
 }
 
-class NewCategoryPopup {
+class UrlDownloadPopup {
     
-    private let delegate: NewCategoryPopupDelegate
+    private let delegate: UrlDownloadPopupDelegate
     
-    public init(_ delegate: NewCategoryPopupDelegate) {
+    public init(_ delegate: UrlDownloadPopupDelegate) {
         self.delegate = delegate
     }
     
@@ -61,7 +61,7 @@ class NewCategoryPopup {
     }
     
     private func createTitle() -> EKProperty.LabelContent {
-        return EKProperty.LabelContent(text: PopUpLabels.newCategoryTitle, style: PopupStyle.titleStyle)
+        return EKProperty.LabelContent(text: PopUpLabels.urlDownloadTitle, style: PopupStyle.titleStyle)
     }
     
     private func createNameTextField() -> EKProperty.TextFieldContent {
@@ -70,25 +70,25 @@ class NewCategoryPopup {
                                            tintColor: EKColor(light: Colors.darkVanilla, dark: Colors.darkVanilla),
                                            displayMode: EKAttributes.DisplayMode.inferred,
                                            textStyle: PopupStyle.textStyle,
-                                           leadingImage: UIImage(named: "icon-category")!.withRenderingMode(.alwaysTemplate),
+                                           leadingImage: UIImage(named: "icon-url")!.withRenderingMode(.alwaysTemplate),
                                            bottomBorderColor: EKColor(light: Colors.darkVanilla, dark: Colors.darkVanilla),
                                            accessibilityIdentifier: "nameTextFiled")
     }
     
     private func createPlaceholder() -> EKProperty.LabelContent {
-        return EKProperty.LabelContent (text: PopUpLabels.newCategoryNamePlaceholder, style: PopupStyle.placeholderStyle)
+        return EKProperty.LabelContent (text: PopUpLabels.downloadUrlPlaceholder, style: PopupStyle.placeholderStyle)
     }
     
     private func createButton(_ nameTextField: EKProperty.TextFieldContent) -> EKProperty.ButtonContent {
         return EKProperty.ButtonContent(
-            label: .init(text: PopUpLabels.newCategorySaveButtonTitle, style: PopupStyle.buttonStyle),
+            label: .init(text: PopUpLabels.downloadUrlButtonTitle, style: PopupStyle.buttonStyle),
             backgroundColor: EKColor(light: Colors.darkVanilla.withAlphaComponent(0.5), dark: Colors.darkVanilla.withAlphaComponent(0.5)),
             highlightedBackgroundColor: EKColor.white.with(alpha: 0.8),
             displayMode: EKAttributes.DisplayMode.inferred) {
-                let categoryName = nameTextField.textContent
-                if (!categoryName.isEmpty) {
-                    self.delegate.saveNewCategory(name: categoryName)
+                let urlString = nameTextField.textContent
+                if (!urlString.isEmpty) {
                     SwiftEntryKit.dismiss()
+                    self.delegate.download(urlString: urlString)
                 }
         }
     }

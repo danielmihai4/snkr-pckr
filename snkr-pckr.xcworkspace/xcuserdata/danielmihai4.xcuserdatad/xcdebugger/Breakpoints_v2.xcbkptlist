@@ -15,8 +15,8 @@
             timestampString = "587824453.879766"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -32,9 +32,9 @@
             timestampString = "587223430.649509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
-            landmarkName = "resetScrollView()"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
+            landmarkName = "showCannotLoadImagePopup()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -51,6 +51,238 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "108"
             endingLineNumber = "108">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "48FFF841-1478-46F2-9886-9177383762ED"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "snkr-pckr/controllers/NewWishlistItemViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "download(urlString:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0829F04C-AFA4-48F2-A9B4-0C3CC7BD1967"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "snkr-pckr/controllers/SnkrsTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "SnkrsTableViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "0829F04C-AFA4-48F2-A9B4-0C3CC7BD1967 - d81dd643e106c10b"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "snkr_pckr.SnkrsTableViewController.__allocating_init(style: __C.UITableViewStyle) -&gt; snkr_pckr.SnkrsTableViewController"
+                  moduleName = "snkr-pckr"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielmihai4/projects/swift/snkr-pckr/snkr-pckr/controllers/SnkrsTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  uuid = "0829F04C-AFA4-48F2-A9B4-0C3CC7BD1967 - 58db28684e0259b4"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "snkr_pckr.SnkrsTableViewController.init(style: __C.UITableViewStyle) -&gt; snkr_pckr.SnkrsTableViewController"
+                  moduleName = "snkr-pckr"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielmihai4/projects/swift/snkr-pckr/snkr-pckr/controllers/SnkrsTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "0829F04C-AFA4-48F2-A9B4-0C3CC7BD1967 - 806919898ba5b293"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "snkr_pckr.SnkrsTableViewController.__allocating_init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; snkr_pckr.SnkrsTableViewController"
+                  moduleName = "snkr-pckr"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielmihai4/projects/swift/snkr-pckr/snkr-pckr/controllers/SnkrsTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  uuid = "0829F04C-AFA4-48F2-A9B4-0C3CC7BD1967 - 17e77f71583b517a"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "snkr_pckr.SnkrsTableViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; snkr_pckr.SnkrsTableViewController"
+                  moduleName = "snkr-pckr"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielmihai4/projects/swift/snkr-pckr/snkr-pckr/controllers/SnkrsTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "189">
+               </Location>
+               <Location
+                  uuid = "0829F04C-AFA4-48F2-A9B4-0C3CC7BD1967 - c7b3ef7cf4671d83"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "snkr_pckr.SnkrsTableViewController.__allocating_init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;snkr_pckr.SnkrsTableViewController&gt;"
+                  moduleName = "snkr-pckr"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielmihai4/projects/swift/snkr-pckr/snkr-pckr/controllers/SnkrsTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  uuid = "0829F04C-AFA4-48F2-A9B4-0C3CC7BD1967 - 1da8e3f8a24898be"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "snkr_pckr.SnkrsTableViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;snkr_pckr.SnkrsTableViewController&gt;"
+                  moduleName = "snkr-pckr"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielmihai4/projects/swift/snkr-pckr/snkr-pckr/controllers/SnkrsTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "126">
+               </Location>
+               <Location
+                  uuid = "0829F04C-AFA4-48F2-A9B4-0C3CC7BD1967 - 5894a74ce468b57c"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "snkr_pckr.SnkrsTableViewController.__deallocating_deinit"
+                  moduleName = "snkr-pckr"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielmihai4/projects/swift/snkr-pckr/snkr-pckr/controllers/SnkrsTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A6B6D364-7C1F-4D3B-BEE8-E5998FA0CC98"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "snkr-pckr/controllers/SnkrsTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "SnkrsTableViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "A6B6D364-7C1F-4D3B-BEE8-E5998FA0CC98 - c4e053004acc233a"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "snkr_pckr.SnkrsTableViewController.snkrs.modify : Swift.Array&lt;snkr_pckr.Snkr&gt;"
+                  moduleName = "snkr-pckr"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielmihai4/projects/swift/snkr-pckr/snkr-pckr/controllers/SnkrsTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "26">
+               </Location>
+               <Location
+                  uuid = "A6B6D364-7C1F-4D3B-BEE8-E5998FA0CC98 - e94775c8255b2f61"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "snkr_pckr.SnkrsTableViewController.snkrs.modify : Swift.Array&lt;snkr_pckr.Snkr&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "snkr-pckr"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielmihai4/projects/swift/snkr-pckr/snkr-pckr/controllers/SnkrsTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "27">
+               </Location>
+               <Location
+                  uuid = "A6B6D364-7C1F-4D3B-BEE8-E5998FA0CC98 - 58db28684e0259b4"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "snkr_pckr.SnkrsTableViewController.init(style: __C.UITableViewStyle) -&gt; snkr_pckr.SnkrsTableViewController"
+                  moduleName = "snkr-pckr"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielmihai4/projects/swift/snkr-pckr/snkr-pckr/controllers/SnkrsTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "A6B6D364-7C1F-4D3B-BEE8-E5998FA0CC98 - 17e77f71583b517a"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "snkr_pckr.SnkrsTableViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; snkr_pckr.SnkrsTableViewController"
+                  moduleName = "snkr-pckr"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielmihai4/projects/swift/snkr-pckr/snkr-pckr/controllers/SnkrsTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "189">
+               </Location>
+               <Location
+                  uuid = "A6B6D364-7C1F-4D3B-BEE8-E5998FA0CC98 - 1da8e3f8a24898be"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "snkr_pckr.SnkrsTableViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;snkr_pckr.SnkrsTableViewController&gt;"
+                  moduleName = "snkr-pckr"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielmihai4/projects/swift/snkr-pckr/snkr-pckr/controllers/SnkrsTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "126">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

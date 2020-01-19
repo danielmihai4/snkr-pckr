@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E6E076822F392590023401F /* CustomBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E076722F392590023401F /* CustomBarController.swift */; };
-		0E6E076A22F392D60023401F /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E076922F392D60023401F /* CustomTabBar.swift */; };
 		0E6E076C22F393BA0023401F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E076B22F393BA0023401F /* Colors.swift */; };
+		0E6F65E623A51EFE000DF915 /* BaseSnkrTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6F65E523A51EFE000DF915 /* BaseSnkrTableViewCell.swift */; };
+		0E6F65E823A6C2C2000DF915 /* UrlDownloadPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6F65E723A6C2C2000DF915 /* UrlDownloadPopup.swift */; };
 		0EA0D55222F622A600CC4E0D /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0D55122F622A600CC4E0D /* Fonts.swift */; };
 		0EA0D55422F62E7100CC4E0D /* PopUpsLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0D55322F62E7100CC4E0D /* PopUpsLabels.swift */; };
-		0EA0D55822F637D700CC4E0D /* NewCategoryPopupStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0D55722F637D700CC4E0D /* NewCategoryPopupStyle.swift */; };
+		0EA0D55822F637D700CC4E0D /* PopupStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0D55722F637D700CC4E0D /* PopupStyle.swift */; };
 		0EA0D55A22F647C400CC4E0D /* SnkrOptionsPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0D55922F647C400CC4E0D /* SnkrOptionsPopupView.swift */; };
 		0EA0D55C22F64F6600CC4E0D /* OptionsPopUpStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0D55B22F64F6600CC4E0D /* OptionsPopUpStyle.swift */; };
 		0EA0D55E22F6E4BE00CC4E0D /* ConfirmPopupStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0D55D22F6E4BE00CC4E0D /* ConfirmPopupStyle.swift */; };
@@ -83,12 +83,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0E6E076722F392590023401F /* CustomBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBarController.swift; sourceTree = "<group>"; };
-		0E6E076922F392D60023401F /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		0E6E076B22F393BA0023401F /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		0E6F65E523A51EFE000DF915 /* BaseSnkrTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSnkrTableViewCell.swift; sourceTree = "<group>"; };
+		0E6F65E723A6C2C2000DF915 /* UrlDownloadPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlDownloadPopup.swift; sourceTree = "<group>"; };
 		0EA0D55122F622A600CC4E0D /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		0EA0D55322F62E7100CC4E0D /* PopUpsLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpsLabels.swift; sourceTree = "<group>"; };
-		0EA0D55722F637D700CC4E0D /* NewCategoryPopupStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCategoryPopupStyle.swift; sourceTree = "<group>"; };
+		0EA0D55722F637D700CC4E0D /* PopupStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupStyle.swift; sourceTree = "<group>"; };
 		0EA0D55922F647C400CC4E0D /* SnkrOptionsPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnkrOptionsPopupView.swift; sourceTree = "<group>"; };
 		0EA0D55B22F64F6600CC4E0D /* OptionsPopUpStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsPopUpStyle.swift; sourceTree = "<group>"; };
 		0EA0D55D22F6E4BE00CC4E0D /* ConfirmPopupStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPopupStyle.swift; sourceTree = "<group>"; };
@@ -184,7 +184,7 @@
 		0EA0D55522F637AE00CC4E0D /* styles */ = {
 			isa = PBXGroup;
 			children = (
-				0EA0D55722F637D700CC4E0D /* NewCategoryPopupStyle.swift */,
+				0EA0D55722F637D700CC4E0D /* PopupStyle.swift */,
 				0EA0D55B22F64F6600CC4E0D /* OptionsPopUpStyle.swift */,
 				0EA0D55D22F6E4BE00CC4E0D /* ConfirmPopupStyle.swift */,
 			);
@@ -197,6 +197,7 @@
 				0EA0D55F22F6F06700CC4E0D /* ConfirmationPopup.swift */,
 				0EA0D56322F73B5A00CC4E0D /* AlertPopup.swift */,
 				0EF262E522FF2282001CFFCE /* NewCategoryPopup.swift */,
+				0E6F65E723A6C2C2000DF915 /* UrlDownloadPopup.swift */,
 			);
 			path = popups;
 			sourceTree = "<group>";
@@ -205,7 +206,6 @@
 			isa = PBXGroup;
 			children = (
 				313C394C21F4D12500F79981 /* DateUtils.swift */,
-				0E6E076922F392D60023401F /* CustomTabBar.swift */,
 				0EF262E322FF0C6A001CFFCE /* Device.swift */,
 			);
 			path = utils;
@@ -300,7 +300,6 @@
 				31E1EAE122E2FD3F00B3CB5F /* AnimatedTabBarController.swift */,
 				31E1EAE322E4EB2C00B3CB5F /* WishlistTableViewController.swift */,
 				31E1EAEB22E503DD00B3CB5F /* NewWishlistItemViewController.swift */,
-				0E6E076722F392590023401F /* CustomBarController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -323,6 +322,7 @@
 				31E06D12223490A300737C74 /* SnkrSelectorCell.swift */,
 				31E06D1722354DFD00737C74 /* CategorySnkrCell.swift */,
 				31E1EAE522E4EC1700B3CB5F /* WishlistItemTableViewCell.swift */,
+				0E6F65E523A51EFE000DF915 /* BaseSnkrTableViewCell.swift */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -627,11 +627,9 @@
 				0EF262E422FF0C6A001CFFCE /* Device.swift in Sources */,
 				31E06D08223474B900737C74 /* Category.swift in Sources */,
 				0EA0D56022F6F06700CC4E0D /* ConfirmationPopup.swift in Sources */,
-				0E6E076822F392590023401F /* CustomBarController.swift in Sources */,
-				0E6E076A22F392D60023401F /* CustomTabBar.swift in Sources */,
 				31E1EAE222E2FD3F00B3CB5F /* AnimatedTabBarController.swift in Sources */,
 				31E06D162234984E00737C74 /* TableViewCellDelegate.swift in Sources */,
-				0EA0D55822F637D700CC4E0D /* NewCategoryPopupStyle.swift in Sources */,
+				0EA0D55822F637D700CC4E0D /* PopupStyle.swift in Sources */,
 				316ACF9B21A0CD1B001C5C57 /* NewSnkrViewController.swift in Sources */,
 				31242EC221AB0D4000F5230E /* PickedSnkrModalViewController.swift in Sources */,
 				31E06D112234903100737C74 /* SnkrSelectorTableViewController.swift in Sources */,
@@ -656,7 +654,9 @@
 				31A6F37D222348FD000FD665 /* SnkrService.swift in Sources */,
 				310F0EB321B47C0C0030D5A7 /* DirtySnkrViewCell.swift in Sources */,
 				31E06D13223490A300737C74 /* SnkrSelectorCell.swift in Sources */,
+				0E6F65E823A6C2C2000DF915 /* UrlDownloadPopup.swift in Sources */,
 				316ACF6A21A0C6A0001C5C57 /* AppDelegate.swift in Sources */,
+				0E6F65E623A51EFE000DF915 /* BaseSnkrTableViewCell.swift in Sources */,
 				0EA0D56422F73B5A00CC4E0D /* AlertPopup.swift in Sources */,
 				0EA0D55222F622A600CC4E0D /* Fonts.swift in Sources */,
 				0EA0D55E22F6E4BE00CC4E0D /* ConfirmPopupStyle.swift in Sources */,

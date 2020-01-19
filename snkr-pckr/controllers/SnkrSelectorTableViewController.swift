@@ -52,7 +52,7 @@ class SnkrSelectorTableViewController: UITableViewController, TableViewCellDeleg
         } else {
             cell.checkbox.image = UIImage(named: "icon-checkbox-unselected.png")?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
         }
-        cell.checkbox.tintColor = Colors.pastelGrey
+        cell.checkbox.tintColor = Colors.dustStorm
         
         if (snkrs.firstIndex{$0 === snkr} == 0) {
             cell.addTopBorder()

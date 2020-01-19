@@ -27,7 +27,7 @@ class AlertPopup {
             text: self.title,
             style: .init(
                 font: MainFont.medium.with(size: 15),
-                color: EKColor(light: Colors.cadetGrey, dark: Colors.cadetGrey),
+                color: EKColor(light: Colors.darkVanilla, dark: Colors.darkVanilla),
                 alignment: .center,
                 displayMode: EKAttributes.DisplayMode.inferred))
         
@@ -35,7 +35,7 @@ class AlertPopup {
             text: self.message,
             style: .init(
                 font: MainFont.medium.with(size: 13),
-                color: EKColor(light: Colors.cadetGrey, dark: Colors.cadetGrey),
+                color: EKColor(light: Colors.darkVanilla, dark: Colors.darkVanilla),
                 alignment: .center,
                 displayMode: EKAttributes.DisplayMode.inferred))
         
@@ -53,19 +53,19 @@ class AlertPopup {
         let okButton = EKProperty.ButtonContent(
             label: EKProperty.LabelContent(text: PopUpLabels.confirmButtonTitle, style: ConfirmPopupStyle.okButtonLabelStyle),
             backgroundColor: .clear,
-            highlightedBackgroundColor: EKColor(light: Colors.cadetGrey.withAlphaComponent(0.05), dark: Colors.cadetGrey.withAlphaComponent(0.05)),
+            highlightedBackgroundColor: EKColor(light: Colors.darkVanilla.withAlphaComponent(0.05), dark: Colors.darkVanilla.withAlphaComponent(0.05)),
             displayMode: EKAttributes.DisplayMode.inferred) {
                 SwiftEntryKit.dismiss()
         }
         
         let buttonsBarContent = EKProperty.ButtonBarContent(
             with: okButton,
-            separatorColor: EKColor(light: Colors.cadetGrey, dark: Colors.cadetGrey),
+            separatorColor: EKColor(light: Colors.darkVanilla, dark: Colors.darkVanilla),
             displayMode: EKAttributes.DisplayMode.inferred,
             expandAnimatedly: true)
         
         let contentView = EKAlertMessageView(with: EKAlertMessage(simpleMessage: simpleMessage, buttonBarContent: buttonsBarContent))
-        contentView.backgroundColor = Colors.independence
+        contentView.backgroundColor = Colors.umber
         
         return contentView
     }
@@ -92,7 +92,7 @@ class AlertPopup {
     }
     
     private func screenBackgroundColor() -> UIColor {
-        return Colors.independence.withAlphaComponent(0.8)
+        return Colors.umber.withAlphaComponent(0.8)
     }
     
 }

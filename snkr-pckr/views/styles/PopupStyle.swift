@@ -9,23 +9,23 @@
 import Foundation
 import SwiftEntryKit
 
-class NewCategoryPopupStyle {
+class PopupStyle {
     
     static let titleStyle = EKProperty.LabelStyle(
             font: MainFont.demiBold.with(size: 20),
-            color: EKColor(light: Colors.cadetGrey, dark: Colors.cadetGrey),
+            color: EKColor(light: Colors.darkVanilla, dark: Colors.darkVanilla),
             displayMode: EKAttributes.DisplayMode.inferred)
     
     static let textStyle = EKProperty.LabelStyle(
             font: MainFont.regular.with(size: 14),
-            color: EKColor(light: Colors.cadetGrey, dark: Colors.cadetGrey),
+            color: EKColor(light: Colors.darkVanilla, dark: Colors.darkVanilla),
             displayMode: EKAttributes.DisplayMode.inferred)    
  
     static let buttonStyle = EKProperty.LabelStyle(
             font: MainFont.regular.with(size: 16),
-            color: EKColor(light: Colors.cadetGrey, dark: Colors.cadetGrey))
+            color: EKColor(light: Colors.darkVanilla, dark: Colors.darkVanilla))
     
     static let placeholderStyle = EKProperty.LabelStyle(
             font: MainFont.regular.with(size: 14),
-            color: EKColor(light: Colors.cadetGrey.withAlphaComponent(0.5), dark: Colors.cadetGrey.withAlphaComponent(0.5)))
+            color: EKColor(light: Colors.darkVanilla.withAlphaComponent(0.5), dark: Colors.darkVanilla.withAlphaComponent(0.5)))
 }

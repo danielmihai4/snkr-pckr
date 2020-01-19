@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import SwiftEntryKit
 
-class SnkrsTableViewController: UITableViewController, PickedSnkrModalViewControllerDelegate, PopUpOptionsControlleDelegate, ConfirmationPopupDelegate {
+class SnkrsTableViewController: UITableViewController, TableViewCellDelegate, PickedSnkrModalViewControllerDelegate, PopUpOptionsControlleDelegate, ConfirmationPopupDelegate {
     
     var snkrs = [Snkr]() {
         didSet {
@@ -48,7 +48,7 @@ class SnkrsTableViewController: UITableViewController, PickedSnkrModalViewContro
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 355
+        return 300
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -64,6 +64,7 @@ class SnkrsTableViewController: UITableViewController, PickedSnkrModalViewContro
         cell.nameLabel.text = snkr.name
         cell.lastWornLabel.text = DateUtils.formatDate(lastWornDate: snkr.lastWornDate)
         cell.colorwayLabel.text = snkr.colorway
+        cell.delegate = self
         
         if (snkrs.firstIndex{$0 === snkr} == 0) {
             cell.addTopBorder()
@@ -122,6 +123,17 @@ class SnkrsTableViewController: UITableViewController, PickedSnkrModalViewContro
         self.providesPresentationContextTransitionStyle = true
         
         self.overlayBlurredBackgroundView()
+    }
+    
+    
+    internal func doubleTap(cell: UITableViewCell) {
+        if let snkrViewCell = cell as? SnkrTableViewCell {
+            let indexPath = tableView.indexPath(for: snkrViewCell)
+            let snkr = snkrs[(indexPath?.row)!]
+            let contentView = SnkrOptionsPopupView(with: self, snkr: snkr)
+            
+            SwiftEntryKit.display(entry: contentView, using: contentView.getAttributes(), presentInsideKeyWindow: true)
+        }
     }
     
     private func setupTableView() {

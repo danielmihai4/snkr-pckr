@@ -17,4 +17,6 @@ public struct AlertLabels {
     static let optionsTitle = "Options"
     static let cleanMessage = "Are you sure you cleaned it?"
     static let cleanAllMessage = "Are you sure you cleaned them all?"
+    static let cannotLoadImageTitle = "Try Again."
+    static let cannotLoadImageMessage = "Can't load picture."
 }
