@@ -16,6 +16,7 @@ class PopUpLabels {
     static let downloadUrlButtonTitle = "Download"
     static let optionsTitle = "Options"
     static let deleteSnkrButtonTitle = "Delete"
+    static let viewSnkrButtonTitle = "Show it!"
     static let cleanSnkrButtonTitle = "Clean it!"
     static let wearSnkrButtonTitle = "Wear it!"
     static let unselectSnkrButtonTitle = "Unselect snkr."

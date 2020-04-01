@@ -20,6 +20,7 @@ class SnkrsTableViewController: UITableViewController, TableViewCellDelegate, Pi
     var filteredSnkrs = [Snkr]()
     var snkrService = SnkrService()
     var snkrToDelete: Snkr?
+    var snkrToView: Snkr?
     
     @IBOutlet weak var searchFooter: SearchFooter!
     
@@ -48,12 +49,11 @@ class SnkrsTableViewController: UITableViewController, TableViewCellDelegate, Pi
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 300
+        return 129
     }
     
     override func viewDidAppear(_ animated: Bool) {
         self.tableView.reloadData()
-        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -79,7 +79,9 @@ class SnkrsTableViewController: UITableViewController, TableViewCellDelegate, Pi
                 if let viewController = segue.destination as? PickedSnkrModalViewController {
                     viewController.delegate = self
                     viewController.modalPresentationStyle = .overFullScreen
-                    viewController.snkr = pickRandomSnkr()
+                    viewController.snkr = self.snkrToView == nil ? pickRandomSnkr() : self.snkrToView
+                    
+                    self.snkrToView = nil
                 }
             }
         }
@@ -259,6 +261,12 @@ class SnkrsTableViewController: UITableViewController, TableViewCellDelegate, Pi
         }
         
         self.tableView.reloadData()
+    }
+    
+    internal func viewSnkr(_ snkr: Snkr) {
+        self.snkrToView = snkr
+        
+        performSegue(withIdentifier: Segues.ShowPickedSnkr, sender: nil)
     }
     
     internal func deleteSnkr(_ snkr: Snkr) {
