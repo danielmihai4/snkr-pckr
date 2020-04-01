@@ -36,7 +36,7 @@ class SnkrsTableViewController: UITableViewController, TableViewCellDelegate, Pi
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering() {
             searchFooter.setIsFilteringToShow(filteredItemCount: filteredSnkrs.count, of: filteredSnkrs.count)

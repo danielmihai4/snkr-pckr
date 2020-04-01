@@ -11,10 +11,11 @@ import SwiftEntryKit
 
 class NewWishlistItemViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, UIActionSheetDelegate, UITextFieldDelegate, SelectImagePopupViewDelegate, UrlDownloadPopupDelegate {
     
-    let imageView = UIImageView()
+    //let imageView = UIImageView()
     let imagePickerController = UIImagePickerController()
     let datePicker = UIDatePicker()
     
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var colorwayTextField: UITextField!
     @IBOutlet weak var priceTextField: UITextField!
@@ -23,7 +24,7 @@ class NewWishlistItemViewController: UIViewController, UIImagePickerControllerDe
         didSet {
             resetScrollView()
             self.scrollView.delegate = self
-            self.scrollView.addConstraint(NSLayoutConstraint(item: self.scrollView,
+            self.scrollView.addConstraint(NSLayoutConstraint(item: self.scrollView!,
                                                              attribute: NSLayoutConstraint.Attribute.height,
                                                              relatedBy: NSLayoutConstraint.Relation.equal,
                                                              toItem: self.scrollView,

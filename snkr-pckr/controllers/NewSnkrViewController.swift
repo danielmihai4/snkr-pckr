@@ -14,7 +14,6 @@ class NewSnkrViewController: UIViewController, UIImagePickerControllerDelegate, 
     var imageView = UIImageView()
     var imagePickerController = UIImagePickerController()
     
-    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var colorwayTextField: UITextField!
     @IBOutlet weak var scrollView: UIScrollView! {
