@@ -1,20 +1,33 @@
 PODS:
+  - PryntTrimmerView (4.0.0)
   - QuickLayout (3.0.0)
+  - SteviaLayout (4.7.3)
   - SwiftEntryKit (1.1.1):
     - QuickLayout (= 3.0.0)
+  - YPImagePicker (4.2.0):
+    - PryntTrimmerView (~> 4.0.0)
+    - SteviaLayout (~> 4.7.3)
 
 DEPENDENCIES:
   - SwiftEntryKit (= 1.1.1)
+  - YPImagePicker
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - QuickLayout
     - SwiftEntryKit
+  trunk:
+    - PryntTrimmerView
+    - SteviaLayout
+    - YPImagePicker
 
 SPEC CHECKSUMS:
+  PryntTrimmerView: 67e67573ffd4c073f1308effa66aefd0cfa667a0
   QuickLayout: 07b45a72b10083fee3f095990cfed1c1e7b27f0a
+  SteviaLayout: c2ecdcff57d44e38fd2f65e54ad52aeae28ca0c4
   SwiftEntryKit: df2d08f3ba46b3972ce163537a64e87c2518f611
+  YPImagePicker: accf310f9526641a84372c0ecf943547d9b1e52c
 
-PODFILE CHECKSUM: 29bf1a5647951476fcf56d9fef11512e69120ad1
+PODFILE CHECKSUM: b133eb4e29a732767a2e5586f6d27f0a50720c44
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.9.1

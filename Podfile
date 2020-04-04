@@ -18,5 +18,5 @@ target 'snkr-pckr' do
   end
 
   pod 'SwiftEntryKit', '1.1.1'  
-
+  pod 'YPImagePicker'
 end

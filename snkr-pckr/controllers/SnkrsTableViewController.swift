@@ -49,7 +49,7 @@ class SnkrsTableViewController: UITableViewController, TableViewCellDelegate, Pi
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 129
+        return 136
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -89,7 +89,6 @@ class SnkrsTableViewController: UITableViewController, TableViewCellDelegate, Pi
     
     @IBAction func saveSnkr(segue:UIStoryboardSegue) {
         if let source = segue.source as? NewSnkrViewController {
-            let resizedPicture = cropAndScaleImage(scrollView: source.scrollView)
             
             let snkr = Snkr(
                 id: UUID(),
@@ -97,7 +96,7 @@ class SnkrsTableViewController: UITableViewController, TableViewCellDelegate, Pi
                 colorway: source.colorwayTextField.text!,
                 lastWornDate: nil,
                 isClean: true,
-                pic: resizedPicture)
+                pic: source.imageView.image!)
             
             snkrs.append(snkr)
             
@@ -180,19 +179,6 @@ class SnkrsTableViewController: UITableViewController, TableViewCellDelegate, Pi
         return snkrTitles
     }
 
-    private func cropAndScaleImage(scrollView: UIScrollView) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(scrollView.bounds.size, true, UIScreen.main.scale)
-        
-        let offset = scrollView.contentOffset
-        
-        UIGraphicsGetCurrentContext()?.translateBy(x: -offset.x, y: -offset.y)
-        scrollView.layer.render(in: UIGraphicsGetCurrentContext()!)
-        let pictureToSave = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return pictureToSave!
-    }
-    
     private func loadSnkrs() {
         snkrs = snkrService.loadAll()
     }

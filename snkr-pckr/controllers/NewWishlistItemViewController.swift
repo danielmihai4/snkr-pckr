@@ -8,11 +8,10 @@
 
 import UIKit
 import SwiftEntryKit
+import YPImagePicker
 
 class NewWishlistItemViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, UIActionSheetDelegate, UITextFieldDelegate, SelectImagePopupViewDelegate, UrlDownloadPopupDelegate {
-    
-    //let imageView = UIImageView()
-    let imagePickerController = UIImagePickerController()
+      
     let datePicker = UIDatePicker()
     
     @IBOutlet weak var imageView: UIImageView!
@@ -20,28 +19,12 @@ class NewWishlistItemViewController: UIViewController, UIImagePickerControllerDe
     @IBOutlet weak var colorwayTextField: UITextField!
     @IBOutlet weak var priceTextField: UITextField!
     @IBOutlet weak var releaseDateTextField: UITextField!
-    @IBOutlet weak var scrollView: UIScrollView! {
-        didSet {
-            resetScrollView()
-            self.scrollView.delegate = self
-            self.scrollView.addConstraint(NSLayoutConstraint(item: self.scrollView!,
-                                                             attribute: NSLayoutConstraint.Attribute.height,
-                                                             relatedBy: NSLayoutConstraint.Relation.equal,
-                                                             toItem: self.scrollView,
-                                                             attribute: NSLayoutConstraint.Attribute.width,
-                                                             multiplier: 56 / 75,
-                                                             constant: 0))
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        showDatePicker()
-        setupImagePickerController()
-        setupTextFields()
-        setupGestureRecognizer()
-        setupScrollView()
+        self.showDatePicker()
+        self.setupTextFields()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -118,22 +101,11 @@ class NewWishlistItemViewController: UIViewController, UIImagePickerControllerDe
         
         self.imageView.image = image
         self.imageView.sizeToSuperview()
-        self.resetScrollView()
         picker.dismiss(animated: true,completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
-    }
-    
-    func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        let imageViewSize = imageView.frame.size
-        let scrollViewSize = scrollView.bounds.size
-        
-        let verticalPadding = imageViewSize.height < scrollViewSize.height ? (scrollViewSize.height - imageViewSize.height) / 2 : 0
-        let horizontalPadding = imageViewSize.width < scrollViewSize.width ? (scrollViewSize.width - imageViewSize.width) / 2 : 0
-        
-        scrollView.contentInset = UIEdgeInsets(top: verticalPadding, left: horizontalPadding, bottom: verticalPadding, right: horizontalPadding)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -154,14 +126,16 @@ class NewWishlistItemViewController: UIViewController, UIImagePickerControllerDe
         return self.imageView
     }
     
-    internal func librarySelected() {
-        self.imagePickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
-        self.present(self.imagePickerController, animated: true, completion: nil)
-    }
-    
-    internal func cameraSelected() {
-        self.imagePickerController.sourceType = UIImagePickerController.SourceType.camera
-        self.present(self.imagePickerController, animated: true, completion: nil)
+    internal func imagePickerSelected() {
+        let imagePicker = YPImagePicker(configuration: PickerConfiguration.configuration())
+        imagePicker.didFinishPicking { [unowned imagePicker] items, _ in
+            if let photo = items.singlePhoto {
+                self.imageView.image = photo.image
+                self.imageView.sizeToFit()
+            }
+            imagePicker.dismiss(animated: true, completion: nil)
+        }
+        present(imagePicker, animated: true, completion: nil)
     }
     
     internal func urlDownloadSelected() {
@@ -190,46 +164,9 @@ class NewWishlistItemViewController: UIViewController, UIImagePickerControllerDe
         showCannotLoadImagePopup()
     }
     
-    @objc func handleDoubleTap(recognizer: UITapGestureRecognizer) {
-        if(self.scrollView.zoomScale > self.scrollView.minimumZoomScale) {
-            self.scrollView.setZoomScale(self.scrollView.minimumZoomScale, animated: true)
-        } else {
-            self.scrollView.setZoomScale(self.scrollView.maximumZoomScale, animated: true)
-        }
-    }
-    
     private func showCannotLoadImagePopup() {
         let alertPopup = AlertPopup(title: AlertLabels.cannotLoadImageTitle, message: AlertLabels.cannotLoadImageMessage, image: nil)
         SwiftEntryKit.display(entry: alertPopup.getContentView(), using: alertPopup.getAttributes())
-    }
-    
-    private func resetScrollView() {
-        self.scrollView?.contentSize = imageView.frame.size
-        
-        let imageViewSize = self.imageView.bounds.size
-        let scrollViewSize = self.scrollView.bounds.size
-        let widthScale = scrollViewSize.width / imageViewSize.width
-        let heightScale = scrollViewSize.height / imageViewSize.height
-        
-        self.scrollView.minimumZoomScale = max(widthScale, heightScale)
-        self.scrollView.maximumZoomScale = 1.0
-    }
-    
-    private func setupImagePickerController() {
-        self.imagePickerController.allowsEditing = false
-        self.imagePickerController.delegate = self
-        self.imagePickerController.mediaTypes = ["public.image", "public.movie"]
-    }
-    
-    private func setupGestureRecognizer() {
-        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(self.handleDoubleTap(recognizer:)))
-        doubleTap.numberOfTapsRequired = 2
-        self.scrollView.addGestureRecognizer(doubleTap)
-    }
-    
-    private func setupScrollView() {
-        self.scrollView.delegate = self
-        self.scrollView.addSubview(self.imageView)
     }
     
     private func setupTextFields() {
@@ -241,21 +178,25 @@ class NewWishlistItemViewController: UIViewController, UIImagePickerControllerDe
     
     private func setupNameTextField() {
         self.nameTextField.layer.addSublayer(createBottomBorder(self.nameTextField))
+        self.nameTextField.delegate = self
         self.nameTextField.layer.masksToBounds = true
     }
     
     private func setupColorwayTextField() {
         self.colorwayTextField.layer.addSublayer(createBottomBorder(self.colorwayTextField))
+        self.colorwayTextField.delegate = self
         self.colorwayTextField.layer.masksToBounds = true
     }
     
     private func setupPriceTextField() {
         self.priceTextField.layer.addSublayer(createBottomBorder(self.priceTextField))
+        self.priceTextField.delegate = self
         self.priceTextField.layer.masksToBounds = true
     }
     
     private func setupReleaseDateTextField() {
         self.releaseDateTextField.layer.addSublayer(createBottomBorder(self.releaseDateTextField))
+        self.releaseDateTextField.delegate = self
         self.releaseDateTextField.layer.masksToBounds = true
     }
     
@@ -275,8 +216,7 @@ class NewWishlistItemViewController: UIViewController, UIImagePickerControllerDe
             
             DispatchQueue.main.async {
                 self.imageView.image = UIImage(data: data)
-                self.imageView.sizeToFit()
-                self.resetScrollView()
+                self.imageView.sizeToFit()                
             }
         }
     }

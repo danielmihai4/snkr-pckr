@@ -28,7 +28,7 @@ class WishlistTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 130
+        return 138
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -59,6 +59,7 @@ class WishlistTableViewController: UITableViewController {
         cell.releaseDateDayLabel.text = DateUtils.formatReleaseDateDay(releaseDate: wishlistItem.releaseDate)
         cell.releaseDateMonthLabel.text = DateUtils.formatReleaseDateMonth(releaseDate: wishlistItem.releaseDate)
         cell.pic.image = wishlistItem.pic
+        cell.pic.sizeToFit()
         
         if (wishlistItems.firstIndex{$0 === wishlistItem} == 0) {
             cell.addTopBorder()
@@ -69,7 +70,6 @@ class WishlistTableViewController: UITableViewController {
     
     @IBAction func saveWishlistItem(segue:UIStoryboardSegue) {
         if let source = segue.source as? NewWishlistItemViewController {
-            let resizedPicture = cropAndScaleImage(scrollView: source.scrollView)
             
             let wishlistItem = WishlistItem(
                 id: UUID(),
@@ -77,7 +77,7 @@ class WishlistTableViewController: UITableViewController {
                 colorway: source.colorwayTextField.text!,
                 price: parsePrice(source.priceTextField.text!),
                 releaseDate: DateUtils.parseReleaseDate(releaseDate: source.releaseDateTextField.text!),
-                pic: resizedPicture)
+                pic: source.imageView.image!)
             
             addAndSortWishlistItems(wishlistItem)
             

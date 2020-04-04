@@ -20,6 +20,7 @@
 		0EA0D56222F7334F00CC4E0D /* SelectImagePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0D56122F7334F00CC4E0D /* SelectImagePopupView.swift */; };
 		0EA0D56422F73B5A00CC4E0D /* AlertPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0D56322F73B5A00CC4E0D /* AlertPopup.swift */; };
 		0EC68CA2230977810097942E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EC68CA1230977810097942E /* Assets.xcassets */; };
+		0EDB5F6C2438B46700DF36FD /* PickerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB5F6B2438B46700DF36FD /* PickerConfiguration.swift */; };
 		0EF262E422FF0C6A001CFFCE /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF262E322FF0C6A001CFFCE /* Device.swift */; };
 		0EF262E622FF2282001CFFCE /* NewCategoryPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF262E522FF2282001CFFCE /* NewCategoryPopup.swift */; };
 		2C9FB75DDD92C27E321A53E6 /* Pods_snkr_pckr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8259DEF3E8D6B570193FF0EF /* Pods_snkr_pckr.framework */; };
@@ -96,6 +97,7 @@
 		0EA0D56122F7334F00CC4E0D /* SelectImagePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectImagePopupView.swift; sourceTree = "<group>"; };
 		0EA0D56322F73B5A00CC4E0D /* AlertPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPopup.swift; sourceTree = "<group>"; };
 		0EC68CA1230977810097942E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0EDB5F6B2438B46700DF36FD /* PickerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerConfiguration.swift; sourceTree = "<group>"; };
 		0EF262E322FF0C6A001CFFCE /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		0EF262E522FF2282001CFFCE /* NewCategoryPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCategoryPopup.swift; sourceTree = "<group>"; };
 		310F0EB021B47BE80030D5A7 /* DirtySnkrsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirtySnkrsTableViewController.swift; sourceTree = "<group>"; };
@@ -364,6 +366,7 @@
 				31E06D0C22347E6E00737C74 /* CellConstants.swift */,
 				0E6E076B22F393BA0023401F /* Colors.swift */,
 				0EA0D55122F622A600CC4E0D /* Fonts.swift */,
+				0EDB5F6B2438B46700DF36FD /* PickerConfiguration.swift */,
 			);
 			path = constants;
 			sourceTree = "<group>";
@@ -665,6 +668,7 @@
 				31E06D062234731B00737C74 /* CategoriesTableViewController.swift in Sources */,
 				316ACF9921A0C966001C5C57 /* SnkrsTableViewController.swift in Sources */,
 				316ACFB121A1C152001C5C57 /* Cells.swift in Sources */,
+				0EDB5F6C2438B46700DF36FD /* PickerConfiguration.swift in Sources */,
 				31E1EAEC22E503DD00B3CB5F /* NewWishlistItemViewController.swift in Sources */,
 				31E1EAE422E4EB2C00B3CB5F /* WishlistTableViewController.swift in Sources */,
 				31E06D0F22347FBA00737C74 /* CellLabels.swift in Sources */,

@@ -8,37 +8,35 @@
 
 import UIKit
 import SwiftEntryKit
+import YPImagePicker
 
-class NewSnkrViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, UIActionSheetDelegate, UITextFieldDelegate, SelectImagePopupViewDelegate {
+class NewSnkrViewController: UIViewController, UINavigationControllerDelegate, UIActionSheetDelegate, UITextFieldDelegate {
     
-    var imageView = UIImageView()
-    var imagePickerController = UIImagePickerController()
+    
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var colorwayTextField: UITextField!
-    @IBOutlet weak var scrollView: UIScrollView! {
-        didSet {
-            resetScrollView()
-            scrollView.delegate = self
-        }
-    }
-    
+    @IBOutlet weak var imageView: UIImageView!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupImagePickerController()
         setupTextFields()
-        setupGestureRecognizer()
-        setupScrollView()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @IBAction func addPic(_ sender: Any) {
-        let selectImagePopup = SelectImagePopupView(delegate: self, withUrlDownload: false)
-        
-        SwiftEntryKit.display(entry: selectImagePopup, using: selectImagePopup.getAttributes())
+        let picker = YPImagePicker(configuration: PickerConfiguration.configuration())
+        picker.didFinishPicking { [unowned picker] items, _ in
+            if let photo = items.singlePhoto {
+                self.imageView.image = photo.image
+                self.imageView.sizeToFit()
+            }
+            picker.dismiss(animated: true, completion: nil)
+        }
+        present(picker, animated: true, completion: nil)
     }
     
     @IBAction func addSnkr(_ sender: Any) {
@@ -72,33 +70,6 @@ class NewSnkrViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
-    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        var image = info[.originalImage] as? UIImage
-        
-        if image == nil {
-            image = info[.originalImage] as? UIImage
-        }
-        
-        self.imageView.image = image
-        self.imageView.sizeToFit()
-        resetScrollView()
-        picker.dismiss(animated: true,completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        let imageViewSize = imageView.frame.size
-        let scrollViewSize = scrollView.bounds.size
-        
-        let verticalPadding = imageViewSize.height < scrollViewSize.height ? (scrollViewSize.height - imageViewSize.height) / 2 : 0
-        let horizontalPadding = imageViewSize.width < scrollViewSize.width ? (scrollViewSize.width - imageViewSize.width) / 2 : 0
-        
-        scrollView.contentInset = UIEdgeInsets(top: verticalPadding, left: horizontalPadding, bottom: verticalPadding, right: horizontalPadding)
-    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let nextTextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
             nextTextField.becomeFirstResponder()
@@ -117,50 +88,8 @@ class NewSnkrViewController: UIViewController, UIImagePickerControllerDelegate, 
         return imageView
     }
     
-    func resetScrollView() {
-        scrollView?.contentSize = imageView.frame.size
-        
-        let imageViewSize = imageView.bounds.size
-        let scrollViewSize = scrollView.bounds.size
-        let widthScale = scrollViewSize.width / imageViewSize.width
-        let heightScale = scrollViewSize.height / imageViewSize.height
-        
-        scrollView.minimumZoomScale = max(widthScale, heightScale)
-        scrollView.maximumZoomScale = 1.0
-    }
-    
-    @objc func handleDoubleTap(recognizer: UITapGestureRecognizer) {
-        if (scrollView.zoomScale > scrollView.minimumZoomScale) {
-            scrollView.setZoomScale(scrollView.minimumZoomScale, animated: true)            
-        } else {
-            scrollView.setZoomScale(scrollView.maximumZoomScale, animated: true)
-        }
-    }
-    
-    internal func librarySelected() {
-        self.imagePickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
-        self.present(self.imagePickerController, animated: true, completion: nil)
-    }
-    
-    internal func cameraSelected() {
-        self.imagePickerController.sourceType = UIImagePickerController.SourceType.camera
-        self.present(self.imagePickerController, animated: true, completion: nil)
-    }
-    
     internal func urlDownloadSelected() {
         //not needed
-    }
-    
-    private func setupGestureRecognizer() {
-        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(self.handleDoubleTap(recognizer:)))
-        doubleTap.numberOfTapsRequired = 2
-        scrollView.addGestureRecognizer(doubleTap)
-    }
-    
-    private func setupImagePickerController() {
-        self.imagePickerController.allowsEditing = false
-        self.imagePickerController.delegate = self
-        self.imagePickerController.mediaTypes = ["public.image", "public.movie"]
     }
     
     private func setupTextFields() {
@@ -178,11 +107,6 @@ class NewSnkrViewController: UIViewController, UIImagePickerControllerDelegate, 
         self.colorwayTextField.layer.masksToBounds = true
         self.colorwayTextField.delegate = self
         addBorder(edge: .bottom, textField: self.colorwayTextField)
-    }
-    
-    private func setupScrollView() {
-        self.scrollView.delegate = self
-        self.scrollView.addSubview(self.imageView)
     }
     
     private func addBorder(edge: UIRectEdge, textField: UITextField) {

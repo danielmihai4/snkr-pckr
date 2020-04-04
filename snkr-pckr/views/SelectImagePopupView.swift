@@ -10,8 +10,7 @@ import UIKit
 import SwiftEntryKit
 
 protocol SelectImagePopupViewDelegate {
-    func librarySelected()
-    func cameraSelected()
+    func imagePickerSelected()
     func urlDownloadSelected()
 }
 
@@ -82,15 +81,7 @@ class SelectImagePopupView: UIView {
             height += 100
         }
         
-        if isCameraAvailable() {
-            height += 100
-        }
-        
         return height
-    }
-    
-    private func isCameraAvailable() -> Bool {
-        return UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera)
     }
     
     private func screenBackgroundColor() -> UIColor {
@@ -117,15 +108,9 @@ class SelectImagePopupView: UIView {
     private func setupButtons() {
         var buttonViews = [EKButtonBarView]()
         
-        let libraryButtonBarView = createLibraryButtonBarView()
-        scrollView.addSubview(libraryButtonBarView)
-        buttonViews.append(libraryButtonBarView)
-        
-        if (isCameraAvailable()) {
-            let cameraButtonBarView = createCameraButtonBarView()
-            scrollView.addSubview(cameraButtonBarView)
-            buttonViews.append(cameraButtonBarView)
-        }
+        let imagePickerButtonBarView = createImagePickerButtonBarView()
+        scrollView.addSubview(imagePickerButtonBarView)
+        buttonViews.append(imagePickerButtonBarView)
         
         if (withUrlDownload) {
             let urlDownloadButtonBarView = createUrlDownloadButtonBarView()
@@ -155,40 +140,22 @@ class SelectImagePopupView: UIView {
         endEditing(true)
     }
     
-    private func createLibraryButtonBarView() -> EKButtonBarView {
-        let libraryButtonContent = EKProperty.ButtonContent(
-            label: .init(text: PopUpLabels.selectLibraryTitle, style: OptionsPopupStyle.buttonStyle),
+    private func createImagePickerButtonBarView() -> EKButtonBarView {
+        let imagePickerButtonContent = EKProperty.ButtonContent(
+            label: .init(text: PopUpLabels.selectImagePickerTitle, style: OptionsPopupStyle.buttonStyle),
             backgroundColor: EKColor(light: Colors.darkVanilla.withAlphaComponent(0.5), dark: Colors.darkVanilla.withAlphaComponent(0.5)),
             highlightedBackgroundColor: EKColor.white.with(alpha: 0.8),
             displayMode: EKAttributes.DisplayMode.inferred) {
-                self.delegate.librarySelected()
+                self.delegate.imagePickerSelected()
                 SwiftEntryKit.dismiss()
         }
-        let libraryButtonBarContent = EKProperty.ButtonBarContent(with: libraryButtonContent, separatorColor: .clear, expandAnimatedly: true)
-        let libraryButtonBarView = EKButtonBarView(with: libraryButtonBarContent)
-        libraryButtonBarView.clipsToBounds = true
-        libraryButtonBarView.tag = 0
-        libraryButtonBarView.expand()
+        let imagePickerButtonBarContent = EKProperty.ButtonBarContent(with: imagePickerButtonContent, separatorColor: .clear, expandAnimatedly: true)
+        let imagePickerButtonBarView = EKButtonBarView(with: imagePickerButtonBarContent)
+        imagePickerButtonBarView.clipsToBounds = true
+        imagePickerButtonBarView.tag = 0
+        imagePickerButtonBarView.expand()
         
-        return libraryButtonBarView
-    }
-    
-    private func createCameraButtonBarView() -> EKButtonBarView {
-        let cameraButtonContent = EKProperty.ButtonContent(
-            label: .init(text: PopUpLabels.selectCameraTitle, style: OptionsPopupStyle.buttonStyle),
-            backgroundColor: EKColor(light: Colors.darkVanilla.withAlphaComponent(0.5), dark: Colors.darkVanilla.withAlphaComponent(0.5)),
-            highlightedBackgroundColor: EKColor.white.with(alpha: 0.8),
-            displayMode: EKAttributes.DisplayMode.inferred) {
-                self.delegate.cameraSelected()
-                SwiftEntryKit.dismiss()
-        }
-        let cameraButtonBarContent = EKProperty.ButtonBarContent(with: cameraButtonContent, separatorColor: .clear, expandAnimatedly: true)
-        let cameraButtonBarView = EKButtonBarView(with: cameraButtonBarContent)
-        cameraButtonBarView.clipsToBounds = true
-        cameraButtonBarView.tag = 0
-        cameraButtonBarView.expand()
-        
-        return cameraButtonBarView
+        return imagePickerButtonBarView
     }
     
     private func createCancelButtonBarView() -> EKButtonBarView {

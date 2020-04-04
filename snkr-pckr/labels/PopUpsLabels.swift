@@ -26,7 +26,6 @@ class PopUpLabels {
     static let confirmCleanAllPopupTitle = "Are you sure you cleaned them all?"
     static let confirmCleanSnkrPopupTitle = "Are you sure you cleaned it?"
     static let selectImageTitle = "Select an image."
-    static let selectLibraryTitle = "Select image from library"
-    static let selectCameraTitle = "Take a picture"
+    static let selectImagePickerTitle = "Select image"
     static let urlDownloadTitle = "Download from URL"
 }
