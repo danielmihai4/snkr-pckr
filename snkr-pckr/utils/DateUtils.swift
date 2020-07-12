@@ -27,7 +27,7 @@ class DateUtils {
         DATE_FORMATTER.dateFormat = DATE_FORMAT
         TIME_FORMATTER.dateFormat = TIME_FORMAT
         
-        return String(format: "Worn on %@ at %@", DATE_FORMATTER.string(from: lastWornDate!), TIME_FORMATTER.string(from: lastWornDate!))
+        return String(format: "Worn on %@", DATE_FORMATTER.string(from: lastWornDate!))
     }
     
     class func formatReleaseDateDay(releaseDate: Date?) -> String {

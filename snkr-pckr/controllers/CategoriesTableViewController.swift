@@ -48,7 +48,7 @@ class CategoriesTableViewController: UITableViewController, NewCategoryPopupDele
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.ShowSnkrSelector {
-            let destination = segue.destination as! SnkrSelectorTableViewController
+            let destination = segue.destination as! SnkrSelectorCollectionViewController
             let buttonPosition = (sender as! UIButton).convert(CGPoint(), to:tableView)
             let indexPath = tableView.indexPathForRow(at:buttonPosition)
             

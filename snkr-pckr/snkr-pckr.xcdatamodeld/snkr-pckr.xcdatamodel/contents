@@ -1,30 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="18F132" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CategoryEntity" representedClassName="CategoryEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="sneakers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SnkrEntity" inverseName="category" inverseEntity="SnkrEntity" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="sneakers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SnkrEntity" inverseName="category" inverseEntity="SnkrEntity"/>
     </entity>
     <entity name="SnkrEntity" representedClassName="SnkrEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="colorway" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="isClean" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="lastWornDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="pic" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
-        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CategoryEntity" inverseName="sneakers" inverseEntity="CategoryEntity" syncable="YES"/>
+        <attribute name="colorway" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isClean" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="lastWornDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="pic" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="smallPic" optional="YES" attributeType="Binary"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CategoryEntity" inverseName="sneakers" inverseEntity="CategoryEntity"/>
     </entity>
     <entity name="WishlistItemEntity" representedClassName="WishlistItemEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="colorway" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="pic" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="price" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="releaseDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="colorway" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="pic" optional="YES" attributeType="Binary"/>
+        <attribute name="price" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="releaseDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
         <element name="CategoryEntity" positionX="-63" positionY="27" width="128" height="90"/>
-        <element name="SnkrEntity" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="SnkrEntity" positionX="-63" positionY="-18" width="128" height="163"/>
         <element name="WishlistItemEntity" positionX="-54" positionY="45" width="128" height="135"/>
     </elements>
 </model>

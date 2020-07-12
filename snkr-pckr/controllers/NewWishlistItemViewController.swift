@@ -28,6 +28,10 @@ class NewWishlistItemViewController: UIViewController, UIImagePickerControllerDe
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        let selectImagePopup = SelectImagePopupView(delegate: self, withUrlDownload: true)
+
+        SwiftEntryKit.display(entry: selectImagePopup, using: selectImagePopup.getAttributes())
     }
     
     @IBAction func addPic(_ sender: Any) {

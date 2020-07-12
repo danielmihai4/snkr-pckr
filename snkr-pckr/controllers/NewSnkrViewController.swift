@@ -11,17 +11,31 @@ import SwiftEntryKit
 import YPImagePicker
 
 class NewSnkrViewController: UIViewController, UINavigationControllerDelegate, UIActionSheetDelegate, UITextFieldDelegate {
-    
-    
+   
+    var selectedImage: UIImage?
+    var snkrToEdit: Snkr?
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var colorwayTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupTextFields()
+        
+        if snkrToEdit == nil  {
+            if selectedImage == nil {
+                performSegue(withIdentifier: Segues.CancelNewSnkrSegue, sender: nil)
+                return
+            }
+            
+            imageView.image = selectedImage
+        } else {
+            imageView.image = snkrToEdit?.pic
+            nameTextField.text = snkrToEdit?.name
+            colorwayTextField.text = snkrToEdit?.colorway
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -95,6 +109,20 @@ class NewSnkrViewController: UIViewController, UINavigationControllerDelegate, U
     private func setupTextFields() {
         setupNameTextField()
         setupColorwayTextField()
+    }
+    
+    private func showPicker() {
+        let picker = YPImagePicker(configuration: PickerConfiguration.configuration())
+        picker.didFinishPicking { [unowned picker] items, _ in
+            if let photo = items.singlePhoto {
+                self.imageView.image = photo.image
+                self.imageView.sizeToFit()
+            } else {
+                self.performSegue(withIdentifier: Segues.CancelNewSnkrSegue, sender: nil)
+            }
+            picker.dismiss(animated: true, completion: nil)
+        }
+        present(picker, animated: true, completion: nil)
     }
     
     private func setupNameTextField() {

@@ -11,6 +11,7 @@ import SwiftEntryKit
 
 protocol PopUpOptionsControlleDelegate {
     func viewSnkr(_ snkr: Snkr)
+    func editSnkr(_ snkr: Snkr)
     func deleteSnkr(_ snkr: Snkr)
     func toggleWearState(_ snkr: Snkr)
     func markToClean(_ snkr: Snkr)
@@ -36,7 +37,7 @@ class SnkrOptionsPopupView: UIView {
         setupTapGestureRecognizer()
         
         scrollView.layoutIfNeeded()
-        scrollView.contentSize.height = 260
+        scrollView.contentSize.height = 320
         self.backgroundColor = Colors.umber
         
         set(.height, of: scrollView.contentSize.height + scrollViewVerticalOffset * 2, priority: .defaultHigh)
@@ -101,6 +102,10 @@ class SnkrOptionsPopupView: UIView {
         let viewSnkrButtonBarView = createViewSnkrButtonBarView()
         scrollView.addSubview(viewSnkrButtonBarView)
         buttonViews.append(viewSnkrButtonBarView)
+        
+        let editSnkrButtonBarView = createEditSnkrButtonBarView()
+        scrollView.addSubview(editSnkrButtonBarView)
+        buttonViews.append(editSnkrButtonBarView)
        
         let wearSnkrButtonBarView = createWearSnkrButtonBarView()
         scrollView.addSubview(wearSnkrButtonBarView)
@@ -187,6 +192,26 @@ class SnkrOptionsPopupView: UIView {
         viewSnkrButtonBarView.expand()
         
         return viewSnkrButtonBarView
+    }
+    
+    private func createEditSnkrButtonBarView() -> EKButtonBarView {
+        let editSnkrButtonContent = EKProperty.ButtonContent(
+            label: .init(text: PopUpLabels.editSnkrButtonTitle, style: OptionsPopupStyle.buttonStyle),
+            backgroundColor: EKColor(light: Colors.darkVanilla.withAlphaComponent(0.5), dark: Colors.darkVanilla.withAlphaComponent(0.5)),
+            highlightedBackgroundColor: EKColor.white.with(alpha: 0.8),
+            displayMode: EKAttributes.DisplayMode.inferred) {  [unowned self] in
+                SwiftEntryKit.dismiss()
+                
+                self.delegate.editSnkr(self.snkr)
+                
+        }
+        let editSnkrButtonBarContent = EKProperty.ButtonBarContent(with: editSnkrButtonContent, separatorColor: .clear, expandAnimatedly: true)
+        let editSnkrButtonBarView = EKButtonBarView(with: editSnkrButtonBarContent)
+        editSnkrButtonBarView.clipsToBounds = true
+        editSnkrButtonBarView.tag = 0
+        editSnkrButtonBarView.expand()
+        
+        return editSnkrButtonBarView
     }
     
     private func createDeleteSnkrButtonBarView() -> EKButtonBarView {

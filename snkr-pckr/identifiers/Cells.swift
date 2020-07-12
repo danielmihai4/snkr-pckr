@@ -15,4 +15,7 @@ public struct Cells {
     public static let SnkrSelector = "SnkrSelectorCell"
     public static let CategorySnkr = "CategorySnkrCell"
     public static let WishlistItemCell = "WishlistItemCell"
+    public static let SnkrCollectionCell = "SnkrCollectionCell"
+    public static let DirtySnkrCollectionCell = "DirtySnkrCollectionCell"
+    public static let SnkrSelectorCollectionCell = "SnkrSelectorCollectionCell"
 }

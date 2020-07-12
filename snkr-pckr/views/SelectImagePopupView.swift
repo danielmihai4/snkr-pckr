@@ -17,6 +17,7 @@ protocol SelectImagePopupViewDelegate {
 class SelectImagePopupView: UIView {
 
     private let defaultHeight: CGFloat = 150
+    private let scrollViewHorizontalOffset: CGFloat = 20
     private let scrollViewVerticalOffset: CGFloat = 20
     private let titleLabel = UILabel()
     private let scrollView = UIScrollView()
@@ -90,7 +91,7 @@ class SelectImagePopupView: UIView {
     
     private func setupScrollView() {
         addSubview(scrollView)
-        scrollView.layoutToSuperview(axis: .horizontally, offset: 20)
+        scrollView.layoutToSuperview(axis: .horizontally, offset: scrollViewHorizontalOffset)
         scrollView.layoutToSuperview(axis: .vertically, offset: scrollViewVerticalOffset)
         scrollView.layoutToSuperview(.width, .height, offset: -scrollViewVerticalOffset * 2)
     }
@@ -137,7 +138,7 @@ class SelectImagePopupView: UIView {
     }
     
     @objc func tapGestureRecognized() {
-        endEditing(true)
+        endEditing(true)        
     }
     
     private func createImagePickerButtonBarView() -> EKButtonBarView {
