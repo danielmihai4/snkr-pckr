@@ -34,7 +34,7 @@ class ConfirmationPopup {
             text: self.title,
             style: .init(
                 font: MainFont.medium.with(size: 15),
-                color: EKColor(light: Colors.darkVanilla, dark: Colors.darkVanilla),
+                color: EKColor(light: UIColor.white, dark: UIColor.white),
                 alignment: self.titleAlignment,
                 displayMode: EKAttributes.DisplayMode.inferred
             )
@@ -71,7 +71,7 @@ class ConfirmationPopup {
         let closeButton = EKProperty.ButtonContent(
             label: closeButtonLabel,
             backgroundColor: .clear,
-            highlightedBackgroundColor: EKColor(light: Colors.darkVanilla.withAlphaComponent(0.05), dark: Colors.darkVanilla.withAlphaComponent(0.05))) {
+            highlightedBackgroundColor: EKColor(light: UIColor.white.withAlphaComponent(0.05), dark: UIColor.white.withAlphaComponent(0.05))) {
                 SwiftEntryKit.dismiss()
                 self.delegate.performCancelAction()
         }
@@ -83,14 +83,14 @@ class ConfirmationPopup {
         let okButton = EKProperty.ButtonContent(
             label: okButtonLabel,
             backgroundColor: .clear,
-            highlightedBackgroundColor: EKColor(light: Colors.darkVanilla.withAlphaComponent(0.05), dark: Colors.darkVanilla.withAlphaComponent(0.05)),
+            highlightedBackgroundColor: EKColor(light: UIColor.white.withAlphaComponent(0.05), dark: UIColor.white.withAlphaComponent(0.05)),
             displayMode: EKAttributes.DisplayMode.inferred) {
                 SwiftEntryKit.dismiss()
                 self.delegate.performConfirmAction()
         }
         let buttonsBarContent = EKProperty.ButtonBarContent(
             with: closeButton, okButton,
-            separatorColor: EKColor(light: Colors.darkVanilla, dark: Colors.darkVanilla),
+            separatorColor: EKColor(light: UIColor.white, dark: UIColor.white),
             buttonHeight: 60,
             displayMode: EKAttributes.DisplayMode.inferred,
             expandAnimatedly: true
@@ -115,8 +115,8 @@ class ConfirmationPopup {
         attributes.entryInteraction = .absorbTouches
         attributes.scroll = .enabled(swipeable: true, pullbackAnimation: .jolt)
         attributes.screenBackground = .color(color: EKColor(light: screenBackgroundColor(), dark: screenBackgroundColor()))
-        attributes.entryBackground = .color(color: EKColor(light: Colors.umber, dark: Colors.umber))
-        attributes.border = .value(color: Colors.darkVanilla.withAlphaComponent(0.5), width: 0.5)
+        attributes.entryBackground = .color(color: EKColor(light: UIColor.darkGray, dark: UIColor.darkGray))
+        attributes.border = .value(color: UIColor.white.withAlphaComponent(0.5), width: 0.5)
         attributes.shadow = .active(with: .init(color: .black, opacity: 0.5, radius: 5))
         attributes.entranceAnimation = .init(
             translate: .init(duration: 0.7, spring: .init(damping: 1, initialVelocity: 0)),
@@ -130,6 +130,6 @@ class ConfirmationPopup {
     }
     
     private func screenBackgroundColor() -> UIColor {
-        return Colors.umber.withAlphaComponent(0.8)
+        return UIColor.darkGray.withAlphaComponent(0.8)
     }
 }

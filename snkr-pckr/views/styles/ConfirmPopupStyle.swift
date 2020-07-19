@@ -13,12 +13,12 @@ class ConfirmPopupStyle {
     
     static let closeButtonLabelStyle = EKProperty.LabelStyle(
         font: MainFont.medium.with(size: 16),
-        color: EKColor(light: Colors.darkVanilla.withAlphaComponent(0.3), dark: Colors.darkVanilla.withAlphaComponent(0.3)),
+        color: EKColor(light: UIColor.white.withAlphaComponent(0.3), dark: UIColor.white.withAlphaComponent(0.3)),
         displayMode: EKAttributes.DisplayMode.inferred)
     
     static let okButtonLabelStyle = EKProperty.LabelStyle(
         font: MainFont.medium.with(size: 16),
-        color: EKColor(light: Colors.darkVanilla, dark: Colors.darkVanilla),
+        color: EKColor(light: UIColor.white, dark: UIColor.white),
         displayMode: EKAttributes.DisplayMode.inferred
     )
 }

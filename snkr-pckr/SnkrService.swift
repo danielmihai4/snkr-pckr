@@ -30,7 +30,7 @@ class SnkrService {
                     colorway: snkrEntity.colorway!,
                     lastWornDate: snkrEntity.lastWornDate,
                     isClean: snkrEntity.isClean,
-                    pic: (snkrEntity.pic != nil) ? UIImage(data: snkrEntity.pic!)! : nil,
+                    pic: nil,
                     smallPic: (snkrEntity.smallPic != nil) ? UIImage(data: snkrEntity.smallPic!)! : nil)
                 
                 snkrs.append(dirtySnkr)
@@ -59,7 +59,7 @@ class SnkrService {
                     colorway: snkrEntity.colorway!,
                     lastWornDate: snkrEntity.lastWornDate,
                     isClean: snkrEntity.isClean,
-                    pic: (snkrEntity.pic != nil) ? UIImage(data: snkrEntity.pic!)! : nil,
+                    pic: nil,
                     smallPic: (snkrEntity.smallPic != nil) ? UIImage(data: snkrEntity.smallPic!)! : nil)
                 
                 snkrs.append(snkr)
@@ -97,6 +97,8 @@ class SnkrService {
             let snkrEntities = try context.fetch(request)
             let snkrEntity = snkrEntities.first!
             
+            snkrEntity.name = snkr.name
+            snkrEntity.colorway = snkr.colorway
             snkrEntity.lastWornDate = snkr.lastWornDate
             snkrEntity.isClean = snkr.isClean!
             
@@ -123,5 +125,24 @@ class SnkrService {
         } catch let error {
             print(error.localizedDescription)
         }
+    }
+    
+    func loadPic(snkr: Snkr) -> UIImage? {
+        let request: NSFetchRequest<SnkrEntity> = SnkrEntity.fetchRequest()
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let predicate = NSPredicate(format: "id=%@", snkr.id as CVarArg)
+        
+        request.predicate = predicate
+        
+        do {
+            let snkrEntities = try context.fetch(request)
+            let snkrEntity = snkrEntities.first!
+            
+            return (snkrEntity.pic != nil) ? UIImage(data: snkrEntity.pic!)! : nil
+        } catch let error {
+            print (error.localizedDescription)
+        }
+        
+        return nil
     }
 }

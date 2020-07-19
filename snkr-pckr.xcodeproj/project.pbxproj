@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E4EFF8D24C3A62800CA3366 /* Placeholders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4EFF8C24C3A62800CA3366 /* Placeholders.swift */; };
+		0E4EFF9124C484C000CA3366 /* SearchSnkrsCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4EFF9024C484C000CA3366 /* SearchSnkrsCollectionReusableView.swift */; };
 		0E5BEFCB24A8C8710087D462 /* DirtySnkrCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5BEFCA24A8C8710087D462 /* DirtySnkrCollectionViewCell.swift */; };
 		0E5BEFCD24A8C89B0087D462 /* DirtySnkrsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5BEFCC24A8C89B0087D462 /* DirtySnkrsCollectionViewController.swift */; };
 		0E5BEFCF24A8CA350087D462 /* CollectionViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5BEFCE24A8CA350087D462 /* CollectionViewCellDelegate.swift */; };
 		0E6E076C22F393BA0023401F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E076B22F393BA0023401F /* Colors.swift */; };
-		0E6F65E623A51EFE000DF915 /* BaseSnkrTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6F65E523A51EFE000DF915 /* BaseSnkrTableViewCell.swift */; };
 		0E6F65E823A6C2C2000DF915 /* UrlDownloadPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6F65E723A6C2C2000DF915 /* UrlDownloadPopup.swift */; };
 		0EA0D55222F622A600CC4E0D /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0D55122F622A600CC4E0D /* Fonts.swift */; };
 		0EA0D55422F62E7100CC4E0D /* PopUpsLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0D55322F62E7100CC4E0D /* PopUpsLabels.swift */; };
@@ -85,11 +86,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E4EFF8C24C3A62800CA3366 /* Placeholders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Placeholders.swift; sourceTree = "<group>"; };
+		0E4EFF9024C484C000CA3366 /* SearchSnkrsCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSnkrsCollectionReusableView.swift; sourceTree = "<group>"; };
 		0E5BEFCA24A8C8710087D462 /* DirtySnkrCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirtySnkrCollectionViewCell.swift; sourceTree = "<group>"; };
 		0E5BEFCC24A8C89B0087D462 /* DirtySnkrsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirtySnkrsCollectionViewController.swift; sourceTree = "<group>"; };
 		0E5BEFCE24A8CA350087D462 /* CollectionViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellDelegate.swift; sourceTree = "<group>"; };
 		0E6E076B22F393BA0023401F /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		0E6F65E523A51EFE000DF915 /* BaseSnkrTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSnkrTableViewCell.swift; sourceTree = "<group>"; };
 		0E6F65E723A6C2C2000DF915 /* UrlDownloadPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlDownloadPopup.swift; sourceTree = "<group>"; };
 		0EA0D55122F622A600CC4E0D /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		0EA0D55322F62E7100CC4E0D /* PopUpsLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpsLabels.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				31E06D1B223553E800737C74 /* CategorySnkrsTableView.swift */,
 				0EA0D55922F647C400CC4E0D /* SnkrOptionsPopupView.swift */,
 				0EA0D56122F7334F00CC4E0D /* SelectImagePopupView.swift */,
+				0E4EFF9024C484C000CA3366 /* SearchSnkrsCollectionReusableView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -323,7 +326,6 @@
 				31E06D032234728C00737C74 /* CategoryViewCell.swift */,
 				31E06D1722354DFD00737C74 /* CategorySnkrCell.swift */,
 				31E1EAE522E4EC1700B3CB5F /* WishlistItemTableViewCell.swift */,
-				0E6F65E523A51EFE000DF915 /* BaseSnkrTableViewCell.swift */,
 				0EAE43D924A784D200D62644 /* SnkrCollectionViewCell.swift */,
 				0E5BEFCA24A8C8710087D462 /* DirtySnkrCollectionViewCell.swift */,
 				0EE0A10124A8DCAA00F23434 /* SnkrSelectorCollectionViewCell.swift */,
@@ -338,6 +340,7 @@
 				316ACFAB21A1B420001C5C57 /* Alerts.swift */,
 				31E06D0E22347FBA00737C74 /* CellLabels.swift */,
 				0EA0D55322F62E7100CC4E0D /* PopUpsLabels.swift */,
+				0E4EFF8C24C3A62800CA3366 /* Placeholders.swift */,
 			);
 			path = labels;
 			sourceTree = "<group>";
@@ -645,6 +648,7 @@
 				0EF262E622FF2282001CFFCE /* NewCategoryPopup.swift in Sources */,
 				0EAE43DA24A784D200D62644 /* SnkrCollectionViewCell.swift in Sources */,
 				316ACFAF21A1BF39001C5C57 /* Snkr.swift in Sources */,
+				0E4EFF8D24C3A62800CA3366 /* Placeholders.swift in Sources */,
 				316ACFD521A1D40F001C5C57 /* snkr-pckr.xcdatamodeld in Sources */,
 				0EA0D56222F7334F00CC4E0D /* SelectImagePopupView.swift in Sources */,
 				31E06D1822354DFD00737C74 /* CategorySnkrCell.swift in Sources */,
@@ -663,9 +667,9 @@
 				31A6F37D222348FD000FD665 /* SnkrService.swift in Sources */,
 				0E6F65E823A6C2C2000DF915 /* UrlDownloadPopup.swift in Sources */,
 				316ACF6A21A0C6A0001C5C57 /* AppDelegate.swift in Sources */,
-				0E6F65E623A51EFE000DF915 /* BaseSnkrTableViewCell.swift in Sources */,
 				0EA0D56422F73B5A00CC4E0D /* AlertPopup.swift in Sources */,
 				0EA0D55222F622A600CC4E0D /* Fonts.swift in Sources */,
+				0E4EFF9124C484C000CA3366 /* SearchSnkrsCollectionReusableView.swift in Sources */,
 				0EA0D55E22F6E4BE00CC4E0D /* ConfirmPopupStyle.swift in Sources */,
 				0E6E076C22F393BA0023401F /* Colors.swift in Sources */,
 				0E5BEFCF24A8CA350087D462 /* CollectionViewCellDelegate.swift in Sources */,

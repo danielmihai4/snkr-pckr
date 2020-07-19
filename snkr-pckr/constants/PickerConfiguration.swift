@@ -33,23 +33,23 @@ class PickerConfiguration {
             config.preferredStatusBarStyle = UIStatusBarStyle.default
         }
         
-        config.colors.tintColor = Colors.umber
-        config.colors.navigationBarActivityIndicatorColor = Colors.umber
-        config.colors.multipleItemsSelectedCircleColor = Colors.umber
-        config.colors.photoVideoScreenBackgroundColor = Colors.umber
-        config.colors.libraryScreenBackgroundColor = Colors.umber
-        config.colors.safeAreaBackgroundColor = Colors.umber
-        config.colors.assetViewBackgroundColor = Colors.umber
-        config.colors.filterBackgroundColor = Colors.umber
-        config.colors.bottomMenuItemBackgroundColor = Colors.umber
-        config.colors.bottomMenuItemSelectedTextColor = Colors.umber
-        config.colors.bottomMenuItemUnselectedTextColor = Colors.umber
-        config.colors.trimmerMainColor = Colors.umber
-        config.colors.trimmerHandleColor = Colors.umber
-        config.colors.positionLineColor = Colors.umber
-        config.colors.coverSelectorBorderColor = Colors.umber
-        config.colors.progressBarTrackColor = Colors.umber
-        config.colors.progressBarCompletedColor = Colors.umber
+        config.colors.tintColor = UIColor.black
+        config.colors.navigationBarActivityIndicatorColor = UIColor.black
+        config.colors.multipleItemsSelectedCircleColor = UIColor.black
+        config.colors.photoVideoScreenBackgroundColor = UIColor.black
+        config.colors.libraryScreenBackgroundColor = UIColor.black
+        config.colors.safeAreaBackgroundColor = UIColor.black
+        config.colors.assetViewBackgroundColor = UIColor.black
+        config.colors.filterBackgroundColor = UIColor.black
+        config.colors.bottomMenuItemBackgroundColor = UIColor.black
+        config.colors.bottomMenuItemSelectedTextColor = UIColor.black
+        config.colors.bottomMenuItemUnselectedTextColor = UIColor.black
+        config.colors.trimmerMainColor = UIColor.black
+        config.colors.trimmerHandleColor = UIColor.black
+        config.colors.positionLineColor = UIColor.black
+        config.colors.coverSelectorBorderColor = UIColor.black
+        config.colors.progressBarTrackColor = UIColor.black
+        config.colors.progressBarCompletedColor = UIColor.black
         
         return config
     }

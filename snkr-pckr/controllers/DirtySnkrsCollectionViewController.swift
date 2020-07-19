@@ -36,8 +36,6 @@ class DirtySnkrsCollectionViewController: UICollectionViewController, Collection
         if let dirtySnkrCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.DirtySnkrCollectionCell, for: indexPath) as? DirtySnkrCollectionViewCell {
             dirtySnkrCollectionCell.configure(snkr: dirtySnkrs[indexPath.row])
             dirtySnkrCollectionCell.delegate = self
-            dirtySnkrCollectionCell.layer.borderColor = Colors.dustStorm.cgColor
-            dirtySnkrCollectionCell.layer.borderWidth = 1
             
             cell = dirtySnkrCollectionCell
         }

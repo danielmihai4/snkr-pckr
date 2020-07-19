@@ -16,6 +16,7 @@ protocol PickedSnkrModalViewControllerDelegate: class {
 class PickedSnkrModalViewController: UIViewController {
     
     var snkr: Snkr!
+    var snkrService = SnkrService()
     weak var delegate: PickedSnkrModalViewControllerDelegate?
     
     @IBOutlet weak var cancelButton: UIButton!
@@ -36,7 +37,7 @@ class PickedSnkrModalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        pic.image = snkr.pic
+        pic.image = snkrService.loadPic(snkr: snkr)
         nameLabel.text = snkr.name
         colorwayLabel.text = snkr.colorway        
     }

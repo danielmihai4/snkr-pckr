@@ -32,8 +32,8 @@ class CategoryService {
                         colorway: snkrEntity.colorway!,
                         lastWornDate: snkrEntity.lastWornDate,
                         isClean: snkrEntity.isClean,
-                        pic: UIImage(data: snkrEntity.pic!)!,
-                        smallPic: nil)
+                        pic: nil,
+                        smallPic: UIImage(data: snkrEntity.smallPic!)!)
                 
                     category.snkrs.append(snkr)
                 }

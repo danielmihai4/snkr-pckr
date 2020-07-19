@@ -38,7 +38,7 @@ class SelectImagePopupView: UIView {
         
         scrollView.layoutIfNeeded()
         scrollView.contentSize.height = calculateHeight()
-        self.backgroundColor = Colors.umber
+        self.backgroundColor = UIColor.darkGray
         
         set(.height, of: scrollView.contentSize.height + scrollViewVerticalOffset * 2, priority: .defaultHigh)
     }
@@ -51,7 +51,7 @@ class SelectImagePopupView: UIView {
         var attributes = EKAttributes.bottomFloat
         attributes.hapticFeedbackType = .success
         attributes.displayDuration = .infinity
-        attributes.entryBackground = .color(color: EKColor(light: Colors.umber, dark: Colors.umber))
+        attributes.entryBackground = .color(color: EKColor(light: UIColor.darkGray, dark: UIColor.darkGray))
         attributes.screenBackground = .color(color: EKColor(light: screenBackgroundColor(), dark: screenBackgroundColor()))
         attributes.shadow = .active(with: .init(color: .black, opacity: 0.3, radius: 8))
         attributes.screenInteraction = .dismiss
@@ -86,7 +86,7 @@ class SelectImagePopupView: UIView {
     }
     
     private func screenBackgroundColor() -> UIColor {
-        return Colors.umber.withAlphaComponent(0.8)
+        return UIColor.darkGray.withAlphaComponent(0.8)
     }
     
     private func setupScrollView() {
@@ -103,7 +103,7 @@ class SelectImagePopupView: UIView {
         titleLabel.forceContentWrap(.vertically)
         titleLabel.text = PopUpLabels.selectImageTitle
         titleLabel.font = MainFont.demiBold.with(size: 20)
-        titleLabel.textColor = Colors.darkVanilla
+        titleLabel.textColor = UIColor.white
     }
     
     private func setupButtons() {
@@ -144,7 +144,7 @@ class SelectImagePopupView: UIView {
     private func createImagePickerButtonBarView() -> EKButtonBarView {
         let imagePickerButtonContent = EKProperty.ButtonContent(
             label: .init(text: PopUpLabels.selectImagePickerTitle, style: OptionsPopupStyle.buttonStyle),
-            backgroundColor: EKColor(light: Colors.darkVanilla.withAlphaComponent(0.5), dark: Colors.darkVanilla.withAlphaComponent(0.5)),
+            backgroundColor: EKColor(light: UIColor.lightGray.withAlphaComponent(0.8), dark: UIColor.lightGray.withAlphaComponent(0.8)),
             highlightedBackgroundColor: EKColor.white.with(alpha: 0.8),
             displayMode: EKAttributes.DisplayMode.inferred) {
                 self.delegate.imagePickerSelected()
@@ -162,7 +162,7 @@ class SelectImagePopupView: UIView {
     private func createCancelButtonBarView() -> EKButtonBarView {
         let cancelButtonContent = EKProperty.ButtonContent(
             label: .init(text: PopUpLabels.cancelButtonTitle, style: OptionsPopupStyle.buttonStyle),
-            backgroundColor: EKColor(light: Colors.darkVanilla.withAlphaComponent(0.2), dark: Colors.darkVanilla.withAlphaComponent(0.2)),
+            backgroundColor: EKColor(light: UIColor.lightGray.withAlphaComponent(0.5), dark: UIColor.lightGray.withAlphaComponent(0.5)),
             highlightedBackgroundColor: EKColor.white.with(alpha: 0.8),
             displayMode: EKAttributes.DisplayMode.inferred) {
                 SwiftEntryKit.dismiss()
@@ -179,7 +179,7 @@ class SelectImagePopupView: UIView {
     private func createUrlDownloadButtonBarView() -> EKButtonBarView {
         let urlDownloadButtonContent = EKProperty.ButtonContent(
             label: .init(text: PopUpLabels.urlDownloadTitle, style: OptionsPopupStyle.buttonStyle),
-            backgroundColor: EKColor(light: Colors.darkVanilla.withAlphaComponent(0.5), dark: Colors.darkVanilla.withAlphaComponent(0.5)),
+            backgroundColor: EKColor(light: UIColor.lightGray.withAlphaComponent(0.8), dark: UIColor.lightGray.withAlphaComponent(0.8)),
             highlightedBackgroundColor: EKColor.white.with(alpha: 0.8),
             displayMode: EKAttributes.DisplayMode.inferred) {
                 SwiftEntryKit.dismiss()

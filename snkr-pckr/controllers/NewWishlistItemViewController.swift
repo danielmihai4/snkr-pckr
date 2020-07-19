@@ -184,30 +184,34 @@ class NewWishlistItemViewController: UIViewController, UIImagePickerControllerDe
         self.nameTextField.layer.addSublayer(createBottomBorder(self.nameTextField))
         self.nameTextField.delegate = self
         self.nameTextField.layer.masksToBounds = true
+        self.nameTextField.attributedPlaceholder = NSAttributedString(string: Placeholders.name, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
     }
     
     private func setupColorwayTextField() {
         self.colorwayTextField.layer.addSublayer(createBottomBorder(self.colorwayTextField))
         self.colorwayTextField.delegate = self
         self.colorwayTextField.layer.masksToBounds = true
+        self.colorwayTextField.attributedPlaceholder = NSAttributedString(string: Placeholders.colorway, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
     }
     
     private func setupPriceTextField() {
         self.priceTextField.layer.addSublayer(createBottomBorder(self.priceTextField))
         self.priceTextField.delegate = self
         self.priceTextField.layer.masksToBounds = true
+        self.priceTextField.attributedPlaceholder = NSAttributedString(string: Placeholders.price, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
     }
     
     private func setupReleaseDateTextField() {
         self.releaseDateTextField.layer.addSublayer(createBottomBorder(self.releaseDateTextField))
         self.releaseDateTextField.delegate = self
         self.releaseDateTextField.layer.masksToBounds = true
+        self.releaseDateTextField.attributedPlaceholder = NSAttributedString(string: Placeholders.releaseDate, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
     }
     
     private func createBottomBorder(_ textField: UITextField) -> CALayer {
         let border = CALayer()
         let width = CGFloat(1.0)
-        border.borderColor = Colors.dustStorm.cgColor
+        border.borderColor = UIColor.white.cgColor
         border.frame = CGRect(x: 0, y: textField.frame.size.height - width, width:  textField.frame.size.width, height: textField.frame.size.height)
         border.borderWidth = width
         

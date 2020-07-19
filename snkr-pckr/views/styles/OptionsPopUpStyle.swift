@@ -13,7 +13,7 @@ class OptionsPopupStyle {
     
     static let buttonStyle = EKProperty.LabelStyle(
         font: MainFont.regular.with(size: 16),
-        color: EKColor(light: Colors.darkVanilla, dark: Colors.darkVanilla))    
+        color: EKColor(light: UIColor.white, dark: UIColor.white))    
 }
 
 

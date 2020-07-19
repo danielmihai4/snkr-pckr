@@ -31,7 +31,7 @@ class CategoryViewCell: UITableViewCell {
     private func addBorder(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) {
         let border = CALayer()
         
-        border.backgroundColor = Colors.dustStorm.cgColor
+        border.backgroundColor = UIColor.white.cgColor
         border.frame = CGRect(x: x, y: y, width: width, height: height)
         self.backView.layer.addSublayer(border)
     }

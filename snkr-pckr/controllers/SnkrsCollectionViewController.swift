@@ -10,13 +10,16 @@ import UIKit
 import SwiftEntryKit
 import YPImagePicker
 
-class SnkrsCollectionViewController: UICollectionViewController, CollectionViewCellDelegate, PopUpOptionsControlleDelegate, ConfirmationPopupDelegate, PickedSnkrModalViewControllerDelegate {
+class SnkrsCollectionViewController: UICollectionViewController, UISearchBarDelegate, CollectionViewCellDelegate, PopUpOptionsControlleDelegate, ConfirmationPopupDelegate, PickedSnkrModalViewControllerDelegate {
     
+    var filteredSnkrs = [Snkr]()
     var snkrs = [Snkr]() {
         didSet {
             self.setTitle()
+            self.filteredSnkrs = snkrs
         }
     }
+    
     var snkrService = SnkrService()
     var snkrToView: Snkr?
     var snkrToEdit: Snkr?
@@ -30,16 +33,14 @@ class SnkrsCollectionViewController: UICollectionViewController, CollectionViewC
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return snkrs.count
+        return filteredSnkrs.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell = UICollectionViewCell()
         if let snkrCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.SnkrCollectionCell, for: indexPath) as? SnkrCollectionViewCell {
-            snkrCollectionCell.configure(snkr: snkrs[indexPath.row])
+            snkrCollectionCell.configure(snkr: self.filteredSnkrs[indexPath.row])
             snkrCollectionCell.delegate = self
-            snkrCollectionCell.layer.borderColor = Colors.dustStorm.cgColor
-            snkrCollectionCell.layer.borderWidth = 1
             
             cell = snkrCollectionCell
         }
@@ -78,6 +79,18 @@ class SnkrsCollectionViewController: UICollectionViewController, CollectionViewC
         }
     }
     
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+
+        if (kind == UICollectionView.elementKindSectionHeader) {
+            let headerView:UICollectionReusableView =  collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SnkrCollectionViewHeader", for: indexPath)
+
+             return headerView
+         }
+
+         return UICollectionReusableView()
+
+    }
+    
     @IBAction func cancel(segue:UIStoryboardSegue) {
         snkrToEdit = nil
     }
@@ -88,8 +101,6 @@ class SnkrsCollectionViewController: UICollectionViewController, CollectionViewC
                 let snkr = snkrs.filter{ $0.id == snkrToEdit?.id }.first
                 snkr?.name = source.nameTextField.text!
                 snkr?.colorway = source.colorwayTextField.text!
-                snkr?.pic = source.imageView.image?.resized(toWidth: 375)
-                snkr?.smallPic = source.imageView.image!.resized(toWidth: 120)
                 
                 self.collectionView.reloadData()
                 self.snkrService.update(snkr: snkr!)
@@ -101,8 +112,8 @@ class SnkrsCollectionViewController: UICollectionViewController, CollectionViewC
                     colorway: source.colorwayTextField.text!,
                     lastWornDate: nil,
                     isClean: true,
-                    pic: source.imageView.image!.resized(toWidth: 375),
-                    smallPic: source.imageView.image!.resized(toWidth: 120))
+                    pic: source.imageView.image!.resized(toWidth: 1080),
+                    smallPic: source.imageView.image!.resized(toWidth: 540))
                 
                 self.snkrs.append(snkr)
                 self.collectionView.reloadData()
@@ -122,6 +133,27 @@ class SnkrsCollectionViewController: UICollectionViewController, CollectionViewC
         }
     }
     
+    internal func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if(!(searchBar.text?.isEmpty)!){
+            let searchText = searchBar.text!
+            self.filteredSnkrs = self.snkrs.filter{ $0.name.contains(searchText) || $0.colorway.contains(searchText) }
+            
+            print("Filtered Sneakers")
+            for snkr in self.filteredSnkrs {
+                print("  -- Filtered Snkr: \(snkr.name) \(snkr.colorway)")
+            }
+            
+            self.collectionView?.reloadData()
+        }
+    }
+
+    internal func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if(searchText.isEmpty){
+            self.filteredSnkrs = self.snkrs
+            self.collectionView?.reloadData()
+        }
+    }
+    
     internal func viewSnkr(_ snkr: Snkr) {
         self.snkrToView = snkr
         
@@ -137,7 +169,7 @@ class SnkrsCollectionViewController: UICollectionViewController, CollectionViewC
     internal func deleteSnkr(_ snkr: Snkr) {
        snkrToDelete = snkr
        
-       let confirmationPopup = ConfirmationPopup(title: PopUpLabels.confirmDeleteSnkrPopupTitle, image: snkr.pic, delegate: self)
+       let confirmationPopup = ConfirmationPopup(title: PopUpLabels.confirmDeleteSnkrPopupTitle, image: snkr.smallPic, delegate: self)
        
        SwiftEntryKit.display(entry: confirmationPopup.getContentView(), using: confirmationPopup.getAttributes())
     }

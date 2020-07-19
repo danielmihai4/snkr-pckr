@@ -43,8 +43,6 @@ class SnkrSelectorCollectionViewController: UICollectionViewController, Collecti
             
             snkrSelectorCollectionCell.configure(snkr: snkr, stateImage: stateImage!)
             snkrSelectorCollectionCell.delegate = self
-            snkrSelectorCollectionCell.layer.borderColor = Colors.dustStorm.cgColor
-            snkrSelectorCollectionCell.layer.borderWidth = 1
               
             cell = snkrSelectorCollectionCell
           }

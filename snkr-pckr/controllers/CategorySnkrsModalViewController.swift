@@ -43,7 +43,7 @@ class CategorySnkrsModalViewController: UIViewController,UITableViewDataSource, 
         
         cell.nameLabel.text = snkr?.name
         cell.colorwayLabel.text = snkr?.colorway
-        cell.pic.image = snkr?.pic
+        cell.pic.image = snkr?.smallPic
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         if (self.category?.snkrs.firstIndex{$0 === snkr} == 0) {

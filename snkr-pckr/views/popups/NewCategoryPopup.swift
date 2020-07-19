@@ -28,7 +28,7 @@ class NewCategoryPopup {
         let button = createButton(nameTextField)
         
         let contentView = EKFormMessageView(with: title, textFieldsContent: [nameTextField], buttonContent: button)
-        contentView.backgroundColor = Colors.umber
+        contentView.backgroundColor = UIColor.darkGray
         
         return contentView
     }
@@ -50,9 +50,9 @@ class NewCategoryPopup {
         attributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.65, spring: .init(damping: 1, initialVelocity: 0))))
         attributes.entryInteraction = .absorbTouches
         attributes.screenInteraction = .dismiss
-        attributes.entryBackground = .color(color: EKColor(light: Colors.umber, dark: Colors.umber))
+        attributes.entryBackground = .color(color: EKColor(light: UIColor.darkGray, dark: UIColor.darkGray))
         attributes.shadow = .active(with: .init(color: .black, opacity: 0.3, radius: 3))
-        attributes.screenBackground = .color(color: EKColor(light: Colors.umber.withAlphaComponent(0.8), dark: Colors.umber.withAlphaComponent(0.8)))
+        attributes.screenBackground = .color(color: EKColor(light: UIColor.darkGray.withAlphaComponent(0.8), dark: UIColor.darkGray.withAlphaComponent(0.8)))
         attributes.scroll = .edgeCrossingDisabled(swipeable: true)
         attributes.statusBar = .light
         attributes.positionConstraints.keyboardRelation = .bind(offset: .init(bottom: 0, screenEdgeResistance: 0))
@@ -67,11 +67,11 @@ class NewCategoryPopup {
     private func createNameTextField() -> EKProperty.TextFieldContent {
         return EKProperty.TextFieldContent(keyboardType: .namePhonePad,
                                            placeholder: createPlaceholder(),
-                                           tintColor: EKColor(light: Colors.darkVanilla, dark: Colors.darkVanilla),
+                                           tintColor: EKColor(light: UIColor.white, dark: UIColor.white),
                                            displayMode: EKAttributes.DisplayMode.inferred,
                                            textStyle: PopupStyle.textStyle,
                                            leadingImage: UIImage(named: "icon-category")!.withRenderingMode(.alwaysTemplate),
-                                           bottomBorderColor: EKColor(light: Colors.darkVanilla, dark: Colors.darkVanilla),
+                                           bottomBorderColor: EKColor(light: UIColor.white, dark: UIColor.white),
                                            accessibilityIdentifier: "nameTextFiled")
     }
     
@@ -82,7 +82,7 @@ class NewCategoryPopup {
     private func createButton(_ nameTextField: EKProperty.TextFieldContent) -> EKProperty.ButtonContent {
         return EKProperty.ButtonContent(
             label: .init(text: PopUpLabels.newCategorySaveButtonTitle, style: PopupStyle.buttonStyle),
-            backgroundColor: EKColor(light: Colors.darkVanilla.withAlphaComponent(0.5), dark: Colors.darkVanilla.withAlphaComponent(0.5)),
+            backgroundColor: EKColor(light: UIColor.lightGray.withAlphaComponent(0.8), dark: UIColor.lightGray.withAlphaComponent(0.8)),
             highlightedBackgroundColor: EKColor.white.with(alpha: 0.8),
             displayMode: EKAttributes.DisplayMode.inferred) {
                 let categoryName = nameTextField.textContent

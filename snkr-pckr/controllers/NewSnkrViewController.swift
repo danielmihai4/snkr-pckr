@@ -14,6 +14,7 @@ class NewSnkrViewController: UIViewController, UINavigationControllerDelegate, U
    
     var selectedImage: UIImage?
     var snkrToEdit: Snkr?
+    var snkrService = SnkrService()
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var colorwayTextField: UITextField!
@@ -32,9 +33,10 @@ class NewSnkrViewController: UIViewController, UINavigationControllerDelegate, U
             
             imageView.image = selectedImage
         } else {
-            imageView.image = snkrToEdit?.pic
+            imageView.image = snkrService.loadPic(snkr: snkrToEdit!)
             nameTextField.text = snkrToEdit?.name
             colorwayTextField.text = snkrToEdit?.colorway
+            self.title = "Edit Snkr"
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -128,12 +130,14 @@ class NewSnkrViewController: UIViewController, UINavigationControllerDelegate, U
     private func setupNameTextField() {
         self.nameTextField.layer.masksToBounds = true
         self.nameTextField.delegate = self
+        self.nameTextField.attributedPlaceholder = NSAttributedString(string: Placeholders.name, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         addBorder(edge: .bottom, textField: self.nameTextField)
     }
     
     private func setupColorwayTextField() {
         self.colorwayTextField.layer.masksToBounds = true
         self.colorwayTextField.delegate = self
+        self.colorwayTextField.attributedPlaceholder = NSAttributedString(string: Placeholders.colorway, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         addBorder(edge: .bottom, textField: self.colorwayTextField)
     }
     
@@ -154,7 +158,7 @@ class NewSnkrViewController: UIViewController, UINavigationControllerDelegate, U
             break
         }
 
-        border.backgroundColor =  Colors.dustStorm.cgColor
+        border.backgroundColor =  UIColor.white.cgColor
 
         textField.layer.addSublayer(border)
     }
