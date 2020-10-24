@@ -17,8 +17,9 @@ public class Snkr {
     var smallPic: UIImage?
     var lastWornDate: Date?
     var isClean: Bool?
+    var orderId: Int
     
-    public init(id: UUID, name: String, colorway: String, lastWornDate: Date?, isClean: Bool, pic: UIImage?, smallPic: UIImage?) {
+    public init(id: UUID, name: String, colorway: String, lastWornDate: Date?, isClean: Bool, pic: UIImage?, smallPic: UIImage?, orderId: Int) {
         self.id = id
         self.name = name
         self.colorway = colorway
@@ -26,5 +27,6 @@ public class Snkr {
         self.isClean = isClean
         self.pic = pic
         self.smallPic = smallPic
+        self.orderId = orderId
     }
 }

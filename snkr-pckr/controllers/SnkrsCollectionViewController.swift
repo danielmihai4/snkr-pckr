@@ -12,6 +12,8 @@ import YPImagePicker
 
 class SnkrsCollectionViewController: UICollectionViewController, UISearchBarDelegate, CollectionViewCellDelegate, PopUpOptionsControlleDelegate, ConfirmationPopupDelegate, PickedSnkrModalViewControllerDelegate {
     
+    fileprivate var longPressGesture: UILongPressGestureRecognizer!
+    
     var filteredSnkrs = [Snkr]()
     var snkrs = [Snkr]() {
         didSet {
@@ -24,12 +26,14 @@ class SnkrsCollectionViewController: UICollectionViewController, UISearchBarDele
     var snkrToView: Snkr?
     var snkrToEdit: Snkr?
     var snkrToDelete: Snkr?
+    var searchInProgress = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.loadSnkrs()
         self.collectionView.reloadData()
+        self.setLongGestureRecognizer()
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -84,11 +88,37 @@ class SnkrsCollectionViewController: UICollectionViewController, UISearchBarDele
         if (kind == UICollectionView.elementKindSectionHeader) {
             let headerView:UICollectionReusableView =  collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SnkrCollectionViewHeader", for: indexPath)
 
-             return headerView
+            return headerView
          }
 
          return UICollectionReusableView()
-
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
+        if sourceIndexPath.item < destinationIndexPath.item {
+            for i in sourceIndexPath.item + 1 ... destinationIndexPath.item {
+                self.snkrs[i].orderId -= 1
+            }
+            self.snkrs[sourceIndexPath.item].orderId = self.snkrs[destinationIndexPath.item].orderId + 1
+        } else {
+            for i in destinationIndexPath.item ... sourceIndexPath.item - 1 {
+                self.snkrs[i].orderId += 1
+            }
+            self.snkrs[sourceIndexPath.item].orderId = self.snkrs[destinationIndexPath.item].orderId - 1
+        }
+            
+        self.snkrs.sort { $0.orderId < $1.orderId }
+        
+        for snkr in self.snkrs {
+            self.snkrService.update(snkr: snkr)
+        }
+        
+        self.collectionView.reloadData()
     }
     
     @IBAction func cancel(segue:UIStoryboardSegue) {
@@ -113,13 +143,31 @@ class SnkrsCollectionViewController: UICollectionViewController, UISearchBarDele
                     lastWornDate: nil,
                     isClean: true,
                     pic: source.imageView.image!.resized(toWidth: 1080),
-                    smallPic: source.imageView.image!.resized(toWidth: 540))
+                    smallPic: source.imageView.image!.resized(toWidth: 540),
+                    orderId: getNextOrderId())
                 
                 self.snkrs.append(snkr)
                 self.collectionView.reloadData()
                         
                 self.snkrService.store(snkr: snkr)
             }
+        }
+    }
+    
+    @objc func handleLongGesture(gesture: UILongPressGestureRecognizer) {
+        switch(gesture.state) {
+            
+        case .began:
+            guard let selectedIndexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView)) else {
+                break
+            }
+            self.collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
+        case .changed:
+            self.collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
+        case .ended:
+            self.collectionView.endInteractiveMovement()
+        default:
+            self.collectionView.cancelInteractiveMovement()
         }
     }
     
@@ -135,14 +183,11 @@ class SnkrsCollectionViewController: UICollectionViewController, UISearchBarDele
     
     internal func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if(!(searchBar.text?.isEmpty)!){
-            let searchText = searchBar.text!
-            self.filteredSnkrs = self.snkrs.filter{ $0.name.contains(searchText) || $0.colorway.contains(searchText) }
+            let searchText = searchBar.text!.lowercased()
+            self.filteredSnkrs = self.snkrs.filter{ $0.name.lowercased().contains(searchText) || $0.colorway.lowercased().contains(searchText) }
             
-            print("Filtered Sneakers")
-            for snkr in self.filteredSnkrs {
-                print("  -- Filtered Snkr: \(snkr.name) \(snkr.colorway)")
-            }
-            
+            self.searchInProgress = true
+            print("SET SEARCH IN PROGRESS")
             self.collectionView?.reloadData()
         }
     }
@@ -150,6 +195,8 @@ class SnkrsCollectionViewController: UICollectionViewController, UISearchBarDele
     internal func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if(searchText.isEmpty){
             self.filteredSnkrs = self.snkrs
+            self.searchInProgress = false
+            print("CLEARED SEARCH IN PROGRESS")
             self.collectionView?.reloadData()
         }
     }
@@ -245,13 +292,26 @@ class SnkrsCollectionViewController: UICollectionViewController, UISearchBarDele
     }
     
     private func setTitle() {
-           
-           if (snkrs.count == 1) {
-               self.title = String(format: "%d Snkr", snkrs.count)
-           } else {
-               self.title = String(format: "%d Snkrs", snkrs.count)
-           }
+       if (snkrs.count == 1) {
+           self.title = String(format: "%d Snkr", snkrs.count)
+       } else {
+           self.title = String(format: "%d Snkrs", snkrs.count)
        }
+   }
+    
+    private func setLongGestureRecognizer() {
+        longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gesture:)))
+        
+        self.collectionView.addGestureRecognizer(longPressGesture)
+    }
+    
+    private func getNextOrderId() -> Int {
+        if self.snkrs.count == 0 {
+            return 0
+        }
+        
+        return self.snkrs[self.snkrs.count - 1].orderId + 1
+    }
 }
 
 extension UIImage {
@@ -265,4 +325,3 @@ extension UIImage {
         }
     }
 }
-

@@ -33,7 +33,8 @@ class CategoryService {
                         lastWornDate: snkrEntity.lastWornDate,
                         isClean: snkrEntity.isClean,
                         pic: nil,
-                        smallPic: UIImage(data: snkrEntity.smallPic!)!)
+                        smallPic: UIImage(data: snkrEntity.smallPic!)!,
+                        orderId: Int(snkrEntity.orderId))
                 
                     category.snkrs.append(snkr)
                 }

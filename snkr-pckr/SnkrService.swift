@@ -31,7 +31,8 @@ class SnkrService {
                     lastWornDate: snkrEntity.lastWornDate,
                     isClean: snkrEntity.isClean,
                     pic: nil,
-                    smallPic: (snkrEntity.smallPic != nil) ? UIImage(data: snkrEntity.smallPic!)! : nil)
+                    smallPic: (snkrEntity.smallPic != nil) ? UIImage(data: snkrEntity.smallPic!)! : nil,
+                    orderId: Int(snkrEntity.orderId))
                 
                 snkrs.append(dirtySnkr)
             }
@@ -39,7 +40,9 @@ class SnkrService {
             print ("Cannot load dirty snkrs.")
         }
         
-        return snkrs
+        return snkrs.sorted {
+            $0.orderId < $1.orderId
+        }
     }
     
     func loadAll() -> [Snkr] {
@@ -60,7 +63,8 @@ class SnkrService {
                     lastWornDate: snkrEntity.lastWornDate,
                     isClean: snkrEntity.isClean,
                     pic: nil,
-                    smallPic: (snkrEntity.smallPic != nil) ? UIImage(data: snkrEntity.smallPic!)! : nil)
+                    smallPic: (snkrEntity.smallPic != nil) ? UIImage(data: snkrEntity.smallPic!)! : nil,
+                    orderId: Int(snkrEntity.orderId))
                 
                 snkrs.append(snkr)
             }
@@ -68,7 +72,9 @@ class SnkrService {
             print ("Cannot load snkrs")
         }
         
-        return snkrs
+        return snkrs.sorted {
+            $0.orderId < $1.orderId
+        }
     }
     
    func store(snkr: Snkr) {
@@ -82,6 +88,7 @@ class SnkrService {
         snkrEntity.isClean = snkr.isClean!
         snkrEntity.pic = snkr.pic!.jpegData(compressionQuality: 1)
         snkrEntity.smallPic = snkr.smallPic!.jpegData(compressionQuality: 1)
+        snkrEntity.orderId = Int16(snkr.orderId)
         
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
     }
@@ -101,6 +108,7 @@ class SnkrService {
             snkrEntity.colorway = snkr.colorway
             snkrEntity.lastWornDate = snkr.lastWornDate
             snkrEntity.isClean = snkr.isClean!
+            snkrEntity.orderId = Int16(snkr.orderId)
             
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
         } catch let error {
