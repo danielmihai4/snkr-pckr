@@ -60,13 +60,17 @@ class NewWishlistItemViewController: UIViewController, UIImagePickerControllerDe
     func showDatePicker(){
         self.datePicker.datePickerMode = .date
         
-        let toolbar = UIToolbar();
-        toolbar.sizeToFit()
+        if #available(iOS 13.4, *) {
+            self.datePicker.preferredDatePickerStyle = UIDatePickerStyle.wheels
+        }
+        
+        let toolbar = UIToolbar()
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
         
-        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+        toolbar.sizeToFit()
+        toolbar.setItems([cancelButton, spaceButton, doneButton], animated: false)
         
         self.releaseDateTextField.inputAccessoryView = toolbar
         self.releaseDateTextField.inputView = datePicker
@@ -206,6 +210,7 @@ class NewWishlistItemViewController: UIViewController, UIImagePickerControllerDe
         self.releaseDateTextField.delegate = self
         self.releaseDateTextField.layer.masksToBounds = true
         self.releaseDateTextField.attributedPlaceholder = NSAttributedString(string: Placeholders.releaseDate, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        self.releaseDateTextField.autocorrectionType = .no
     }
     
     private func createBottomBorder(_ textField: UITextField) -> CALayer {

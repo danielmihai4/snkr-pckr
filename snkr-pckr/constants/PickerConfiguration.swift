@@ -27,13 +27,7 @@ class PickerConfiguration {
         config.overlayView = UIView()
         config.hidesStatusBar = true
         config.hidesBottomBar = true
-        if #available(iOS 13.0, *) {
-            config.preferredStatusBarStyle = UIStatusBarStyle.darkContent
-        } else {
-            config.preferredStatusBarStyle = UIStatusBarStyle.default
-        }
-        
-        config.colors.tintColor = UIColor.black
+        config.colors.tintColor = UIColor.white
         config.colors.navigationBarActivityIndicatorColor = UIColor.black
         config.colors.multipleItemsSelectedCircleColor = UIColor.black
         config.colors.photoVideoScreenBackgroundColor = UIColor.black
@@ -44,7 +38,7 @@ class PickerConfiguration {
         config.colors.bottomMenuItemBackgroundColor = UIColor.black
         config.colors.bottomMenuItemSelectedTextColor = UIColor.black
         config.colors.bottomMenuItemUnselectedTextColor = UIColor.black
-        config.colors.trimmerMainColor = UIColor.black
+        config.colors.trimmerMainColor = UIColor.white
         config.colors.trimmerHandleColor = UIColor.black
         config.colors.positionLineColor = UIColor.black
         config.colors.coverSelectorBorderColor = UIColor.black

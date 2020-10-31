@@ -415,27 +415,27 @@
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vjX-xe-EK8"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Fau-Fx-xk1" firstAttribute="leading" secondItem="Jk3-UP-PYI" secondAttribute="leading" id="1sy-nL-1Or"/>
-                            <constraint firstItem="262-x3-AS8" firstAttribute="leading" secondItem="Fau-Fx-xk1" secondAttribute="leading" id="8jd-uL-6bt"/>
-                            <constraint firstItem="Fau-Fx-xk1" firstAttribute="top" secondItem="262-x3-AS8" secondAttribute="bottom" constant="8" id="FLq-b3-h0s"/>
-                            <constraint firstItem="262-x3-AS8" firstAttribute="trailing" secondItem="Fau-Fx-xk1" secondAttribute="trailing" id="HTa-QN-Hb4"/>
-                            <constraint firstItem="cSe-Zk-leX" firstAttribute="trailing" secondItem="262-x3-AS8" secondAttribute="trailing" id="Ie1-qs-uAj"/>
-                            <constraint firstItem="Jk3-UP-PYI" firstAttribute="trailing" secondItem="Itf-mN-5VP" secondAttribute="trailing" id="Jp5-4B-ad3"/>
-                            <constraint firstItem="Jk3-UP-PYI" firstAttribute="top" secondItem="Fau-Fx-xk1" secondAttribute="bottom" constant="8" id="Rvh-3f-H1a"/>
-                            <constraint firstItem="Fau-Fx-xk1" firstAttribute="trailing" secondItem="Jk3-UP-PYI" secondAttribute="trailing" id="TEm-lS-1bh"/>
-                            <constraint firstItem="Itf-mN-5VP" firstAttribute="top" secondItem="Jk3-UP-PYI" secondAttribute="bottom" constant="8" id="bbB-Bb-PZR"/>
-                            <constraint firstItem="cSe-Zk-leX" firstAttribute="centerX" secondItem="Dez-pP-tfO" secondAttribute="centerX" id="eIp-yi-14H"/>
-                            <constraint firstItem="cSe-Zk-leX" firstAttribute="leading" secondItem="262-x3-AS8" secondAttribute="leading" id="fhM-3n-oEl"/>
-                            <constraint firstItem="Jk3-UP-PYI" firstAttribute="leading" secondItem="Itf-mN-5VP" secondAttribute="leading" id="gbg-0u-wpl"/>
-                            <constraint firstItem="cSe-Zk-leX" firstAttribute="top" secondItem="vjX-xe-EK8" secondAttribute="top" id="h0h-Y6-9fT"/>
-                            <constraint firstItem="262-x3-AS8" firstAttribute="top" secondItem="cSe-Zk-leX" secondAttribute="bottom" constant="8" id="il5-rT-Wjh"/>
+                            <constraint firstItem="cSe-Zk-leX" firstAttribute="trailing" secondItem="Jk3-UP-PYI" secondAttribute="trailing" id="8IA-aO-Ova"/>
+                            <constraint firstItem="262-x3-AS8" firstAttribute="top" secondItem="cSe-Zk-leX" secondAttribute="bottom" constant="8" symbolic="YES" id="B6o-eN-jhN"/>
+                            <constraint firstItem="cSe-Zk-leX" firstAttribute="leading" secondItem="Itf-mN-5VP" secondAttribute="leading" id="JMn-hE-48p"/>
+                            <constraint firstItem="Itf-mN-5VP" firstAttribute="top" secondItem="Jk3-UP-PYI" secondAttribute="bottom" constant="8" symbolic="YES" id="K7F-AF-lVs"/>
+                            <constraint firstItem="cSe-Zk-leX" firstAttribute="trailing" secondItem="Itf-mN-5VP" secondAttribute="trailing" id="M3F-3b-IOW"/>
+                            <constraint firstItem="cSe-Zk-leX" firstAttribute="trailing" secondItem="262-x3-AS8" secondAttribute="trailing" id="SUw-Hd-SYH"/>
+                            <constraint firstItem="cSe-Zk-leX" firstAttribute="leading" secondItem="Fau-Fx-xk1" secondAttribute="leading" id="TVR-gb-3sQ"/>
+                            <constraint firstItem="cSe-Zk-leX" firstAttribute="top" secondItem="vjX-xe-EK8" secondAttribute="top" id="ZnJ-fk-0zn"/>
+                            <constraint firstItem="cSe-Zk-leX" firstAttribute="trailing" secondItem="Fau-Fx-xk1" secondAttribute="trailing" id="f8M-wK-ppV"/>
+                            <constraint firstItem="cSe-Zk-leX" firstAttribute="leading" secondItem="Dez-pP-tfO" secondAttribute="leading" id="hoE-Fz-Cjp"/>
+                            <constraint firstItem="cSe-Zk-leX" firstAttribute="leading" secondItem="262-x3-AS8" secondAttribute="leading" id="hub-3e-oB3"/>
+                            <constraint firstItem="Fau-Fx-xk1" firstAttribute="top" secondItem="262-x3-AS8" secondAttribute="bottom" constant="8" symbolic="YES" id="jQv-6l-CnO"/>
+                            <constraint firstItem="cSe-Zk-leX" firstAttribute="leading" secondItem="Jk3-UP-PYI" secondAttribute="leading" id="ntW-RH-bNF"/>
+                            <constraint firstItem="Jk3-UP-PYI" firstAttribute="top" secondItem="Fau-Fx-xk1" secondAttribute="bottom" constant="8" symbolic="YES" id="xnD-rC-edU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Item" id="oD6-em-jin">
