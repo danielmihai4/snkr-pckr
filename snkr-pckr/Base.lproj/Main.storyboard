@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T5s-yS-loI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T5s-yS-loI">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -143,7 +143,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="elD-cO-SvV">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfg-gS-pfY">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfg-gS-pfY">
                                                     <rect key="frame" x="335" y="13" width="32" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="32" id="2dz-F1-mzk"/>
@@ -209,9 +209,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Categories" id="ZoM-hA-dKB">
-                        <barButtonItem key="backBarButtonItem" title="Back" image="icon-back" id="4f5-ph-hUe">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="OKm-RC-uzr">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -421,6 +418,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="vjX-xe-EK8"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -439,7 +437,6 @@
                             <constraint firstItem="cSe-Zk-leX" firstAttribute="top" secondItem="vjX-xe-EK8" secondAttribute="top" id="h0h-Y6-9fT"/>
                             <constraint firstItem="262-x3-AS8" firstAttribute="top" secondItem="cSe-Zk-leX" secondAttribute="bottom" constant="8" id="il5-rT-Wjh"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="vjX-xe-EK8"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Item" id="oD6-em-jin">
                         <barButtonItem key="rightBarButtonItem" image="icon-save" id="wJJ-YD-ZQC">
@@ -615,7 +612,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EFE-SD-Niq">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EFE-SD-Niq">
                                 <rect key="frame" x="16" y="206" width="32" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="Dej-6c-fSy"/>
@@ -715,6 +712,7 @@
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="HXJ-fL-vXd"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -732,7 +730,6 @@
                             <constraint firstItem="uC2-VE-M65" firstAttribute="trailing" secondItem="HHy-Ys-j3u" secondAttribute="trailing" id="wDG-yi-ZV5"/>
                             <constraint firstItem="uC2-VE-M65" firstAttribute="leading" secondItem="EFE-SD-Niq" secondAttribute="leading" id="x4C-2l-Bsu"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="HXJ-fL-vXd"/>
                     </view>
                     <connections>
                         <outlet property="categoryNameLabel" destination="HHy-Ys-j3u" id="2QJ-ro-Et3"/>
@@ -743,7 +740,7 @@
             </objects>
             <point key="canvasLocation" x="65" y="893"/>
         </scene>
-        <!--Snkr Selector Collection View Controller-->
+        <!--Title-->
         <scene sceneID="Rdg-vt-rAR">
             <objects>
                 <collectionViewController id="TdO-pa-Zed" customClass="SnkrSelectorCollectionViewController" customModule="snkr_pckr" customModuleProvider="target" sceneMemberID="viewController">
@@ -821,11 +818,17 @@
                             <outlet property="delegate" destination="TdO-pa-Zed" id="KJ4-Ke-iyE"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="esy-q9-5Nw">
-                        <barButtonItem key="backBarButtonItem" title="test" id="BtP-d1-NFw"/>
+                    <navigationItem key="navigationItem" title="Title" id="Q0R-Lk-wAR">
+                        <barButtonItem key="leftBarButtonItem" title="Back" image="icon-back" id="Cw1-6t-m3L">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="3tp-5T-pOr" kind="unwind" unwindAction="backToCategoriesWithSegue:" id="OAp-PQ-ccK"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5as-Fl-WmV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="3tp-5T-pOr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="65" y="1578"/>
         </scene>
@@ -883,7 +886,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OdT-Og-Ko6">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OdT-Og-Ko6">
                                 <rect key="frame" x="16" y="61" width="32" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="76J-ae-U18"/>
@@ -896,7 +899,7 @@
                                     <action selector="cancelButtonPressed:" destination="fNd-3U-1B7" eventType="touchUpInside" id="DDQ-rw-IA5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iTr-si-dpy">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iTr-si-dpy">
                                 <rect key="frame" x="150" y="536" width="75" height="75"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -916,6 +919,7 @@
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="KHO-Fn-jaA"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -939,7 +943,6 @@
                             <constraint firstAttribute="trailing" secondItem="LHa-jb-OQs" secondAttribute="trailing" id="wpL-tv-oMm"/>
                             <constraint firstItem="iTr-si-dpy" firstAttribute="top" secondItem="U39-Gi-ocJ" secondAttribute="bottom" constant="2" id="z91-ae-rEw"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="KHO-Fn-jaA"/>
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="OdT-Og-Ko6" id="bYs-8i-csc"/>
@@ -984,6 +987,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="2wi-Mk-W0Z"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="eGp-TK-WyW" firstAttribute="leading" secondItem="MgA-5N-khu" secondAttribute="leading" id="6oF-A4-Sl0"/>
@@ -1000,7 +1004,6 @@
                             <constraint firstItem="MgA-5N-khu" firstAttribute="bottom" secondItem="2wi-Mk-W0Z" secondAttribute="bottom" id="oKs-UE-wir"/>
                             <constraint firstItem="qJi-Qx-Pab" firstAttribute="top" secondItem="2wi-Mk-W0Z" secondAttribute="top" id="qJg-4n-xJ8"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="2wi-Mk-W0Z"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Add Snkr" id="nJc-zd-Ivp">
