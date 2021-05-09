@@ -29,4 +29,7 @@ class PopUpLabels {
     static let selectImageTitle = "Select an image."
     static let selectImagePickerTitle = "Select image"
     static let urlDownloadTitle = "Download from URL"
+    static let selectSnkrsTitle = "Select Snkrs"
+    static let deleteCategoryTitle = "Delete Category"
+
 }

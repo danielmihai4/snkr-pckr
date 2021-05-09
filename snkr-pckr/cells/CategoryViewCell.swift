@@ -13,6 +13,8 @@ class CategoryViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var snkrCountLabel: UILabel!
     @IBOutlet weak var backView: UIView!
+    @IBOutlet weak var snkrCollectionView: SnkrCategoryCollectionView!
+    @IBOutlet weak var optionsButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,5 +36,12 @@ class CategoryViewCell: UITableViewCell {
         border.backgroundColor = UIColor.white.cgColor
         border.frame = CGRect(x: x, y: y, width: width, height: height)
         self.backView.layer.addSublayer(border)
+    }
+    
+    func setCollectionViewDataSourceDelegate(dataSourceDelegate: UICollectionViewDataSource & UICollectionViewDelegate, forRow row: Int) {
+        self.snkrCollectionView.delegate = dataSourceDelegate
+        self.snkrCollectionView.dataSource = dataSourceDelegate
+        self.snkrCollectionView.tag = row
+        self.snkrCollectionView.reloadData()
     }
 }

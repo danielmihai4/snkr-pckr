@@ -18,4 +18,5 @@ public struct Cells {
     public static let SnkrCollectionCell = "SnkrCollectionCell"
     public static let DirtySnkrCollectionCell = "DirtySnkrCollectionCell"
     public static let SnkrSelectorCollectionCell = "SnkrSelectorCollectionCell"
+    public static let SnkrCategoryCollectionViewCell = "SnkrCategoryCollectionViewCell"
 }

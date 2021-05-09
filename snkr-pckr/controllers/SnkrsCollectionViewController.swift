@@ -187,7 +187,6 @@ class SnkrsCollectionViewController: UICollectionViewController, UISearchBarDele
             self.filteredSnkrs = self.snkrs.filter{ $0.name.lowercased().contains(searchText) || $0.colorway.lowercased().contains(searchText) }
             
             self.searchInProgress = true
-            print("SET SEARCH IN PROGRESS")
             self.collectionView?.reloadData()
         }
     }
@@ -196,7 +195,6 @@ class SnkrsCollectionViewController: UICollectionViewController, UISearchBarDele
         if(searchText.isEmpty){
             self.filteredSnkrs = self.snkrs
             self.searchInProgress = false
-            print("CLEARED SEARCH IN PROGRESS")
             self.collectionView?.reloadData()
         }
     }

@@ -9,10 +9,11 @@
 import UIKit
 import SwiftEntryKit
 
-class CategoriesTableViewController: UITableViewController, NewCategoryPopupDelegate {
+class CategoriesTableViewController: UITableViewController, NewCategoryPopupDelegate, UICollectionViewDelegate, UICollectionViewDataSource, CategoryOptionsPopupViewDelegate, ConfirmationPopupDelegate {
     
     var categories = [Category]()
     var categoryService = CategoryService()
+    var categoryToDelete: Category?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,40 +30,25 @@ class CategoriesTableViewController: UITableViewController, NewCategoryPopupDele
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
-    }
-    
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if (editingStyle == UITableViewCell.EditingStyle.delete) {
-            let category = self.categories[indexPath.row]
-            
-            self.categoryService.delete(category: category)
-            self.categories.remove(at: indexPath.row)
-            self.tableView.reloadData()
-        }
+        return 260
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.ShowSnkrSelector {
             let destination = segue.destination as! SnkrSelectorCollectionViewController
-            let buttonPosition = (sender as! UIButton).convert(CGPoint(), to:tableView)
-            let indexPath = tableView.indexPathForRow(at:buttonPosition)
-            
-            destination.category = categories[(indexPath?.row)!]
-        } else if segue.identifier == Segues.ShowCategorySnkrs {
-            let destination = segue.destination as! CategorySnkrsModalViewController
-            let indexPath = tableView.indexPathForSelectedRow
-            
-            destination.category = categories[(indexPath?.row)!]
+
+            destination.category = sender as? Category
         }
     }
 
     override func viewDidAppear(_ animated: Bool) {
         self.tableView.reloadData()
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let cell = cell as? CategoryViewCell else { return }
+        
+        cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -71,6 +57,7 @@ class CategoriesTableViewController: UITableViewController, NewCategoryPopupDele
         
         cell.nameLabel.text = category.name
         cell.snkrCountLabel.text = displaySnkrCount(snkrCount: category.snkrs.count)
+        cell.optionsButton.addTarget(self, action: #selector(optionsButtonPressed(sender:)), for: .touchUpInside)
         
         if (categories.firstIndex{$0 === category} == 0) {
             cell.addTopBorder()
@@ -78,6 +65,56 @@ class CategoriesTableViewController: UITableViewController, NewCategoryPopupDele
         
         return cell
     }
+    
+    @objc func optionsButtonPressed(sender: UIButton) {
+        let buttonPosition = sender.convert(CGPoint(), to: tableView)
+        let indexPath = tableView.indexPathForRow(at:buttonPosition)
+        let category = categories[indexPath!.row]
+        let contentView = CategoryOptionsPopupView(delegate: self, category: category)
+        
+        SwiftEntryKit.display(entry: contentView, using: contentView.getAttributes(), presentInsideKeyWindow: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.categories[collectionView.tag].snkrs.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.SnkrCategoryCollectionViewCell, for: indexPath) as! SnkrCategoryCollectionViewCell
+        let category = categories[collectionView.tag]
+        let snkrs = category.snkrs
+        let snkr = snkrs[indexPath.row]
+        
+        cell.configure(snkr: snkr)
+        
+        return cell
+    }
+    
+    func selectSnkrs(_ category: Category) {
+        performSegue(withIdentifier: Segues.ShowSnkrSelector, sender: category)
+    }
+    
+    func deleteCategory(_ category: Category) {
+        self.categoryToDelete = category
+        
+        let confirmationPopup = ConfirmationPopup(title: PopUpLabels.confirmDeleteSnkrPopupTitle, image: nil, delegate: self)
+        
+        SwiftEntryKit.display(entry: confirmationPopup.getContentView(), using: confirmationPopup.getAttributes())
+    }
+    
+    func performConfirmAction() {
+        let index = self.categories.firstIndex{$0 === self.categoryToDelete}
+        let indexPath = IndexPath(row: index!, section: 0)
+        
+        self.categoryService.delete(category: self.categoryToDelete!)
+        self.categories.remove(at: indexPath.row)
+        self.tableView.reloadData()
+    }
+    
+    func performCancelAction() {
+        self.categoryToDelete = nil
+    }
+    
     
     internal func saveNewCategory(name: String) {
         let category = Category(id: UUID(), name: name)
